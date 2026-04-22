@@ -1,0 +1,14 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+.idea/
+.vscode/
+.agents/
+webapp_static/pagine_volantini/
+*.log
