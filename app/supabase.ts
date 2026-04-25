@@ -45,7 +45,7 @@ export async function searchProdotti(query: string): Promise<Prodotto[]> {
       searchNames.push(a.canonical_name.toUpperCase())
       searchNames.push(a.alias_name.toUpperCase())
     })
-    searchNames = [...new Set(searchNames)]
+    searchNames = Array.from(new Set(searchNames))
   }
   
   // Build OR conditions for rilevazioni_v2
@@ -89,7 +89,7 @@ export async function getLatestOffer(prodottoNome: string): Promise<Prodotto | n
       searchNames.push(a.canonical_name.toUpperCase())
       searchNames.push(a.alias_name.toUpperCase())
     })
-    searchNames = [...new Set(searchNames)]
+    searchNames = Array.from(new Set(searchNames))
   }
   
   const orConditions = searchNames.map(n => `nome.ilike.%${n}%`).join(',')
