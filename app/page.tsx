@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { searchProdotti, addToWatchlist, getWatchlist, getLatestOffer, Prodotto, WatchlistItem } from './lib/supabase'
+import { searchProdotti, addToWatchlist, getWatchlist, getLatestOffer, Prodotto, WatchlistItem } from '../lib/supabase'
 
 export default function Home() {
   const [search, setSearch] = useState('')
