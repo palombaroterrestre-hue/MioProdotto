@@ -28,10 +28,41 @@ export interface WatchlistItem {
 }
 
 export async function searchProdotti(query: string): Promise<Prodotto[]> {
+  const upperQuery = query.toUpperCase()
+  
+  // Get canonical name from aliases
+  const { data: aliasData } = await supabase
+    .from('product_aliases')
+    .select('canonical_name')
+    .or(`alias_name.ilike.%${upperQuery}%,canonical_name.ilike.%${upperQuery}%`)
+    .limit(1)
+  
+  // Build search conditions: query + any alias matches
+  let searchQuery = supabase
+    .from('rilevazioni_v2')
+    .select('*')
+    .or(`nome.ilike.%${upperQuery}%`, { foreignTable: 'product_aliases' })
+
+  if (aliasData && aliasData.length > 0) {
+    const aliasNames = aliasData.map((a: { canonical_name: string }) => a.canonical_name)
+    const uniqueNames = [...new Set([upperQuery, ...aliasNames])]
+    const orConditions = uniqueNames.map(n => `nome.ilike.%${n}%`).join(',')
+    
+    const { data, error } = await supabase
+      .from('rilevazioni_v2')
+      .select('*')
+      .or(orConditions)
+      .order('fine_validita', { ascending: false })
+      .limit(20)
+    
+    if (error) throw error
+    return data || []
+  }
+
   const { data, error } = await supabase
     .from('rilevazioni_v2')
     .select('*')
-    .ilike('nome', `%${query}%`)
+    .ilike('nome', `%${upperQuery}%`)
     .order('fine_validita', { ascending: false })
     .limit(20)
   
@@ -40,6 +71,31 @@ export async function searchProdotti(query: string): Promise<Prodotto[]> {
 }
 
 export async function getLatestOffer(prodottoNome: string): Promise<Prodotto | null> {
+  const upperQuery = prodottoNome.toUpperCase()
+  
+  const { data: aliasData } = await supabase
+    .from('product_aliases')
+    .select('canonical_name')
+    .or(`alias_name.ilike.%${upperQuery}%,canonical_name.ilike.%${upperQuery}%`)
+    .limit(5)
+  
+  if (aliasData && aliasData.length > 0) {
+    const aliasNames = aliasData.map((a: { canonical_name: string }) => a.canonical_name)
+    const uniqueNames = [...new Set([upperQuery, ...aliasNames])]
+    const orConditions = uniqueNames.map(n => `nome.ilike.%${n}%`).join(',')
+    
+    const { data, error } = await supabase
+      .from('rilevazioni_v2')
+      .select('*')
+      .or(orConditions)
+      .order('fine_validita', { ascending: false })
+      .limit(1)
+      .single()
+    
+    if (error) return null
+    return data
+  }
+
   const { data, error } = await supabase
     .from('rilevazioni_v2')
     .select('*')
