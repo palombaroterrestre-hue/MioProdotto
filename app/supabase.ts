@@ -36,19 +36,21 @@ function normalize(s: string): string {
 }
 
 function similarity(a: string, b: string): number {
-  const s1 = normalize(a)
-  const s2 = normalize(b)
+  const words1 = normalize(a).split(/\s+/)
+  const words2 = normalize(b).split(/\s+/)
   
-  if (s1 === s2) return 1
-  if (s1.length === 0 || s2.length === 0) return 0
+  if (words1.length === 0 || words2.length === 0) return 0
+  if (a.toLowerCase() === b.toLowerCase()) return 1
   
-  const maxLen = Math.max(s1.length, s2.length)
+  const set1 = new Set(words1)
+  const set2 = new Set(words2)
+  
   let matches = 0
-  
-  for (let i = 0; i < Math.min(s1.length, s2.length); i++) {
-    if (s1[i] === s2[i]) matches++
+  for (const w of set1) {
+    if (set2.has(w)) matches++
   }
   
+  const maxLen = Math.max(words1.length, words2.length)
   return matches / maxLen
 }
 
