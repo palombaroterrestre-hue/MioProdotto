@@ -27,77 +27,125 @@ export interface WatchlistItem {
   created_at: string
 }
 
-export async function searchProdotti(query: string): Promise<Prodotto[]> {
-  const upperQuery = query.toUpperCase()
+const BRANDS = ['CALVE', 'BARILLA', 'BIFFI', 'GALBANI', 'MUTTI', 'CARREFOUR', 'ESELUNGA', 
+            'PRONTO', 'SIMPLY', 'HEINZ', 'KRAFT', 'MAGGI', 'KNORR', 'STAR', 'DANONE',
+            'NESTLE', 'PERUGINA', 'FERRERO', 'MILKA', 'KINDER', 'MARS']
+
+function normalize(s: string): string {
+  return s.toLowerCase().trim()
+}
+
+function similarity(a: string, b: string): number {
+  const s1 = normalize(a)
+  const s2 = normalize(b)
   
-  let searchNames = [upperQuery]
+  if (s1 === s2) return 1
+  if (s1.length === 0 || s2.length === 0) return 0
   
-  // Try to find aliases - lookup by alias_name OR canonical_name
-  const { data: aliasData } = await supabase
-    .from('product_aliases')
-    .select('canonical_name, alias_name')
-    .or(`alias_name.ilike.%${upperQuery}%,canonical_name.ilike.%${upperQuery}%`)
-    .limit(10)
+  const maxLen = Math.max(s1.length, s2.length)
+  let matches = 0
   
-  if (aliasData && aliasData.length > 0) {
-    // Collect all names that should match
-    aliasData.forEach((a: { canonical_name: string; alias_name: string }) => {
-      searchNames.push(a.canonical_name.toUpperCase())
-      searchNames.push(a.alias_name.toUpperCase())
-    })
-    searchNames = Array.from(new Set(searchNames))
+  for (let i = 0; i < Math.min(s1.length, s2.length); i++) {
+    if (s1[i] === s2[i]) matches++
   }
   
-  // Build OR conditions for rilevazioni_v2
-  const orConditions = searchNames.map(n => `nome.ilike.%${n}%`).join(',')
+  return matches / maxLen
+}
+
+function hasBrand(name: string): boolean {
+  const nameUp = name.toUpperCase()
+  return BRANDS.some(b => nameUp.includes(b))
+}
+
+function pickCanonical(group: string[]): string {
+  const withBrand = group.filter(p => hasBrand(p))
+  
+  if (withBrand.length > 0) {
+    withBrand.sort((a, b) => a.length - b.length)
+    return withBrand[0]
+  }
+  
+  const sorted = [...group].sort((a, b) => a.length - b.length)
+  return sorted[0]
+}
+
+function isSameProductType(a: string, b: string): boolean {
+  const types = ['maionese', 'ketchup', 'yogurt', 'pasta', 'riso', 'pomodoro', 'passata',
+                'olio', 'latte', 'formaggio', 'prosciutto', 'carne', 'pesce', 'uovo']
+  return types.some(t => a.toLowerCase().includes(t) && b.toLowerCase().includes(t))
+}
+
+function dedupeResults(products: Prodotto[]): Prodotto[] {
+  if (products.length <= 1) return products
+  
+  const names = products.map(p => p.nome)
+  const uniqueNames = [...new Set(names)]
+  
+  if (uniqueNames.length <= 1) return products
+  
+  const threshold = 0.75
+  const groups: string[][] = []
+  const processed = new Set<string>()
+  
+  for (const name1 of uniqueNames) {
+    if (processed.has(name1)) continue
+    
+    const group: string[] = [name1]
+    processed.add(name1)
+    
+    for (const name2 of uniqueNames) {
+      if (processed.has(name2)) continue
+      
+      const sim = similarity(name1, name2)
+      if (sim >= threshold && isSameProductType(name1, name2)) {
+        group.push(name2)
+        processed.add(name2)
+      }
+    }
+    
+    if (group.length > 1) {
+      groups.push(group)
+    }
+  }
+  
+  if (groups.length === 0) return products
+  
+  const canonicalName = pickCanonical(groups[0])
+  
+  return products.filter(p => p.nome === canonicalName)
+}
+
+export async function searchProdotti(query: string): Promise<Prodotto[]> {
+  const upperQuery = query.toUpperCase()
   
   const { data, error } = await supabase
     .from('rilevazioni_v2')
     .select('*')
-    .or(orConditions)
+    .ilike('nome', `%${upperQuery}%`)
     .order('fine_validita', { ascending: false })
     .limit(20)
   
   if (error) {
     console.error('Search error:', error)
-    // Fallback to simple search
-    const { data: fallback } = await supabase
-      .from('rilevazioni_v2')
-      .select('*')
-      .ilike('nome', `%${upperQuery}%`)
-      .order('fine_validita', { ascending: false })
-      .limit(20)
-    return fallback || []
+    return []
   }
   
-  return data || []
+  const results = data || []
+  
+  if (results.length > 1) {
+    return dedupeResults(results)
+  }
+  
+  return results
 }
 
 export async function getLatestOffer(prodottoNome: string): Promise<Prodotto | null> {
   const upperQuery = prodottoNome.toUpperCase()
   
-  let searchNames = [upperQuery]
-  
-  const { data: aliasData } = await supabase
-    .from('product_aliases')
-    .select('canonical_name, alias_name')
-    .or(`alias_name.ilike.%${upperQuery}%,canonical_name.ilike.%${upperQuery}%`)
-    .limit(10)
-  
-  if (aliasData && aliasData.length > 0) {
-    aliasData.forEach((a: { canonical_name: string; alias_name: string }) => {
-      searchNames.push(a.canonical_name.toUpperCase())
-      searchNames.push(a.alias_name.toUpperCase())
-    })
-    searchNames = Array.from(new Set(searchNames))
-  }
-  
-  const orConditions = searchNames.map(n => `nome.ilike.%${n}%`).join(',')
-  
   const { data, error } = await supabase
     .from('rilevazioni_v2')
     .select('*')
-    .or(orConditions)
+    .ilike('nome', `%${upperQuery}%`)
     .order('fine_validita', { ascending: false })
     .limit(1)
     .single()
