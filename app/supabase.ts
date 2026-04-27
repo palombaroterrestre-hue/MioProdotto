@@ -114,7 +114,14 @@ function dedupeResults(products: Prodotto[]): Prodotto[] {
   
   const canonicalName = pickCanonical(groups[0])
   
-  return products.filter(p => p.nome === canonicalName)
+  // Keep only latest (most recent fine_validita)
+  const candidates = products.filter(p => p.nome === canonicalName)
+  if (candidates.length > 0) {
+    candidates.sort((a, b) => new Date(b.fine_validita).getTime() - new Date(a.fine_validita).getTime())
+    return [candidates[0]]
+  }
+  
+  return products
 }
 
 export async function searchProdotti(query: string): Promise<Prodotto[]> {
