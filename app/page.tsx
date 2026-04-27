@@ -79,9 +79,6 @@ export default function Home() {
                   <p className="text-sm text-gray-600">
                     {p.quantita_singola} • {p.percentuale_sconto > 0 ? `-${p.percentuale_sconto}%` : 'OFFERTA'}
                   </p>
-                  <p className="text-xs text-gray-500">
-                    Valido: {p.inizio_validita} - {p.fine_validita}
-                  </p>
                   {p.fonte_volantino_link && (
                     <a 
                       href={p.fonte_volantino_link} 
