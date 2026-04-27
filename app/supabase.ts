@@ -77,6 +77,15 @@ function isSameProductType(a: string, b: string): boolean {
   return types.some(t => a.toLowerCase().includes(t) && b.toLowerCase().includes(t))
 }
 
+function parseItalianDate(dateStr: string): number {
+  const parts = dateStr.split('/')
+  if (parts.length !== 3) return 0
+  const day = parseInt(parts[0], 10)
+  const month = parseInt(parts[1], 10) - 1
+  const year = parseInt(parts[2], 10)
+  return new Date(year, month, day).getTime()
+}
+
 function dedupeResults(products: Prodotto[]): Prodotto[] {
   if (products.length <= 1) return products
   
@@ -117,7 +126,7 @@ function dedupeResults(products: Prodotto[]): Prodotto[] {
   // Keep only latest (most recent fine_validita)
   const candidates = products.filter(p => p.nome === canonicalName)
   if (candidates.length > 0) {
-    candidates.sort((a, b) => new Date(b.fine_validita).getTime() - new Date(a.fine_validita).getTime())
+    candidates.sort((a, b) => parseItalianDate(b.fine_validita) - parseItalianDate(a.fine_validita))
     return [candidates[0]]
   }
   
