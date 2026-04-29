@@ -64,65 +64,40 @@ export async function searchProdotti(query: string): Promise<Prodotto[]> {
   if (!products || products.length === 0) {
     return []
   }
-  
-  // Step 3: Deduplicate by canonical name - keep only latest per canonical
-  const canonicalMap = new Map<string, Prodotto>()
-  
-  for (const p of products) {
-    // Find best canonical match
-    let bestCanonical = p.nome.toUpperCase()
-    let minDistance = 999
-    
-    // Check if this product matches any known alias
-    for (const a of aliasData || []) {
-      const aliasUpper = a.alias_name.toUpperCase()
-      const canonicalUpper = a.canonical_name.toUpperCase()
-      
-      if (p.nome.toUpperCase().includes(aliasUpper) || p.nome.toUpperCase() === aliasUpper) {
-        // Calculate similarity to canonical
-        const dist = levenshteinDistance(p.nome.toUpperCase(), canonicalUpper)
-        if (dist < minDistance) {
-          minDistance = dist
-          bestCanonical = canonicalUpper
-        }
-      }
-    }
-    
-    // Only keep first (latest) for each canonical
-    if (!canonicalMap.has(bestCanonical)) {
-      canonicalMap.set(bestCanonical, p)
-    }
-  }
-  
-  return Array.from(canonicalMap.values())
-}
 
-// Simple Levenshtein distance for fuzzy matching
-function levenshteinDistance(a: string, b: string): number {
-  if (a.length === 0) return b.length
-  if (b.length === 0) return a.length
-  
-  const matrix = []
-  for (let i = 0; i <= b.length; i++) {
-    matrix[i] = [i]
+  function stripAccents(s: string): string {
+    return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().trim()
   }
-  for (let j = 0; j <= a.length; j++) {
-    matrix[0][j] = j
+
+  // Build a fast lookup map: normalized alias -> canonical
+  const aliasMap = new Map<string, string>()
+  for (const a of aliasData || []) {
+    aliasMap.set(stripAccents(a.alias_name), stripAccents(a.canonical_name))
   }
-  for (let i = 1; i <= b.length; i++) {
-    for (let j = 1; j <= a.length; j++) {
-      if (b.charAt(i - 1) === a.charAt(j - 1)) {
-        matrix[i][j] = matrix[i - 1][j - 1]
-      } else {
-        matrix[i][j] = Math.min(
-          matrix[i - 1][j - 1] + 1,
-          matrix[i][j - 1] + 1,
-          matrix[i - 1][j] + 1
-        )
+
+  // Step 3: Deduplicate - group by canonical name, keep best offer per group
+  const canonicalMap = new Map<string, Prodotto>()
+
+  for (const p of products) {
+    const normalizedNome = stripAccents(p.nome)
+
+    // Look up canonical: check if this product is a known alias
+    const canonical = aliasMap.get(normalizedNome) ?? normalizedNome
+
+    // Keep the product with the highest discount for each canonical
+    const existing = canonicalMap.get(canonical)
+    if (!existing) {
+      canonicalMap.set(canonical, p)
+    } else {
+      const newDiscount = Math.abs(p.percentuale_sconto ?? 0)
+      const oldDiscount = Math.abs(existing.percentuale_sconto ?? 0)
+      if (newDiscount > oldDiscount) {
+        canonicalMap.set(canonical, p)
       }
     }
   }
-  return matrix[b.length][a.length]
+
+  return Array.from(canonicalMap.values())
 }
 
 export async function getLatestOffer(prodottoNome: string): Promise<Prodotto | null> {
