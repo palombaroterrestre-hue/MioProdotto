@@ -1,4 +1,5 @@
 import requests
+import unicodedata
 from difflib import SequenceMatcher
 from collections import Counter
 
@@ -12,18 +13,10 @@ name_counts = Counter(all_names)
 unique_names = sorted(set(all_names), key=lambda x: -name_counts[x])
 
 def normalize(name):
-    result = []
-    for c in name:
-        code = ord(c)
-        if code in [0xc0, 0xc1, 0xc2, 0xc3]: result.append('A')
-        elif code in [0xc8, 0xc9]: result.append('E')
-        elif code in [0xe0, 0xe1, 0xe2, 0xe3]: result.append('a')
-        elif code in [0xe8, 0xe9]: result.append('e')
-        elif code in [0xec, 0xed, 0xee]: result.append('i')
-        elif code in [0xf2, 0xf3, 0xf4]: result.append('o')
-        elif code in [0xf9, 0xfa, 0xfb]: result.append('u')
-        else: result.append(c)
-    return ''.join(result)
+    # NFD decomposition, strip diacritics
+    name = unicodedata.normalize('NFD', name)
+    name = ''.join(c for c in name if unicodedata.category(c) != 'Mn')
+    return name.upper().strip()
 
 def similarity(a, b):
     return SequenceMatcher(None, normalize(a).lower(), normalize(b).lower()).ratio()
