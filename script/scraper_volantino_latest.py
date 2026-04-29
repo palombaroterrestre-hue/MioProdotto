@@ -89,6 +89,46 @@ def already_processed(url: str) -> bool:
     return bool(check.count and check.count > 0)
 
 
+def reload_aliases() -> bool:
+    """Run smart_dedup_final.py to regenerate aliases and reload to Supabase."""
+    import subprocess
+    import sys
+    
+    try:
+        # Run the dedup script
+        result = subprocess.run(
+            [sys.executable, "smart_dedup_final.py"],
+            cwd=extractor.BASE_PATH,
+            capture_output=True,
+            text=True,
+            timeout=120
+        )
+        if result.returncode != 0:
+            print(f"[ALIAS] Errore dedup: {result.stderr}")
+            return False
+        
+        print(f"[ALIAS] Dedup completato: {result.stdout}")
+        
+        # Run the loader
+        result2 = subprocess.run(
+            [sys.executable, "load_aliases.py"],
+            cwd=extractor.BASE_PATH,
+            capture_output=True,
+            text=True,
+            timeout=60
+        )
+        if result2.returncode != 0:
+            print(f"[ALIAS] Errore loader: {result2.stderr}")
+            return False
+        
+        print(f"[ALIAS] Alias ricaricati: {result2.stdout}")
+        return True
+        
+    except Exception as e:
+        print(f"[ALIAS] Exception: {e}")
+        return False
+
+
 def send_email(status: str, subject: str, details: Dict[str, str]) -> None:
     load_dotenv()
     smtp_host = os.getenv("ALERT_SMTP_HOST", "smtp.gmail.com")
@@ -197,12 +237,37 @@ def main() -> None:
         return
 
     print(f"[FOUND] Nuovo volantino: {candidate_url}")
-    extractor.elabora_volantino(candidate_url, anno, mese)
+    
+    # Scrape the new flyer
+    scrape_success = False
+    try:
+        scrape_success = extractor.elabora_volantino(candidate_url, anno, mese)
+    except Exception as e:
+        print(f"[ERROR] Scraping failed: {e}")
+    
+    if not scrape_success:
+        reason = f"Estrazione fallita per {candidate_url}"
+        print(f"[FAIL] {reason}")
+        send_email(
+            "ERROR",
+            "[MioProdotto][Beta] Errore estrazione",
+            {"reason": reason, "url": candidate_url},
+        )
+        return
+    
+    # Reload aliases after new products are scraped
+    print("[ALIAS] Ricaricando alias table...")
+    alias_success = reload_aliases()
+    
+    if not alias_success:
+        # Non blocchiamo se gli alias falliscono, i prodotti sono gia in DB
+        print("[WARN] Alias reload failed, but products are saved")
+    
     send_email(
         "FOUND",
         "[MioProdotto][Beta] Volantino trovato",
         {
-            "reason": "Nuovo volantino individuato e avviata estrazione.",
+            "reason": "Nuovo volantino estratto e alias ricaricati.",
             "url": candidate_url,
             "last_end_date": last_end_date.isoformat(),
             "trigger_date": trigger_date.isoformat(),
