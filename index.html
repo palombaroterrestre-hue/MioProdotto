@@ -80,89 +80,38 @@
         <div class="search-wrapper">
             <input type="text" id="search" placeholder="Cerca (es. MAIONESE, YOGURT, CAFFE)...">
         </div>
-        <p class="hint">Scrivi per cercare i prodotti</p>
+        <p class="hint" id="hint">Caricamento...</p>
         <div class="results" id="results"></div>
     </div>
 
     <script>
-const products = [
-{alias:"POLPA DI FRUTTA",canonical:"100% POLPA DI FRUTTA",score:0.86,cat:"GENERICO"},
-{alias:"PIZZA MARGHERITA",canonical:"4 PIZZETTE MARGHERITA",score:0.81,cat:"GENERICO"},
-{alias:"UOVA FRESCHE",canonical:"4 UOVA FRESCHE XL",score:0.83,cat:"GENERICO"},
-{alias:"ACTIVA DANONE",canonical:"ACTIMEL DANONE",score:0.81,cat:"GENERICO"},
-{alias:"AMMORBIDENTE VALIDO",canonical:"AMMORBIDENTE LENOR",score:0.81,cat:"NON_ALIMENTARE"},
-{alias:"ASCIUGATUTTO",canonical:"ASCIUGATUTTO BRAVO",score:0.80,cat:"GENERICO"},
-{alias:"BISCOTTI BALOCCO",canonical:"BISCOTTI ZEROPIU BALOCCO",score:0.80,cat:"DOLCI"},
-{alias:"BISCOTTI CON CEREALI",canonical:"BISCOTTI SAFARI CON CEREALI",score:0.85,cat:"DOLCI"},
-{alias:"BOLLITO DI BOVINO ADULTO",canonical:"TAGLIATA DI BOVINO ADULTO",score:0.82,cat:"CARNI"},
-{alias:"BONARDA DELL'OPTRELLO PAVESE DOC",canonical:"BONARDA DELL'OLTREPO PAVESE DOC",score:0.92,cat:"GENERICO"},
-{alias:"BURRO PARMAREGGIO",canonical:"BURRO BIO PARMAREGGIO",score:0.89,cat:"LATTICINI"},
-{alias:"MAIONESE CLASSICA",canonical:"CALVÉ MAIONESE CLASSICA",score:0.85,cat:"CONDIMENTI"},
-{alias:"PANZEROTTINI POMODORO E MOZZARELLA",canonical:"CALZONE POMODORO E MOZZARELLA",score:0.79,cat:"LATTICINI"},
-{alias:"CANDEGGINA CLASSICA",canonical:"CANDEGGINA SCALA CLASSICA",score:0.86,cat:"NON_ALIMENTARE"},
-{alias:"CERTOSINO GALBANI",canonical:"CERTOSA GALBANI",score:0.88,cat:"GENERICO"},
-{alias:"CESTO MERLINO",canonical:"CESTO MERCURIO",score:0.81,cat:"GENERICO"},
-{alias:"CIOCCOLATO",canonical:"CIOCCOLATI NOVI",score:0.80,cat:"GENERICO"},
-{alias:"CIOCCOLATO NOVIPÙ",canonical:"CIOCCOLATI NOVI",score:0.88,cat:"GENERICO"},
-{alias:"CODE DI GAMBERO ARGENTINO",canonical:"CODE DI GAMBERI ARGENTINI",score:0.92,cat:"PESCE"},
-{alias:"FILETTI DI SALMONE SELVAGGIO",canonical:"CUORI DI FILETTI DI SALMONE SELVAGGIO",score:0.86,cat:"PESCE"},
-{alias:"DETERSIVO PIATTI",canonical:"DETERSIVO PIATTI KIP",score:0.89,cat:"NON_ALIMENTARE"},
-{alias:"DETERSIVO PIATTI NELSEN",canonical:"DETERSIVO PIATTI KIP",score:0.79,cat:"NON_ALIMENTARE"},
-{alias:"FILETTI DI ALICI DELICIUS",canonical:"FILETTI DI ALICROI PER PIZZA DELICIUS",score:0.81,cat:"PESCE"},
-{alias:"FILETTI DI MERLUZZO",canonical:"FILETTI DI MERLUZZO D'ALASKA",score:0.83,cat:"PESCE"},
-{alias:"FILETTI DI TONNO MAREBLU",canonical:"FILETTI DI SGOMBRO MAREBLU",score:0.84,cat:"PESCE"},
-{alias:"GELATO COPPA FAMIGLIA",canonical:"GELATO COPPA FAMIGLIA TONNITON",score:0.82,cat:"SALUMI"},
-{alias:"GENERAL UNIVERSALE",canonical:"GENERAL UNIVERSALE 5 IN 1",score:0.84,cat:"GENERICO"},
-{alias:"GORGONZOLA DOP DOLCE GIM INVERNIZZI",canonical:"GORGONZOLA DOLCE DOP GIM INVERNIZZI",score:0.89,cat:"LATTICINI"},
-{alias:"GORGONZOLA DOP",canonical:"GORGONZOLA DOP DOLCE",score:0.82,cat:"LATTICINI"},
-{alias:"GRAN COPPA FAMIGLIA TONYOTO",canonical:"GRAN COPPA FAMIGLIA TONITTO",score:0.93,cat:"SALUMI"},
-{alias:"MINI COPPA FAMIGLIA TOMITTO",canonical:"GRAN COPPA FAMIGLIA TONITTO",score:0.85,cat:"SALUMI"},
-{alias:"GRAPPA BRUNELLO LORENZO INGA",canonical:"GRAPPA AMARONE LORENZO INGA",score:0.84,cat:"BEVANDE"},
-{alias:"IL MIO RISOTTO STAR",canonical:"IL MIO BRODO STAR",score:0.83,cat:"CONDIMENTI"},
-{alias:"PANETTONE BALOCCO",canonical:"IL PANETTONE BALOCCO",score:0.92,cat:"PANE_BAKERY"},
-{alias:"LA RISSOLÉE MC CAIN",canonical:"LA RISSOLEE MC CAIN",score:1.00,cat:"GENERICO"},
-{alias:"LE FRESCHE BISCOTTATE GRISSINBON",canonical:"LE FRESCHE BISCOTTATE GRISSIN BON",score:0.98,cat:"GENERICO"},
-{alias:"LINEA TAVOLA DI NATALE",canonical:"LINEA TAVOLA BIO TABLE",score:0.86,cat:"GENERICO"},
-{alias:"LIQUIDO LAVATRICE CHANTECLAIR",canonical:"LIQUIDO PER LAVATRICE CHANTE CLAIR",score:0.92,cat:"GENERICO"},
-{alias:"MASCARPONE SENZA LATTOSIO ACCADI GRANAROLO",canonical:"PANNA UHT SENZA LATTOSIO ACCADI GRANAROLO",score:0.82,cat:"LATTICINI"},
-{alias:"RICOTTINE SENZA LATTOSIO ACCAD GRANAROLO",canonical:"PANNA UHT SENZA LATTOSIO ACCADI GRANAROLO",score:0.79,cat:"LATTICINI"},
-{alias:"MELE RENETTE MELINDA",canonical:"MELE RENETTA MELINDA",score:0.95,cat:"ORTOFRUTTA"},
-{alias:"MOZZARELLE DI BUFALA CAMPANA DOP",canonical:"MOZZARELLA DI BUFALA CAMPANA DOP",score:0.97,cat:"LATTICINI"},
-{alias:"MOZZARELLA FIOR DI LATTE",canonical:"MOZZARELLA FIOR DI LATTE LATTE CARSO",score:0.80,cat:"LATTICINI"},
-{alias:"MOZZARELLA FIORI DI LATTE",canonical:"MOZZARELLA FIOR DI LATTE LATTE CARSO",score:0.79,cat:"LATTICINI"},
-{alias:"NACHOS EL SABOR",canonical:"NACHO CHIPS EL SABOR",score:0.86,cat:"GENERICO"},
-{alias:"NESQUIK NESTLÉ",canonical:"SNACK NESQUIK NESTLÉ",score:0.82,cat:"GENERICO"},
-{alias:"OLIO EXTRA VERGINE DI OLIVA DANTE",canonical:"OLIO EXTRA VERGINE DI OLIVA ORO DI MILANO",score:0.84,cat:"GENERICO"},
-{alias:"OMOGENIZZATI DI CARNE",canonical:"OMOGENEIZZATI DI CARNE PLASMON",score:0.82,cat:"GENERICO"},
-{alias:"ORECCHIETTE TROFIE",canonical:"ORECCHIETTE, TROFIE MAFFEI",score:0.82,cat:"GENERICO"},
-{alias:"TEGLIA PER PIZZA IN ACCIAIO ALPINA",canonical:"PALA PER PIZZA IN ACCIAIO ALPINA",score:0.91,cat:"GENERICO"},
-{alias:"PANNA COTTA CARAMELLO GIANDUIA",canonical:"PANNA COTTA CARAMELLIG. GIANDUIA",score:0.94,cat:"LATTICINI"},
-{alias:"PANNA UHT ACCADÌ GRANAROLO",canonical:"PANNA UHT DA CUCINA GRANAROLO",score:0.87,cat:"LATTICINI"},
-{alias:"PARMIGIANO REGGIANO GRATTUGIATO FRESCO FERRARI",canonical:"PARMIGIANO REGGIANO DOP GRATTUGIATO FRESCO FERRARI",score:0.96,cat:"LATTICINI"},
-{alias:"PASTA INTEGRALE BARILLA",canonical:"PASTA DE SEMOLA INTEGRALE BARILLA",score:0.82,cat:"GENERICO"},
-{alias:"PASTA DI SEMOLA BARILLA",canonical:"PASTA DI SEMOLA VOIELLO",score:0.83,cat:"PASTA_RISO"},
-{alias:"PASTA DI SEMOLA BUCATINI",canonical:"PASTA DI SEMOLA VOIELLO",score:0.72,cat:"PASTA_RISO"},
-{alias:"PISELLI FINISSIMI LA VALLE DEGLI ORTI",canonical:"PISELI FINISSIMI LA VALLE DEGLI ORTI",score:0.99,cat:"GENERICO"},
-{alias:"POLPA DI POMODORO",canonical:"POLPA PRONTA DI POMODORO",score:0.83,cat:"GENERICO"},
-{alias:"PROSCIUTTO COTTO",canonical:"PROSCIUTTO CRUDO",score:0.81,cat:"SALUMI"},
-{alias:"PROSCIUTTO COTTO ALTA QUALITÀ RICCAFFETTA RASPINI",canonical:"PROSCIUTTO COTTO ALTA QUALITÀ RICCAFETTA RASPINI",score:0.99,cat:"SALUMI"},
-{alias:"RICOTTA GRANAROLO",canonical:"RICOTTA FRESCA GRANAROLO",score:0.83,cat:"LATTICINI"},
-{alias:"RICOTTA SANTA LUCIA GALBANI",canonical:"RICOTTA LIGHT SANTA LUCIA GALBANI",score:0.90,cat:"LATTICINI"},
-{alias:"SALMONE NORVEGESE AFFUMICATO",canonical:"SALMONE NORVEGESE AFFUMICATO HOVA DE LUXE",score:0.81,cat:"PESCE"},
-{alias:"SALVIETTE BABY",canonical:"SALVIETTE BABY FRESH",score:0.82,cat:"NON_ALIMENTARE"},
-{alias:"SAPONE LIQUIDO",canonical:"SAPONE LIQUIDO KARINA",score:0.80,cat:"GENERICO"},
-{alias:"SOFFICINI FINDUS",canonical:"SOFFCINNI FINDUS",score:0.94,cat:"GENERICO"},
-{alias:"SPECK ALTO ADIGE IGP",canonical:"SPECK ALTO ADIGE IGP SENFTER",score:0.83,cat:"SALUMI"},
-{alias:"SPECK ALTO ADIGE IGP STRIKS",canonical:"SPECK ALTO ADIGE IGP SENFTER",score:0.87,cat:"SALUMI"},
-{alias:"SPECK DELL'ALTO ADIGE IGP",canonical:"SPECK ALTO ADIGE IGP SENFTER",score:0.77,cat:"SALUMI"},
-{alias:"SPEEDY POLLO",canonical:"SPEEDY POLLO SADIA",score:0.80,cat:"GENERICO"},
-{alias:"STELLE FILANTI*",canonical:"STELLE FILANTI* SPRAY",score:0.83,cat:"GENERICO"},
-{alias:"VASCHETTA IN ALLUMINIO COPTOPROPCHIO DOMO PAK",canonical:"VASCHETTA IN ALLUMINIO CON COPERCHIO DOMO PAK",score:0.91,cat:"GENERICO"},
-{alias:"YOGURT HERAKLES BIANCO",canonical:"YOGURT HERAKLES BIANCO MAGRO",score:0.88,cat:"LATTICINI"}
-];
+const SUPABASE_URL = 'https://fsxctxzzifohmbgqwcxk.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZzeGN0eHp6aWZvaG1iZ3F3Y3hrIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NTczNzI1MCwiZXhwIjoyMDkxMzEzMjUwfQ.X7DudvCF90BkSPNny0AblDI_te-vcP3KlVprjIXSBCw';
+
+let products = [];
+
+async function loadProducts() {
+    try {
+        const res = await fetch(SUPABASE_URL + '/rest/v1/product_aliases?select=*', {
+            headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
+        });
+        products = await res.json();
+        products = products.map(p => ({
+            alias: p.alias_name,
+            canonical: p.canonical_name,
+            score: p.similarity_score,
+            cat: p.category
+        }));
+        document.getElementById('hint').textContent = 'Scrivi per cercare i prodotti';
+    } catch (e) {
+        console.error('Failed to load products:', e);
+    }
+}
 
 const search = document.getElementById('search');
 const results = document.getElementById('results');
+
+loadProducts();
 
 function render(list) {
     if (list.length === 0) {
@@ -186,6 +135,7 @@ function render(list) {
 }
 
 search.addEventListener('input', e => {
+    if (products.length === 0) return;
     const q = e.target.value.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     if (q.length < 2) {
         results.innerHTML = '';

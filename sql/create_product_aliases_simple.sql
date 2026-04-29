@@ -1,0 +1,4 @@
+-- Step 1: Create table
+-- Step 2: Enable RLS
+-- Step 3: Allow read
+-- Step 4: Allow insert
