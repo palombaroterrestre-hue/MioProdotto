@@ -95,6 +95,7 @@ async function loadProducts() {
         const res = await fetch(SUPABASE_URL + '/rest/v1/product_aliases?select=*', {
             headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
         });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
         products = await res.json();
         products = products.map(p => ({
             alias: p.alias_name,
@@ -102,9 +103,10 @@ async function loadProducts() {
             score: p.similarity_score,
             cat: p.category
         }));
-        document.getElementById('hint').textContent = 'Scrivi per cercare i prodotti';
+        document.getElementById('hint').textContent = 'Scrivi per cercare i prodotti (' + products.length + ')';
     } catch (e) {
         console.error('Failed to load products:', e);
+        document.getElementById('hint').textContent = 'Errore: ' + e.message;
     }
 }
 
