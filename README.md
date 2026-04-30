@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# MioProdotto
-Alert user promo
-=======
 # MioProdotto - Volantini Watchlist
 
 Sistema di scraping volantini Ekom con estrazione prodotti via AI, salvataggio su Supabase e notifiche future per utenti con watchlist.
@@ -49,4 +45,3 @@ python estrattore_con_quantita.py
 - Supabase e' il database operativo consigliato.
 - GitHub e' usato per versionamento codice/documentazione, non come DB runtime.
 - Evitare il commit di `.env` o altri file con credenziali.
->>>>>>> c08d392 (Initial project setup with scraper and docs)
