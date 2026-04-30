@@ -1,47 +1,26 @@
 # MioProdotto - Volantini Watchlist
 
-Sistema di scraping volantini Ekom con estrazione prodotti via AI, salvataggio su Supabase e notifiche future per utenti con watchlist.
+Sistema di scraping volantini Ekom con estrazione prodotti via AI,
+salvataggio su Supabase e notifiche email per utenti con watchlist.
 
-## Obiettivo
+## Stack
+- Scraping: Python + pdf2image + gemma4:31b-cloud
+- Database: Supabase (rilevazioni_v2, product_aliases, watchlist)
+- Frontend: Next.js su Vercel - https://mio-prodotto.vercel.app
 
-Quando un prodotto monitorato da un utente compare in un nuovo volantino, la web app invia una email di avviso.
+## Stato attuale
+- 1000 prodotti in rilevazioni_v2
+- 458 alias in product_aliases
+- Ricerca con deduplicazione live
+- Watchlist table pronta
 
-## Stato Attuale
-
-- Scraping storico disponibile in `estrattore_con_quantita.py`
-- Versione refactor disponibile in `estrattore_con_quantita_v2.py`
-- Estrazione da PDF con `pdf2image` + modello `gemma4:31b-cloud`
-- Salvataggio su tabella Supabase `rilevazioni_v2`
-
-## Script Principali
-
-- `estrattore_con_quantita.py`: pipeline principale con prompt commerciale e salvataggio in DB
-- `estrattore_con_quantita_v2.py`: refactor robusto mantenendo la logica business
-
-## Setup Locale
-
-1. Installa dipendenze Python del progetto.
-2. Crea `.env` con le variabili richieste:
-   - `SUPABASE_URL`
-   - `SUPABASE_KEY`
-   - `GEMMA_API_KEY`
-   - `BASE_PATH`
-   - `POPPLER_PATH`
-3. Esegui lo script:
-
-```bash
+## Run
 python estrattore_con_quantita.py
-```
+python script/scraper_volantino_latest.py
 
-## Roadmap Breve
+## Setup
+Crea .env con: SUPABASE_URL, SUPABASE_KEY, GEMMA_API_KEY
 
-- Aggiungere `scraper_volantino_latest.py` per aggiornamento incrementale
-- Trigger di ricerca nuovo volantino da `fine_validita - 3 giorni`
-- Pipeline watchlist -> matching prodotti -> invio email
-- Scheduler giornaliero
-
-## Note Operative
-
-- Supabase e' il database operativo consigliato.
-- GitHub e' usato per versionamento codice/documentazione, non come DB runtime.
-- Evitare il commit di `.env` o altri file con credenziali.
+## Note
+- Non committare .env o .env.local
+- Date in DB formato GG/MM/YYYY
