@@ -1,56 +1,48 @@
-# PROJECT_STATE
+# PROJECT STATE — MioProdotto
+Ultimo aggiornamento: 3 maggio 2026
 
-Documento di handover rapido per riprendere il progetto anche con un altro modello LLM.
+## Stack
+- Scraping: Python + pdf2image + gemma4 su Ollama cloud
+- Database: Supabase
+- Frontend: Next.js su Vercel
+- URL pubblico: https://mio-prodotto.vercel.app
 
-## Product Goal
+## Tabelle Supabase
+- product: tabella ATTIVA (7292 prodotti)
+- product_aliases: alias deduplicazione (1655 alias, string_match)
+- dedup_feedback: feedback utente per AI learning (vuota)
+- staging_products: prodotti in attesa di review (vuota)
+- rilevazioni_v2: BACKUP SOLA LETTURA (non modificare mai)
+- watchlist: preferenze utenti per notifiche
 
-Costruire una web app che notifichi via email gli utenti quando uno o piu' prodotti della loro watchlist compaiono nei nuovi volantini.
+## File principali
+- smart_dedup_final.py: deduplicazione string-based, legge product, scrive product_aliases
+- estrattore_con_quantita.py: scraper originale (non più in uso attivo)
+- script/scraper_volantino_latest.py: scraper incrementale con retry
+- lib/supabase.ts: client frontend, searchProdotti() usa ilike su product
+- lib/ai_dedup.py: motore AI (da completare, manca collegamento Ollama)
+- lib/feedback_examples.py: carica esempi feedback per prompt Ollama
+- apply_ai_dedup.py: rigenera alias con AI su tutto il DB (da completare)
 
-## Current Status
+## Stato funzionalità
+- Ricerca frontend: FUNZIONANTE con deduplicazione alias
+- Scraper incrementale: FUNZIONANTE con dry-run mode
+- Alias string_match: 1655 coppie caricate
+- AI deduplication: DA COMPLETARE (manca metodo Ollama)
+- Dashboard feedback: DA COSTRUIRE (flyer-review page)
+- Email notifiche watchlist: DA COSTRUIRE
+- GitHub Actions scheduler: DA CONFIGURARE
 
-- Scraping storico funzionante su `estrattore_con_quantita.py`
-- Migliorie di robustezza introdotte (retry rete, validazione env, controlli difensivi)
-- Prompt prodotti aggiornato in versione piu' deterministica
-- Git for Windows installato in macchina
-- Skills installate correttamente via `npx skills add JuliusBrussee/caveman -a cursor -y`
+## Prossimi step in ordine
+1. Collegare lib/ai_dedup.py al metodo Ollama corretto
+2. Creare dashboard review su app/flyer-review/page.tsx
+3. Implementare Supabase Storage per immagini PDF
+4. Creare notify_watchlist.py
+5. Configurare GitHub Actions cron
 
-## Decisions
-
-- Database prodotti: **Supabase**
-- GitHub: versionamento codice + documentazione + eventuali export statici
-- Strategia update: script incrementale dedicato (`scraper_volantino_latest.py`)
-
-## Next Implementation Priority
-
-1. Creare `scraper_volantino_latest.py`
-2. Logica trigger: avvio ricerca da `fine_validita ultimo volantino - 3 giorni`
-3. Estrazione solo del nuovo volantino (se URL non presente in DB)
-4. Preparare schema watchlist/notifiche email
-
-## Known Constraints
-
-- Il terminale puo' non vedere subito `git` nel PATH: usare nuova sessione se necessario
-- Le date in DB sono nel formato `GG/MM/YYYY`, richiedono parsing esplicito
-- Evitare reprocessing duplicato: controllo su `fonte_volantino_link`
-
-## Environment Variables
-
-- `SUPABASE_URL`
-- `SUPABASE_KEY`
-- `GEMMA_API_KEY`
-- `BASE_PATH`
-- `POPPLER_PATH`
-
-## Run Commands
-
-```bash
-python estrattore_con_quantita.py
-python estrattore_con_quantita_v2.py
-```
-
-## Handover Checklist
-
-- Leggere prima `README.md` e questo file
-- Verificare `.env`
-- Verificare accesso Supabase
-- Eseguire script su una finestra temporale ridotta prima del run completo
+## Note critiche
+- NON modificare rilevazioni_v2
+- NON committare .env o .env.local
+- Date in DB formato GG/MM/YYYY
+- Non eseguire estrattore_con_quantita.py senza Ollama attivo
+- Dopo ogni push verificare con git log --oneline -1
