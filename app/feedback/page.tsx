@@ -117,7 +117,7 @@ export default function FeedbackPage() {
       .insert({ 
         alias_name: current.alias_name,
         canonical_name: current.canonical_name,
-        label: isCorrect ? 'correct' : 'wrong'
+        label: isCorrect ? 'CORRECT' : 'WRONG'
       })
 
     if (!error) {
