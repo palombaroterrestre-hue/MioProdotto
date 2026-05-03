@@ -10,7 +10,8 @@ export interface Prodotto {
   nome: string
   prezzo: number
   quantita_singola: string
-  percentuale_sconto: number
+  sconto_percentuale: number      // FIX 3: era percentuale_sconto
+  percentuale_sconto: number      // FIX 3: tenuto per compatibilità
   emoji: string
   tipo_meccanica: string
   inizio_validita: string
@@ -28,39 +29,39 @@ export interface WatchlistItem {
 }
 
 export async function searchProdotti(query: string): Promise<Prodotto[]> {
-  const upperQuery = query.toUpperCase()
-  
+  const upperQuery = query.toUpperCase().trim()
+
   // Step 1: Find canonical names from aliases
   let canonicalNames = new Set<string>([upperQuery])
-  
+
   const { data: aliasData } = await supabase
     .from('product_aliases')
     .select('canonical_name, alias_name')
     .or(`alias_name.ilike.%${upperQuery}%,canonical_name.ilike.%${upperQuery}%`)
     .limit(20)
-  
+
   if (aliasData && aliasData.length > 0) {
     aliasData.forEach((a: { canonical_name: string; alias_name: string }) => {
       canonicalNames.add(a.canonical_name.toUpperCase())
       canonicalNames.add(a.alias_name.toUpperCase())
     })
   }
-  
-  // Step 2: Search rilevazioni_v2 for all matching names
+
+  // Step 2: Search product table (FIX 1: era rilevazioni_v2)
   const orConditions = Array.from(canonicalNames).map(n => `nome.ilike.%${n}%`).join(',')
-  
+
   const { data: products, error } = await supabase
-    .from('rilevazioni_v2')
+    .from('product')                                    // FIX 1
     .select('*')
     .or(orConditions)
     .order('fine_validita', { ascending: false })
     .limit(50)
-  
+
   if (error) {
     console.error('Search error:', error)
     return []
   }
-  
+
   if (!products || products.length === 0) {
     return []
   }
@@ -69,28 +70,26 @@ export async function searchProdotti(query: string): Promise<Prodotto[]> {
     return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().trim()
   }
 
-  // Build a fast lookup map: normalized alias -> canonical
+  // Build alias lookup map: normalized alias -> canonical
   const aliasMap = new Map<string, string>()
   for (const a of aliasData || []) {
     aliasMap.set(stripAccents(a.alias_name), stripAccents(a.canonical_name))
   }
 
-  // Step 3: Deduplicate - group by canonical name, keep best offer per group
+  // Step 3: Deduplicate - group by canonical, keep best offer per group
   const canonicalMap = new Map<string, Prodotto>()
 
   for (const p of products) {
     const normalizedNome = stripAccents(p.nome)
-
-    // Look up canonical: check if this product is a known alias
     const canonical = aliasMap.get(normalizedNome) ?? normalizedNome
 
-    // Keep the product with the highest discount for each canonical
     const existing = canonicalMap.get(canonical)
     if (!existing) {
       canonicalMap.set(canonical, p)
     } else {
-      const newDiscount = Math.abs(p.percentuale_sconto ?? 0)
-      const oldDiscount = Math.abs(existing.percentuale_sconto ?? 0)
+      // FIX 3: supporta entrambi i nomi di colonna
+      const newDiscount = Math.abs(p.sconto_percentuale ?? p.percentuale_sconto ?? 0)
+      const oldDiscount = Math.abs(existing.sconto_percentuale ?? existing.percentuale_sconto ?? 0)
       if (newDiscount > oldDiscount) {
         canonicalMap.set(canonical, p)
       }
@@ -101,16 +100,16 @@ export async function searchProdotti(query: string): Promise<Prodotto[]> {
 }
 
 export async function getLatestOffer(prodottoNome: string): Promise<Prodotto | null> {
-  const upperQuery = prodottoNome.toUpperCase()
-  
+  const upperQuery = prodottoNome.toUpperCase().trim()
+
   let searchNames = [upperQuery]
-  
+
   const { data: aliasData } = await supabase
     .from('product_aliases')
     .select('canonical_name, alias_name')
     .or(`alias_name.ilike.%${upperQuery}%,canonical_name.ilike.%${upperQuery}%`)
     .limit(10)
-  
+
   if (aliasData && aliasData.length > 0) {
     aliasData.forEach((a: { canonical_name: string; alias_name: string }) => {
       searchNames.push(a.canonical_name.toUpperCase())
@@ -118,17 +117,17 @@ export async function getLatestOffer(prodottoNome: string): Promise<Prodotto | n
     })
     searchNames = [...new Set(searchNames)]
   }
-  
+
   const orConditions = searchNames.map(n => `nome.ilike.%${n}%`).join(',')
-  
+
   const { data, error } = await supabase
-    .from('rilevazioni_v2')
+    .from('product')                                    // FIX 2: era rilevazioni_v2
     .select('*')
     .or(orConditions)
     .order('fine_validita', { ascending: false })
     .limit(1)
     .single()
-  
+
   if (error) return null
   return data
 }
@@ -138,7 +137,7 @@ export async function addToWatchlist(nomeProdotto: string, utenteId: string) {
     .from('watchlist')
     .insert({ nome_prodotto: nomeProdotto.toUpperCase(), utente_id: utenteId })
     .select()
-  
+
   if (error) throw error
   return data
 }
@@ -149,7 +148,7 @@ export async function getWatchlist(utenteId: string): Promise<WatchlistItem[]> {
     .select('*')
     .eq('utente_id', utenteId)
     .order('created_at', { ascending: false })
-  
+
   if (error) throw error
   return data || []
 }
