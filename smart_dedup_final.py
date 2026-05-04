@@ -103,8 +103,9 @@ CATEGORY_MAP = {
     'BEVANDE':    ['ACQUA NATURALE', 'ACQUA FRIZZANTE', 'COCA COLA',
                    'SPRITE', 'FANTA', 'BIRRA', 'VINO', 'PROSECCO',
                    'SUCCO DI', 'BIBITA'],
-    'DOLCI':      ['BISCOTTI', 'CIOCCOLATO', 'CIOCCOLATINI', 'TORTA',
-                   'GELATO', 'WAFER', 'MERENDINE', 'MARMELLATA'],
+'DOLCI':      ['BISCOTTI', 'CIOCCOLATO', 'CIOCCOLATINI', 'TORTA',
+                    'GELATO', 'WAFER', 'MERENDINE', 'MARMELLATA', 'MAXIBON',
+                    'KINDER', 'NUTELLA', 'FIGURA', 'MERCO', 'SNICKERS', 'MARS'],
     'CONDIMENTI': ['MAIONESE', 'KETCHUP', 'SENAPE', 'OLIO', 'ACETO',
                    'SUGO', 'PESTO', 'DADO', 'BRODO'],
 }
