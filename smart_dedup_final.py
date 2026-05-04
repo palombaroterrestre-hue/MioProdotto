@@ -48,6 +48,29 @@ while True:
     print(f'  Loaded {len(all_names)} products...')
 
 print(f'Total: {len(all_names)} product names')
+
+# ── NUOVO: Leggi feedback utente da dedup_feedback ────────────────────────────
+print('Loading feedback from dedup_feedback...')
+feedback_resp = requests.get(
+    f"{SUPABASE_URL}/rest/v1/dedup_feedback?select=alias_name,canonical_name,label",
+    headers=headers
+)
+feedback_data = feedback_resp.json() if feedback_resp.status_code == 200 else []
+
+# Process feedback: correct_aliases = {alias: canonical}, wrong_aliases = {alias: canonical}
+correct_aliases = {}  # alias_name -> canonical_name (CORRECT)
+wrong_aliases = set()  # set of (alias_name, canonical_name) pairs (WRONG)
+for f in feedback_data:
+    alias = f.get('alias_name', '')
+    canonical = f.get('canonical_name', '')
+    label = f.get('label', '')
+    if label == 'CORRECT' and alias and canonical:
+        correct_aliases[alias] = canonical
+    elif label == 'WRONG' and alias and canonical:
+        wrong_aliases.add((alias, canonical))
+
+print(f'  CORRECT feedbacks: {len(correct_aliases)}')
+print(f'  WRONG feedbacks: {len(wrong_aliases)}')
 # ─────────────────────────────────────────────────────────────────────────────
 
 name_counts = Counter(all_names)
@@ -259,79 +282,101 @@ for canonical, aliases in groups.items():
         for alias in aliases:
             print(f'    -> {alias}  (sim: {similarity(canonical, alias):.2f})')
 
-# ── FIX 9: scrittura diretta su Supabase + path relativo per SQL ──────────────
-# PRIMA 1: path hardcoded assoluto Windows "C:/Users/Bruss/OneDrive/..."
-#           il file non funzionava su qualsiasi altra macchina
-# PRIMA 2: il SQL generava CREATE TABLE + policy — ora la tabella esiste già
-#           e rieseguire causava errori "relation already exists"
-# PRIMA 3: aliases[:5] — limite arbitrario di 5 alias per canonical
-#           perdeva alias validi oltre il quinto
-# PRIMA 4: nessun campo source/confidence — non sapevi come erano stati generati
-# DOPO:    scrive direttamente su Supabase via API + salva SQL come backup
-#          in path relativo (funziona su qualsiasi macchina)
-# ─────────────────────────────────────────────────────────────────────────────
+# ── NUOVO: Applica feedback e aggiorna colonna alias in product ───────────────
+# 1. Applica CORRECT: forza il canonical scelto dall'utente
+# 2. Rimuovi WRONG: escludi le coppie sbagliate
+# 3. Aggiorna colonna 'alias' nella tabella product
 
-# Prepara i record
-rows = []
+print('\nApplying feedback to groups...')
+
+# Add CORRECT feedbacks as forced aliases
+for alias, canonical in correct_aliases.items():
+    if alias in unique_names and canonical in unique_names:
+        # Add alias to the canonical's group
+        if canonical not in groups:
+            groups[canonical] = []
+        if alias not in groups[canonical]:
+            groups[canonical].append(alias)
+        print(f'  FORCED: {alias} -> {canonical}')
+
+# Remove WRONG feedbacks
+removed_count = 0
+for canonical, aliases in list(groups.items()):
+    filtered_aliases = []
+    for alias in aliases:
+        if (alias, canonical) not in wrong_aliases:
+            filtered_aliases.append(alias)
+        else:
+            removed_count += 1
+            print(f'  REMOVED WRONG: {alias} -> {canonical}')
+    groups[canonical] = filtered_aliases
+
+print(f'  Total removed (WRONG): {removed_count}')
+
+# Build alias updates for product table: nome -> alias (canonical)
+print('\nBuilding alias updates for product table...')
+alias_updates = {}  # nome -> canonical
 for canonical, aliases in groups.items():
-    for alias in aliases:  # FIX 9c: nessun limite [:5]
-        sim = similarity(canonical, alias)
-        rows.append({
-            'alias_name':       alias,
-            'canonical_name':   canonical,
-            'similarity_score': round(sim, 4),
-            'source':           'string_match',  # FIX 9d: traccia il metodo
-            'confidence':       round(sim, 4)
+    # The canonical itself maps to itself
+    alias_updates[canonical] = canonical
+    # Each alias maps to the canonical
+    for alias in aliases:
+        alias_updates[alias] = canonical
+
+print(f'  Total products with alias: {len(alias_updates)}')
+
+# ── NUOVO: Aggiorna colonna alias nella tabella product ────────────────────────
+print('\nUpdating product table with alias column...')
+
+# First get all product IDs and names
+print('  Fetching product IDs...')
+product_map = {}  # nome -> id
+offset = 0
+while True:
+    url = f"{SUPABASE_URL}/rest/v1/product?select=id,nome&order=id&limit=1000&offset={offset}"
+    resp = requests.get(url, headers=headers)
+    batch = resp.json()
+    if not batch:
+        break
+    for p in batch:
+        product_map[p['nome']] = p['id']
+    offset += 1000
+    print(f'    Loaded {len(product_map)} products...')
+
+# Prepare updates
+print('  Preparing updates...')
+updates = []
+for nome, alias_canonical in alias_updates.items():
+    if nome in product_map:
+        updates.append({
+            'id': product_map[nome],
+            'alias': alias_canonical
         })
 
-print(f'\nTotal alias pairs to save: {len(rows)}')
+print(f'  Total updates: {len(updates)}')
 
-# Svuota gli alias string_match esistenti prima di ricaricare
-print('Clearing existing string_match aliases...')
-del_resp = requests.delete(
-    f"{SUPABASE_URL}/rest/v1/product_aliases?source=eq.string_match",
-    headers=headers
-)
-print(f'  Cleared: {del_resp.status_code}')
-
-# Carica a batch su Supabase
-print('Uploading to Supabase...')
-BATCH = 100
-for i in range(0, len(rows), BATCH):
-    batch = rows[i:i+BATCH]
-    r = requests.post(
-        f"{SUPABASE_URL}/rest/v1/product_aliases",
+# Bulk update product table
+print('  Updating product table...')
+BATCH = 50
+for i in range(0, len(updates), BATCH):
+    batch = updates[i:i+BATCH]
+    # Use upsert with id
+    r = requests.patch(
+        f"{SUPABASE_URL}/rest/v1/product",
         json=batch,
-        headers={**headers, 'Prefer': 'resolution=merge-duplicates'}
+        headers={**headers, 'Prefer': 'return=minimal'}
     )
-    if r.status_code not in (200, 201):
+    if r.status_code not in (200, 204):
         print(f'  ERROR batch {i}: {r.status_code} {r.text[:200]}')
     else:
-        print(f'  Saved {min(i+BATCH, len(rows))}/{len(rows)}')
+        print(f'  Updated {min(i+BATCH, len(updates))}/{len(updates)}')
 
-# Salva anche SQL locale come backup (path relativo) — FIX 9a/9b
-sql_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'intelligent_dedup_brand.sql')
-print(f'\nSaving SQL backup to: {sql_path}')
-with open(sql_path, 'w', encoding='utf-8') as f:
-    f.write('-- Alias backup generato da smart_dedup_final.py\n')
-    f.write('-- Caricamento diretto su Supabase già avvenuto\n\n')
-    for row in rows:
-        esc_alias  = row['alias_name'].replace("'", "''")
-        esc_canon  = row['canonical_name'].replace("'", "''")
-        f.write(
-            f"INSERT INTO product_aliases "
-            f"(alias_name, canonical_name, similarity_score, source, confidence) "
-            f"VALUES ('{esc_alias}', '{esc_canon}', "
-            f"{row['similarity_score']}, 'string_match', {row['confidence']}) "
-            f"ON CONFLICT (alias_name, canonical_name) DO NOTHING;\n"
-        )
+print('\nAlias column updated in product table!')
 
-print(f'SQL backup saved: {len(rows)} rows')
-
-# Verifica finale
+# Verifica finale: conta prodotti con alias
 verify = requests.get(
-    f"{SUPABASE_URL}/rest/v1/product_aliases?select=count",
+    f"{SUPABASE_URL}/rest/v1/product?alias=not.is.null&select=count",
     headers={**headers, 'Prefer': 'count=exact'}
 )
-print(f'\nFinal count in product_aliases: {verify.headers.get("content-range", "?")}')
+print(f'\nProducts with alias: {verify.headers.get("content-range", "?")}')
 print('\nDone.')
