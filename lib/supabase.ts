@@ -8,6 +8,7 @@ export const supabase = createClient(supabaseUrl, supabaseKey)
 export interface Prodotto {
   id: number
   nome: string
+  alias: string | null           // NUOVO: colonna alias nella tabella product
   prezzo: number
   quantita_singola: string
   sconto_percentuale: number      // FIX 3: era percentuale_sconto
@@ -35,29 +36,11 @@ function stripAccents(s: string): string {
 export async function searchProdotti(query: string): Promise<Prodotto[]> {
   const upperQuery = stripAccents(query)
 
-  // Step 1: Find canonical names from aliases
-  let canonicalNames = new Set<string>([upperQuery])
-
-  const { data: aliasData } = await supabase
-    .from('product_aliases')
-    .select('canonical_name, alias_name')
-    .or(`alias_name.ilike.%${upperQuery}%,canonical_name.ilike.%${upperQuery}%`)
-    .limit(20)
-
-  if (aliasData && aliasData.length > 0) {
-    aliasData.forEach((a: { canonical_name: string; alias_name: string }) => {
-      canonicalNames.add(a.canonical_name.toUpperCase())
-      canonicalNames.add(a.alias_name.toUpperCase())
-    })
-  }
-
-  // Step 2: Search product table (FIX 1: era rilevazioni_v2)
-  const orConditions = Array.from(canonicalNames).map(n => `nome.ilike.%${n}%`).join(',')
-
+  // Step 1: Search on 'alias' column - includes both canonical names and their aliases
   const { data: products, error } = await supabase
-    .from('product')                                    // FIX 1
+    .from('product')
     .select('*')
-    .or(orConditions)
+    .or(`nome.ilike.%${upperQuery}%,alias.ilike.%${upperQuery}%`)
     .order('fine_validita', { ascending: false })
     .limit(50)
 
@@ -70,64 +53,36 @@ export async function searchProdotti(query: string): Promise<Prodotto[]> {
     return []
   }
 
-  function stripAccents(s: string): string {
-    return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().trim()
-  }
-
-  // Build alias lookup map: normalized alias -> canonical
-  const aliasMap = new Map<string, string>()
-  for (const a of aliasData || []) {
-    aliasMap.set(stripAccents(a.alias_name), stripAccents(a.canonical_name))
-  }
-
-  // Step 3: Deduplicate - group by canonical, keep best offer per group
-  const canonicalMap = new Map<string, Prodotto>()
+  // Deduplicate - group by alias (canonical), keep best offer per group
+  const aliasMap = new Map<string, Prodotto>()
 
   for (const p of products) {
-    const normalizedNome = stripAccents(p.nome)
-    const canonical = aliasMap.get(normalizedNome) ?? normalizedNome
+    // Use alias if available, otherwise use nome
+    const groupKey = p.alias ? stripAccents(p.alias) : stripAccents(p.nome)
 
-    const existing = canonicalMap.get(canonical)
+    const existing = aliasMap.get(groupKey)
     if (!existing) {
-      canonicalMap.set(canonical, p)
+      aliasMap.set(groupKey, p)
     } else {
-      // FIX 3: supporta entrambi i nomi di colonna
       const newDiscount = Math.abs(p.sconto_percentuale ?? p.percentuale_sconto ?? 0)
       const oldDiscount = Math.abs(existing.sconto_percentuale ?? existing.percentuale_sconto ?? 0)
       if (newDiscount > oldDiscount) {
-        canonicalMap.set(canonical, p)
+        aliasMap.set(groupKey, p)
       }
     }
   }
 
-  return Array.from(canonicalMap.values())
+  return Array.from(aliasMap.values())
 }
 
 export async function getLatestOffer(prodottoNome: string): Promise<Prodotto | null> {
   const upperQuery = stripAccents(prodottoNome)
 
-  let searchNames = [upperQuery]
-
-  const { data: aliasData } = await supabase
-    .from('product_aliases')
-    .select('canonical_name, alias_name')
-    .or(`alias_name.ilike.%${upperQuery}%,canonical_name.ilike.%${upperQuery}%`)
-    .limit(10)
-
-  if (aliasData && aliasData.length > 0) {
-    aliasData.forEach((a: { canonical_name: string; alias_name: string }) => {
-      searchNames.push(a.canonical_name.toUpperCase())
-      searchNames.push(a.alias_name.toUpperCase())
-    })
-    searchNames = [...new Set(searchNames)]
-  }
-
-  const orConditions = searchNames.map(n => `nome.ilike.%${n}%`).join(',')
-
+  // Search on nome or alias column
   const { data, error } = await supabase
-    .from('product')                                    // FIX 2: era rilevazioni_v2
+    .from('product')
     .select('*')
-    .or(orConditions)
+    .or(`nome.ilike.%${upperQuery}%,alias.ilike.%${upperQuery}%`)
     .order('fine_validita', { ascending: false })
     .limit(1)
     .single()
