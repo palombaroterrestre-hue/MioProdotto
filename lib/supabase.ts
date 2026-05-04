@@ -28,8 +28,12 @@ export interface WatchlistItem {
   created_at: string
 }
 
+function stripAccents(s: string): string {
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().trim()
+}
+
 export async function searchProdotti(query: string): Promise<Prodotto[]> {
-  const upperQuery = query.toUpperCase().trim()
+  const upperQuery = stripAccents(query)
 
   // Step 1: Find canonical names from aliases
   let canonicalNames = new Set<string>([upperQuery])
@@ -100,7 +104,7 @@ export async function searchProdotti(query: string): Promise<Prodotto[]> {
 }
 
 export async function getLatestOffer(prodottoNome: string): Promise<Prodotto | null> {
-  const upperQuery = prodottoNome.toUpperCase().trim()
+  const upperQuery = stripAccents(prodottoNome)
 
   let searchNames = [upperQuery]
 
