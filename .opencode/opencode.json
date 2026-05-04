@@ -1,18 +1,4 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "skill": {
-    "paths": [
-      "C:\\Users\\Bruss\\.agents\\skills"
-    ]
-  },
-  "agent": {
-    "default": {
-      "variant": "high"
-    }
-  },
-  "permission": {
-    "skill": {
-      "*": "allow"
-    }
-  }
+
 }
