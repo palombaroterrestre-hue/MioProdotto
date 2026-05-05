@@ -35,12 +35,14 @@ function stripAccents(s: string): string {
 
 export async function searchProdotti(query: string): Promise<Prodotto[]> {
   const upperQuery = stripAccents(query)
-
-  // Step 1: Search on 'alias' column - includes both canonical names and their aliases
+  
+  // Search with AND for accent-insensitive matching
+  // Note: PostgreSQL ilike is case-insensitive but NOT accent-insensitive
+  // So we search both stripped query AND original query
   const { data: products, error } = await supabase
     .from('product')
     .select('*')
-    .or(`nome.ilike.%${upperQuery}%,alias.ilike.%${upperQuery}%`)
+    .or(`nome.ilike.%${upperQuery}%,nome.ilike.%${query.toUpperCase()}%,alias.ilike.%${upperQuery}%,alias.ilike.%${query.toUpperCase()}%`)
     .order('fine_validita', { ascending: false })
     .limit(50)
 
