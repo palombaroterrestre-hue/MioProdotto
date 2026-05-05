@@ -35,15 +35,14 @@ function stripAccents(s: string): string {
 
 export async function searchProdotti(query: string): Promise<Prodotto[]> {
   const upperQuery = stripAccents(query)
-  console.log('Search query:', query, '-> stripped:', upperQuery)
+  const originalUpper = query.toUpperCase()
   
-  // Debug: also check what we're searching for
-  const debugQuery = query.toUpperCase()
-  console.log('Original upper:', debugQuery)
-  
-  // Search with AND for accent-insensitive matching
-  const searchPattern = `nome.ilike.%${upperQuery}%,nome.ilike.%${debugQuery}%,alias.ilike.%${upperQuery}%,alias.ilike.%${debugQuery}%`
-  console.log('Search pattern:', searchPattern)
+  console.log('=== SEARCH DEBUG ===')
+  console.log('Input query:', query)
+  console.log('Length:', query.length)
+  console.log('First char code:', query.charCodeAt(0))
+  console.log('stripAccents result:', upperQuery)
+  console.log('toUpperCase result:', originalUpper)
   
   const { data: products, error } = await supabase
     .from('product')
@@ -57,7 +56,10 @@ export async function searchProdotti(query: string): Promise<Prodotto[]> {
     return []
   }
 
+  console.log('Results count:', products?.length || 0)
+  
   if (!products || products.length === 0) {
+    console.log('No results!')
     return []
   }
 
