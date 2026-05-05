@@ -40,14 +40,18 @@ export async function searchProdotti(query: string): Promise<Prodotto[]> {
   console.log('=== SEARCH ===')
   console.log('Query:', query, '->', upperQuery)
   
-  // Try simple search first
-  const searchQuery = `nome.ilike.%${upperQuery}%,alias.ilike.%${upperQuery}%`
-  console.log('Pattern:', searchQuery)
+  // Search both with and without accent marks
+  // è → e, É → E, etc. in uppercase
+  const noAccent = upperQuery.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  
+  // Try search with multiple variations
+  const searchPattern = `nome.ilike.%${noAccent}%,nome.ilike.%${upperQuery}%,alias.ilike.%${noAccent}%,alias.ilike.%${upperQuery}%`
+  console.log('Pattern:', searchPattern)
   
   const { data: products, error } = await supabase
     .from('product')
     .select('*')
-    .or(searchQuery)
+    .or(searchPattern)
     .order('fine_validita', { ascending: false })
     .limit(50)
 
