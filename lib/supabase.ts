@@ -35,10 +35,16 @@ function stripAccents(s: string): string {
 
 export async function searchProdotti(query: string): Promise<Prodotto[]> {
   const upperQuery = stripAccents(query)
+  console.log('Search query:', query, '-> stripped:', upperQuery)
+  
+  // Debug: also check what we're searching for
+  const debugQuery = query.toUpperCase()
+  console.log('Original upper:', debugQuery)
   
   // Search with AND for accent-insensitive matching
-  // Note: PostgreSQL ilike is case-insensitive but NOT accent-insensitive
-  // So we search both stripped query AND original query
+  const searchPattern = `nome.ilike.%${upperQuery}%,nome.ilike.%${debugQuery}%,alias.ilike.%${upperQuery}%,alias.ilike.%${debugQuery}%`
+  console.log('Search pattern:', searchPattern)
+  
   const { data: products, error } = await supabase
     .from('product')
     .select('*')
