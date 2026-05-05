@@ -34,20 +34,20 @@ function stripAccents(s: string): string {
 }
 
 export async function searchProdotti(query: string): Promise<Prodotto[]> {
-  const upperQuery = stripAccents(query)
-  const originalUpper = query.toUpperCase()
+  // Simple approach: just search with the query as-is (uppercase)
+  const upperQuery = query.toUpperCase()
   
-  console.log('=== SEARCH DEBUG ===')
-  console.log('Input query:', query)
-  console.log('Length:', query.length)
-  console.log('First char code:', query.charCodeAt(0))
-  console.log('stripAccents result:', upperQuery)
-  console.log('toUpperCase result:', originalUpper)
+  console.log('=== SEARCH ===')
+  console.log('Query:', query, '->', upperQuery)
+  
+  // Try simple search first
+  const searchQuery = `nome.ilike.%${upperQuery}%,alias.ilike.%${upperQuery}%`
+  console.log('Pattern:', searchQuery)
   
   const { data: products, error } = await supabase
     .from('product')
     .select('*')
-    .or(`nome.ilike.%${upperQuery}%,nome.ilike.%${query.toUpperCase()}%,alias.ilike.%${upperQuery}%,alias.ilike.%${query.toUpperCase()}%`)
+    .or(searchQuery)
     .order('fine_validita', { ascending: false })
     .limit(50)
 
@@ -65,10 +65,14 @@ export async function searchProdotti(query: string): Promise<Prodotto[]> {
 
   // Deduplicate - group by alias (canonical), keep best offer per group
   const aliasMap = new Map<string, Prodotto>()
+  
+  console.log('=== DEDUP ===')
+  console.log('Total products before dedup:', products.length)
 
   for (const p of products) {
     // Use alias if available, otherwise use nome
     const groupKey = p.alias ? stripAccents(p.alias) : stripAccents(p.nome)
+    console.log('Product:', p.nome, '-> groupKey:', groupKey, '-> sconto:', p.sconto_percentuale)
 
     const existing = aliasMap.get(groupKey)
     if (!existing) {
@@ -76,11 +80,15 @@ export async function searchProdotti(query: string): Promise<Prodotto[]> {
     } else {
       const newDiscount = Math.abs(p.sconto_percentuale ?? p.percentuale_sconto ?? 0)
       const oldDiscount = Math.abs(existing.sconto_percentuale ?? existing.percentuale_sconto ?? 0)
+      console.log('  Existing:', existing.nome, 'sconto:', oldDiscount)
       if (newDiscount > oldDiscount) {
         aliasMap.set(groupKey, p)
+        console.log('  -> REPLACED')
       }
     }
   }
+  
+  console.log('After dedup:', aliasMap.size)
 
   return Array.from(aliasMap.values())
 }
