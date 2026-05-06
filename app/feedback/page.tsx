@@ -206,7 +206,7 @@ export default function FeedbackReviewPage() {
           Record {currentIndex + 1} di {displayed.length}
         </div>
 
-        {current.imageUrl && (
+        {current.imageUrl ? (
           <div className="mb-6">
             <img
               src={current.imageUrl}
@@ -221,6 +221,10 @@ export default function FeedbackReviewPage() {
             >
               {current.imageUrl}
             </a>
+          </div>
+        ) : (
+          <div className="mb-6 p-4 bg-gray-800 rounded-xl text-center text-gray-500">
+            Immagine non disponibile per questo canonical
           </div>
         )}
 
