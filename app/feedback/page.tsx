@@ -228,27 +228,26 @@ export default function FeedbackReviewPage() {
           </div>
         )}
 
-        <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="bg-gray-900 rounded-xl p-5">
-            <div className="flex justify-between items-center mb-2">
-              <div className="text-sm text-gray-500">ALIAS</div>
-              {current.label && (
-                <div className={`text-xs px-2 py-1 rounded ${current.label === 'CORRECT' ? 'bg-green-900 text-green-400' : 'bg-red-900 text-red-400'}`}>
-                  {current.label}
-                </div>
-              )}
+        <div className="bg-gray-900 rounded-xl p-4 mb-6">
+          <div className="grid grid-cols-3 gap-4">
+            <div>
+              <div className="text-xs text-gray-500 mb-1">ALIAS</div>
+              <div className="text-lg text-red-400 font-medium">{current.alias_name}</div>
             </div>
-            <div className="text-lg text-red-400 font-medium">{current.alias_name}</div>
-            {current.similarity && (
-              <div className="text-gray-500 text-sm mt-2">
-                Similarity: {(current.similarity * 100).toFixed(1)}%
+            <div className="text-center">
+              <div className="text-xs text-gray-500 mb-1">RESULT</div>
+              <div className={`text-lg font-bold px-3 py-1 rounded inline-block ${
+                current.label === 'CORRECT' ? 'bg-green-600 text-white' : 
+                current.label === 'WRONG' ? 'bg-red-600 text-white' : 
+                'bg-gray-700 text-gray-400'
+              }`}>
+                {current.label || '-'}
               </div>
-            )}
-          </div>
-
-          <div className="bg-gray-900 rounded-xl p-5">
-            <div className="text-sm text-gray-500 mb-2">CANONICAL</div>
-            <div className="text-lg text-green-400 font-medium">{current.canonical_name}</div>
+            </div>
+            <div className="text-right">
+              <div className="text-xs text-gray-500 mb-1">CANONICAL</div>
+              <div className="text-lg text-green-400 font-medium">{current.canonical_name}</div>
+            </div>
           </div>
         </div>
 
