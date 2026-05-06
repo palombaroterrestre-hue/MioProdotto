@@ -31,7 +31,6 @@ export default function FeedbackReviewPage() {
   const [stats, setStats] = useState({ correct: 0, wrong: 0, total: 0 })
 
   async function getImageForCanonical(canonicalName: string): Promise<string | null> {
-    console.log('Getting image for:', canonicalName)
     try {
       // First find page_num and volantino_url from product table
       const { data: productData, error: productError } = await supabase
@@ -39,36 +38,26 @@ export default function FeedbackReviewPage() {
         .select('pagina_num, fonte_volantino_link')
         .eq('nome', canonicalName)
         .limit(1)
-        .single()
 
-      if (productError) {
-        console.error('Product error:', productError)
+      if (productError || !productData || productData.length === 0) {
         return null
       }
       
-      if (!productData) {
-        console.log('No product found for:', canonicalName)
-        return null
-      }
-
-      console.log('Product data:', productData)
+      const product = productData[0]
 
       // Then find image from volantino_pagine
-      const { data: volantinoData, error: volantinoError } = await supabase
+      const { data: volantinoData } = await supabase
         .from('volantino_pagine')
         .select('image_url')
-        .eq('pagina_num', productData.pagina_num)
-        .eq('volantino_url', productData.fonte_volantino_link)
+        .eq('pagina_num', product.pagina_num)
+        .eq('volantino_url', product.fonte_volantino_link)
         .limit(1)
-        .single()
 
-      if (volantinoError) {
-        console.error('Volantino error:', volantinoError)
+      if (!volantinoData || volantinoData.length === 0) {
         return null
       }
 
-      console.log('Volantino data:', volantinoData)
-      return volantinoData?.image_url || null
+      return volantinoData[0].image_url || null
     } catch (e) {
       console.error('Error getting image:', e)
       return null
