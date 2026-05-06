@@ -13,6 +13,7 @@ interface FeedbackRecord {
   similarity: number | null
   category: string | null
   label: string | null
+  file_pagina_intera: string | null
 }
 
 export default function FeedbackReviewPage() {
@@ -202,6 +203,16 @@ export default function FeedbackReviewPage() {
         </div>
 
         {/* Current Record */}
+        {current.file_pagina_intera && (
+          <div className="mb-6">
+            <img
+              src={`https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/${current.file_pagina_intera}`}
+              alt={`Pagina volantino`}
+              className="w-full max-h-96 object-contain rounded-xl border border-gray-700"
+            />
+          </div>
+        )}
+
         <div className="grid grid-cols-2 gap-4 mb-6">
           {/* ALIAS */}
           <div className="bg-gray-900 rounded-xl p-5">
