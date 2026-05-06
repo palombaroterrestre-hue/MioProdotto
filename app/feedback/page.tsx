@@ -213,6 +213,14 @@ export default function FeedbackReviewPage() {
               alt="Pagina volantino"
               className="w-full max-h-96 object-contain rounded-xl border border-gray-700"
             />
+            <a
+              href={current.imageUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mt-2 text-sm text-gray-500 hover:text-gray-400 underline"
+            >
+              {current.imageUrl}
+            </a>
           </div>
         )}
 
