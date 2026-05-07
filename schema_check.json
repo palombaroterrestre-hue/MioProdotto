@@ -1,0 +1,15 @@
+{
+  "id": "4528f4bb-68cf-45ec-98fe-7ef3ee726cb8",
+  "created_at": "2026-04-22T07:22:56.680799+00:00",
+  "nome": "MISTO PER SOFFRITTO",
+  "quantita_singola": "300G",
+  "prezzo": 0.5,
+  "percentuale_sconto": 45,
+  "tipo_meccanica": "SCONTO PERCENTUALE",
+  "emoji": "🍎",
+  "inizio_validita": "17/06/2025",
+  "fine_validita": "30/06/2025",
+  "fonte_volantino_link": "https://www.ekomdiscount.it/wp-content/uploads/2025/06/EKOMPromo13-LGPM.pdf",
+  "pagina_num": 5,
+  "file_pagina_intera": "EKOMPromo13-LGPM_p5.jpg"
+}

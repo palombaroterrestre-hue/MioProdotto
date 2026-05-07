@@ -17,7 +17,7 @@ from dotenv import load_dotenv  # FIX 1 — credenziali da .env
 # DOPO:  letti da .env — il file .env non viene mai committato su GitHub
 load_dotenv()
 SUPABASE_URL = os.environ['SUPABASE_URL']
-SUPABASE_KEY = os.environ['SUPABASE_KEY']
+SUPABASE_KEY = os.environ['SUPABASE_SERVICE_KEY']
 # ─────────────────────────────────────────────────────────────────────────────
 
 headers = {
@@ -274,6 +274,19 @@ print('Finding duplicate groups...')
 groups = find_duplicates(unique_names)
 print(f'Found {len(groups)} groups with duplicates')
 
+# === STOPSCRIPT: mostra solo i gruppi trovati ===
+print('\n=== GROUPS FOUND ===')
+count = 0
+for canonical, aliases in groups.items():
+    print(f'{canonical}:')
+    for alias in aliases:
+        sim = similarity(canonical, alias)
+        print(f'  -> {alias} (sim: {sim:.2f})')
+    count += 1
+    if count >= 10:
+        break
+print(f'\n... Total: {len(groups)} groups')
+
 # Debug MAIONESE
 print('\n=== MAIONESE GROUP ===')
 for canonical, aliases in groups.items():
@@ -355,21 +368,24 @@ for nome, alias_canonical in alias_updates.items():
 
 print(f'  Total updates: {len(updates)}')
 
-# Bulk update product table
+# Bulk update product table - one by one with id filter
 print('  Updating product table...')
 BATCH = 50
+updated = 0
 for i in range(0, len(updates), BATCH):
     batch = updates[i:i+BATCH]
-    # Use upsert with id
-    r = requests.patch(
-        f"{SUPABASE_URL}/rest/v1/product",
-        json=batch,
-        headers={**headers, 'Prefer': 'return=minimal'}
-    )
-    if r.status_code not in (200, 204):
-        print(f'  ERROR batch {i}: {r.status_code} {r.text[:200]}')
-    else:
-        print(f'  Updated {min(i+BATCH, len(updates))}/{len(updates)}')
+    # Update each record individually with id filter
+    for rec in batch:
+        r = requests.patch(
+            f"{SUPABASE_URL}/rest/v1/product?id=eq.{rec['id']}",
+            json={'alias': rec['alias']},
+            headers={**headers, 'Prefer': 'return=minimal'}
+        )
+        if r.status_code not in (200, 204):
+            print(f"  ERROR {rec['id']}: {r.status_code}")
+        else:
+            updated += 1
+    print(f'  Updated {updated}/{len(updates)}')
 
 print('\nAlias column updated in product table!')
 

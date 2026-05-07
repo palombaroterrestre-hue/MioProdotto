@@ -1,0 +1,6 @@
+{
+  "code": "42703",
+  "details": null,
+  "hint": "Perhaps you meant to reference the column \"product.nome\".",
+  "message": "column product.ornome does not exist"
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "537fa40f-2c08-4b53-b579-69b0a53980e8",
+    "created_at": "2026-04-23T08:23:22.218403+00:00",
+    "nome": "CAFFÈ DEK LAVAZZA",
+    "quantita_singola": "250G",
+    "prezzo": 4.59,
+    "percentuale_sconto": 20,
+    "tipo_meccanica": "SCONTO PERCENTUALE",
+    "emoji": "☕",
+    "inizio_validita": "29/07/2025",
+    "fine_validita": "11/08/2025",
+    "fonte_volantino_link": "https://www.ekomdiscount.it/wp-content/uploads/2025/07/EKOMPromo16-LGPM.pdf",
+    "pagina_num": 2,
+    "file_pagina_intera": "EKOMPromo16-LGPM_p2.jpg"
+  }
+]

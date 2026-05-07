@@ -30,34 +30,16 @@ export default function FeedbackReviewPage() {
   const [saving, setSaving] = useState(false)
   const [stats, setStats] = useState({ correct: 0, wrong: 0, total: 0 })
 
-  async function getImageForCanonical(canonicalName: string): Promise<string | null> {
+  async function getImageForFeedback(feedback: FeedbackWithImage): Promise<string | null> {
     try {
-      // First find page_num and volantino_url from product table
-      const { data: productData, error: productError } = await supabase
-        .from('product')
-        .select('pagina_num, fonte_volantino_link')
-        .eq('nome', canonicalName)
-        .limit(1)
-
-      if (productError || !productData || productData.length === 0) {
-        return null
-      }
-      
-      const product = productData[0]
-
-      // Then find image from volantino_pagine
-      const { data: volantinoData } = await supabase
+      // Match directly via file_pagina_intera -> nome_file
+      const { data } = await supabase
         .from('volantino_pagine')
         .select('image_url')
-        .eq('pagina_num', product.pagina_num)
-        .eq('volantino_url', product.fonte_volantino_link)
+        .eq('nome_file', feedback.file_pagina_intera)
         .limit(1)
-
-      if (!volantinoData || volantinoData.length === 0) {
-        return null
-      }
-
-      return volantinoData[0].image_url || null
+      
+      return data && data[0]?.image_url || null
     } catch (e) {
       console.error('Error getting image:', e)
       return null
@@ -79,7 +61,7 @@ export default function FeedbackReviewPage() {
       const withImages: FeedbackWithImage[] = await Promise.all(
         first30.map(async (r) => ({
           ...r,
-          imageUrl: await getImageForCanonical(r.canonical_name)
+          imageUrl: await getImageForFeedback(r)
         }))
       )
       
