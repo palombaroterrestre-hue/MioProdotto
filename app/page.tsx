@@ -84,14 +84,9 @@ export default function Home() {
                       href={p.image_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block mt-2"
+                      className="text-blue-600 text-sm hover:underline"
                     >
-                      <img
-                        src={p.image_url}
-                        alt={p.nome_prodotto}
-                        className="w-32 h-32 object-cover rounded-lg border border-gray-200 hover:opacity-80 transition-opacity"
-                        loading="lazy"
-                      />
+                      📷 Vedi volantino
                     </a>
                   )}
                 </div>
