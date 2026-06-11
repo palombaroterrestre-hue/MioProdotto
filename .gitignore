@@ -12,3 +12,6 @@ log_*.txt
 -w/
 .agents/
 .opencode/
+.git.bak/
+-w/
+*.local/

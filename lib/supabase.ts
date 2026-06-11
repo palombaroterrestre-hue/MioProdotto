@@ -19,6 +19,7 @@ export interface Prodotto {
   link_volantino: string
   pagina_num: number
   file_pagina_intera: string
+  image_url: string | null
 }
 
 export interface WatchlistItem {
@@ -59,7 +60,20 @@ export async function searchProdotti(query: string): Promise<Prodotto[]> {
 
   if (error || !products) return []
 
-  const mapped = products.map(mapCategoria)
+  const pages = [...new Set(products.map(p => p.file_pagina_intera).filter(Boolean))]
+  const { data: volantinoPages } = await supabase
+    .from('volantino_pagine')
+    .select('nome_file, image_url')
+    .in('nome_file', pages)
+
+  const imageMap = new Map<string, string>()
+  if (volantinoPages) {
+    for (const vp of volantinoPages) {
+      if (vp.image_url) imageMap.set(vp.nome_file, vp.image_url)
+    }
+  }
+
+  const mapped = products.map(p => ({ ...mapCategoria(p), image_url: imageMap.get(p.file_pagina_intera) || null }))
 
   const aliasMap = new Map<string, Prodotto>()
   for (const p of mapped) {
@@ -85,7 +99,17 @@ export async function getLatestOffer(prodottoNome: string): Promise<Prodotto | n
     .single()
 
   if (error || !data) return null
-  return mapCategoria(data)
+  const prodotto = mapCategoria(data)
+  if (prodotto.file_pagina_intera) {
+    const { data: vp } = await supabase
+      .from('volantino_pagine')
+      .select('image_url')
+      .eq('nome_file', prodotto.file_pagina_intera)
+      .limit(1)
+      .single()
+    prodotto.image_url = vp?.image_url || null
+  }
+  return prodotto
 }
 
 export async function addToWatchlist(nomeProdotto: string, utenteId: string) {

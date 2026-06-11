@@ -79,13 +79,19 @@ export default function Home() {
                   <p className="text-sm text-gray-600">
                     {p.quantita} • {p.sconto > 0 ? `-${p.sconto}%` : 'OFFERTA'}
                   </p>
-                  {p.link_volantino && (
-                    <a 
-                      href={p.link_volantino} 
+                  {p.image_url && (
+                    <a
+                      href={p.image_url}
                       target="_blank"
-                      className="text-blue-600 text-sm hover:underline"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-2"
                     >
-                      📄 Vedi volantino
+                      <img
+                        src={p.image_url}
+                        alt={p.nome_prodotto}
+                        className="w-32 h-32 object-cover rounded-lg border border-gray-200 hover:opacity-80 transition-opacity"
+                        loading="lazy"
+                      />
                     </a>
                   )}
                 </div>
