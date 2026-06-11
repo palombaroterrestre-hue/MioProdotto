@@ -74,14 +74,14 @@ export default function Home() {
             {results.map((p) => (
               <div key={p.id} className="bg-white p-4 rounded-lg shadow flex justify-between items-center">
                 <div>
-                  <p className="font-bold text-lg">{p.emoji} {p.nome}</p>
+                  <p className="font-bold text-lg">{p.emoji} {p.nome_prodotto}</p>
                   <p className="text-2xl font-bold text-emerald-600">€{p.prezzo.toFixed(2)}</p>
                   <p className="text-sm text-gray-600">
-                    {p.quantita_singola} • {p.percentuale_sconto > 0 ? `-${p.percentuale_sconto}%` : 'OFFERTA'}
+                    {p.quantita} • {p.sconto > 0 ? `-${p.sconto}%` : 'OFFERTA'}
                   </p>
-                  {p.fonte_volantino_link && (
+                  {p.link_volantino && (
                     <a 
-                      href={p.fonte_volantino_link} 
+                      href={p.link_volantino} 
                       target="_blank"
                       className="text-blue-600 text-sm hover:underline"
                     >
@@ -90,7 +90,7 @@ export default function Home() {
                   )}
                 </div>
                 <button 
-                  onClick={() => handleAddToWatchlist(p.nome)}
+                  onClick={() => handleAddToWatchlist(p.nome_prodotto)}
                   className="bg-gray-100 px-4 py-2 rounded hover:bg-gray-200"
                 >
                   + Watchlist

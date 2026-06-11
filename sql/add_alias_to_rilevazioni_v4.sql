@@ -1,0 +1,2 @@
+ALTER TABLE rilevazioni_v4 ADD COLUMN IF NOT EXISTS alias TEXT;
+DROP TABLE IF EXISTS dedup_feedback CASCADE;

@@ -7,17 +7,16 @@ export const supabase = createClient(supabaseUrl, supabaseKey)
 
 export interface Prodotto {
   id: number
-  nome: string
-  alias: string | null           // NUOVO: colonna alias nella tabella product
+  nome_prodotto: string
+  alias: string | null
   prezzo: number
-  quantita_singola: string
-  sconto_percentuale: number      // FIX 3: era percentuale_sconto
-  percentuale_sconto: number      // FIX 3: tenuto per compatibilità
+  quantita: string
+  sconto: number
   emoji: string
   tipo_meccanica: string
-  inizio_validita: string
-  fine_validita: string
-  fonte_volantino_link: string
+  inizio_promozione: string
+  fine_promozione: string
+  link_volantino: string
   pagina_num: number
   file_pagina_intera: string
 }
@@ -29,70 +28,47 @@ export interface WatchlistItem {
   created_at: string
 }
 
+const CATEGORIA_TO_EMOJI: Record<string, string> = {
+  'LATTICINI': '\u{1F95B}', 'FORMAGGI': '\u{1F9C0}', 'CARNE': '\u{1F356}',
+  'PESCE': '\u{1F41F}', 'ORTOFRUTTA': '\u{1F34E}', 'PANE': '\u{1F35E}',
+  'PASTA': '\u{1F35D}', 'CAFFE': '\u2615', 'DOLCI': '\u{1F36A}',
+  'BEVANDE': '\u{1F964}', 'SURGELATI': '\u{1F9CA}', 'CONSERVE': '\u{1F96B}',
+  'IGIENE': '\u{1F9FB}', 'ANIMALI': '\u{1F436}',
+}
+
 function stripAccents(s: string): string {
   return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().trim()
 }
 
+function mapCategoria(r: any): Prodotto {
+  return { ...r, emoji: CATEGORIA_TO_EMOJI[r.categoria] || '\u{1F6D2}' }
+}
+
 export async function searchProdotti(query: string): Promise<Prodotto[]> {
-  // Simple approach: just search with the query as-is (uppercase)
   const upperQuery = query.toUpperCase()
-  
-  console.log('=== SEARCH ===')
-  console.log('Query:', query, '->', upperQuery)
-  
-  // Search both with and without accent marks
-  // è → e, É → E, etc. in uppercase
   const noAccent = upperQuery.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-  
-  // Try search with multiple variations
-  const searchPattern = `nome.ilike.%${noAccent}%,nome.ilike.%${upperQuery}%,alias.ilike.%${noAccent}%,alias.ilike.%${upperQuery}%`
-  console.log('Pattern:', searchPattern)
-  
+
+  const searchPattern = `nome_prodotto.ilike.%${noAccent}%,nome_prodotto.ilike.%${upperQuery}%,alias.ilike.%${noAccent}%,alias.ilike.%${upperQuery}%`
+
   const { data: products, error } = await supabase
-    .from('product')
+    .from('rilevazioni_v4')
     .select('*')
     .or(searchPattern)
-    .order('fine_validita', { ascending: false })
+    .order('fine_promozione', { ascending: false })
     .limit(50)
 
-  if (error) {
-    console.error('Search error:', error)
-    return []
-  }
+  if (error || !products) return []
 
-  console.log('Results count:', products?.length || 0)
-  
-  if (!products || products.length === 0) {
-    console.log('No results!')
-    return []
-  }
+  const mapped = products.map(mapCategoria)
 
-  // Deduplicate - group by alias (canonical), keep best offer per group
   const aliasMap = new Map<string, Prodotto>()
-  
-  console.log('=== DEDUP ===')
-  console.log('Total products before dedup:', products.length)
-
-  for (const p of products) {
-    // Use alias if available, otherwise use nome
-    const groupKey = p.alias ? stripAccents(p.alias) : stripAccents(p.nome)
-    console.log('Product:', p.nome, '-> groupKey:', groupKey, '-> sconto:', p.sconto_percentuale)
-
+  for (const p of mapped) {
+    const groupKey = p.alias ? stripAccents(p.alias) : stripAccents(p.nome_prodotto)
     const existing = aliasMap.get(groupKey)
-    if (!existing) {
+    if (!existing || (p.sconto ?? 0) > (existing.sconto ?? 0)) {
       aliasMap.set(groupKey, p)
-    } else {
-      const newDiscount = Math.abs(p.sconto_percentuale ?? p.percentuale_sconto ?? 0)
-      const oldDiscount = Math.abs(existing.sconto_percentuale ?? existing.percentuale_sconto ?? 0)
-      console.log('  Existing:', existing.nome, 'sconto:', oldDiscount)
-      if (newDiscount > oldDiscount) {
-        aliasMap.set(groupKey, p)
-        console.log('  -> REPLACED')
-      }
     }
   }
-  
-  console.log('After dedup:', aliasMap.size)
 
   return Array.from(aliasMap.values())
 }
@@ -100,17 +76,16 @@ export async function searchProdotti(query: string): Promise<Prodotto[]> {
 export async function getLatestOffer(prodottoNome: string): Promise<Prodotto | null> {
   const upperQuery = stripAccents(prodottoNome)
 
-  // Search on nome or alias column
   const { data, error } = await supabase
-    .from('product')
+    .from('rilevazioni_v4')
     .select('*')
-    .or(`nome.ilike.%${upperQuery}%,alias.ilike.%${upperQuery}%`)
-    .order('fine_validita', { ascending: false })
+    .or(`nome_prodotto.ilike.%${upperQuery}%,alias.ilike.%${upperQuery}%`)
+    .order('fine_promozione', { ascending: false })
     .limit(1)
     .single()
 
-  if (error) return null
-  return data
+  if (error || !data) return null
+  return mapCategoria(data)
 }
 
 export async function addToWatchlist(nomeProdotto: string, utenteId: string) {
