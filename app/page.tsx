@@ -72,12 +72,15 @@ export default function Home() {
         ) : (
           <div className="space-y-3">
             {results.map((p) => (
-              <div key={p.id} className="bg-white p-4 rounded-lg shadow flex justify-between items-center">
+                <div key={p.id} className="bg-white p-4 rounded-lg shadow flex justify-between items-center">
                 <div>
                   <p className="font-bold text-lg">{p.emoji} {p.nome_prodotto}</p>
                   <p className="text-2xl font-bold text-emerald-600">€{p.prezzo.toFixed(2)}</p>
                   <p className="text-sm text-gray-600">
                     {p.quantita} • {p.sconto > 0 ? `-${p.sconto}%` : 'OFFERTA'}
+                  </p>
+                  <p className="text-xs text-gray-400 mt-1">
+                    📅 {p.inizio_promozione} → {p.fine_promozione}
                   </p>
                   {p.image_url && (
                     <a

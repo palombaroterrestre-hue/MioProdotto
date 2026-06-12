@@ -79,7 +79,7 @@ export async function searchProdotti(query: string): Promise<Prodotto[]> {
   for (const p of mapped) {
     const groupKey = p.alias ? stripAccents(p.alias) : stripAccents(p.nome_prodotto)
     const existing = aliasMap.get(groupKey)
-    if (!existing || (p.sconto ?? 0) > (existing.sconto ?? 0)) {
+    if (!existing || p.fine_promozione > existing.fine_promozione) {
       aliasMap.set(groupKey, p)
     }
   }
