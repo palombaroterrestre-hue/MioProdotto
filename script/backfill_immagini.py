@@ -52,10 +52,25 @@ def upsert_volantino_pagine(filename: str, image_url: str, volantino_url: str, p
         print(f"    Errore upsert {filename}: {e}")
 
 
+def fetch_all_rilevazioni():
+    all_data = []
+    limit = 1000
+    offset = 0
+    while True:
+        r = supabase.table("rilevazioni_v4").select("file_pagina_intera, link_volantino, pagina_num").range(offset, offset + limit - 1).execute()
+        batch = r.data or []
+        if not batch:
+            break
+        all_data.extend(batch)
+        offset += len(batch)
+        if len(batch) < limit:
+            break
+    return all_data
+
+
 def main():
     print("Carico prodotti da rilevazioni_v4...")
-    r = supabase.table("rilevazioni_v4").select("file_pagina_intera, link_volantino, pagina_num").execute()
-    prodotti = r.data or []
+    prodotti = fetch_all_rilevazioni()
     print(f"  Trovati {len(prodotti)} prodotti")
 
     v4_files = set()
