@@ -13,12 +13,23 @@ export interface Prodotto {
   quantita: string
   sconto: number
   emoji: string
+  categoria: string
   tipo_meccanica: string
   inizio_promozione: string
   fine_promozione: string
   link_volantino: string
   pagina_num: number
-  file_pagina_intera: string
+}
+
+export interface OffertaCorrente {
+  id: number
+  title: string
+  price: string
+  pieces: string
+  subtitle: string | null
+  weight_price: string
+  start_date: string
+  end_date: string
   image_url: string | null
 }
 
@@ -29,7 +40,7 @@ export interface WatchlistItem {
   created_at: string
 }
 
-const CATEGORIA_TO_EMOJI: Record<string, string> = {
+export const CATEGORIA_TO_EMOJI: Record<string, string> = {
   'LATTICINI': '\u{1F95B}', 'FORMAGGI': '\u{1F9C0}', 'CARNE': '\u{1F356}',
   'PESCE': '\u{1F41F}', 'ORTOFRUTTA': '\u{1F34E}', 'PANE': '\u{1F35E}',
   'PASTA': '\u{1F35D}', 'CAFFE': '\u2615', 'DOLCI': '\u{1F36A}',
@@ -45,35 +56,51 @@ function mapCategoria(r: any): Prodotto {
   return { ...r, emoji: CATEGORIA_TO_EMOJI[r.categoria] || '\u{1F6D2}' }
 }
 
-export async function searchProdotti(query: string): Promise<Prodotto[]> {
+export async function getCategorie(): Promise<{ categoria: string; emoji: string }[]> {
+  try {
+    const { data, error } = await supabase
+      .from('rilevazioni_v4')
+      .select('categoria')
+      .not('categoria', 'is', null)
+    if (error || !data) return []
+    const seen = new Set<string>()
+    const result: { categoria: string; emoji: string }[] = []
+    for (const r of data) {
+      const cat = r.categoria
+      if (cat && !seen.has(cat)) {
+        seen.add(cat)
+        result.push({ categoria: cat, emoji: CATEGORIA_TO_EMOJI[cat] || '\u{1F6D2}' })
+      }
+    }
+    result.sort((a, b) => a.categoria.localeCompare(b.categoria))
+    return result
+  } catch {
+    return []
+  }
+}
+
+export async function searchProdotti(query: string, categoria?: string): Promise<Prodotto[]> {
   const upperQuery = query.toUpperCase()
   const noAccent = upperQuery.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 
   const searchPattern = `nome_prodotto.ilike.%${noAccent}%,nome_prodotto.ilike.%${upperQuery}%,alias.ilike.%${noAccent}%,alias.ilike.%${upperQuery}%`
 
-  const { data: products, error } = await supabase
+  let queryBuilder = supabase
     .from('rilevazioni_v4')
     .select('*')
     .or(searchPattern)
+
+  if (categoria) {
+    queryBuilder = queryBuilder.eq('categoria', categoria)
+  }
+
+  const { data: products, error } = await queryBuilder
     .order('fine_promozione', { ascending: false })
     .limit(50)
 
   if (error || !products) return []
 
-  const pages = [...new Set(products.map(p => p.file_pagina_intera).filter(Boolean))]
-  const { data: volantinoPages } = await supabase
-    .from('volantino_pagine')
-    .select('nome_file, image_url')
-    .in('nome_file', pages)
-
-  const imageMap = new Map<string, string>()
-  if (volantinoPages) {
-    for (const vp of volantinoPages) {
-      if (vp.image_url) imageMap.set(vp.nome_file, vp.image_url)
-    }
-  }
-
-  const mapped = products.map(p => ({ ...mapCategoria(p), image_url: imageMap.get(p.file_pagina_intera) || null }))
+  const mapped = products.map(mapCategoria)
 
   const aliasMap = new Map<string, Prodotto>()
   for (const p of mapped) {
@@ -99,17 +126,28 @@ export async function getLatestOffer(prodottoNome: string): Promise<Prodotto | n
     .single()
 
   if (error || !data) return null
-  const prodotto = mapCategoria(data)
-  if (prodotto.file_pagina_intera) {
-    const { data: vp } = await supabase
-      .from('volantino_pagine')
-      .select('image_url')
-      .eq('nome_file', prodotto.file_pagina_intera)
-      .limit(1)
-      .single()
-    prodotto.image_url = vp?.image_url || null
+  return mapCategoria(data)
+}
+
+export async function getCurrentOffers(): Promise<OffertaCorrente[]> {
+  try {
+    const resp = await fetch('/api/current-offers')
+    if (!resp.ok) return []
+    const data = await resp.json()
+    return (data || []).map((o: any) => ({
+      id: o.ID,
+      title: o.TITLE,
+      price: o.PRICE,
+      pieces: o.PIECES,
+      subtitle: o.SUBTITLE,
+      weight_price: o.WEIGHT_PRICE,
+      start_date: o.START_DATE,
+      end_date: o.END_DATE,
+      image_url: o.IMAGE?.location || null,
+    }))
+  } catch {
+    return []
   }
-  return prodotto
 }
 
 export async function addToWatchlist(nomeProdotto: string, utenteId: string) {
