@@ -92,11 +92,12 @@ export async function searchProdotti(query: string, categoria?: string): Promise
 
   if (categoria) {
     queryBuilder = queryBuilder.eq('categoria', categoria)
+  } else {
+    queryBuilder = queryBuilder.limit(50)
   }
 
   const { data: products, error } = await queryBuilder
     .order('fine_promozione', { ascending: false })
-    .limit(50)
 
   if (error || !products) return []
 

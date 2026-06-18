@@ -125,7 +125,7 @@ export default function Home() {
       )}
 
       <div className="p-4">
-        <h2 className="text-lg font-semibold mb-3">Risultati</h2>
+        <h2 className="text-lg font-semibold mb-3">Risultati{results.length > 0 && ` (${results.length})`}</h2>
         {results.length === 0 ? (
           <p className="text-gray-500">Cerca un prodotto per vedere le offerte</p>
         ) : (
