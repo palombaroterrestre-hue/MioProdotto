@@ -45,7 +45,7 @@ export const CATEGORIA_TO_EMOJI: Record<string, string> = {
   'PESCE': '\u{1F41F}', 'ORTOFRUTTA': '\u{1F34E}', 'PANE': '\u{1F35E}',
   'PASTA': '\u{1F35D}', 'CAFFE': '\u2615', 'DOLCI': '\u{1F36A}',
   'BEVANDE': '\u{1F964}', 'SURGELATI': '\u{1F9CA}', 'CONSERVE': '\u{1F96B}',
-  'IGIENE': '\u{1F9FB}', 'ANIMALI': '\u{1F436}',
+  'IGIENE': '\u{1F9FB}', 'ANIMALI': '\u{1F436}', 'GENERICO': '\u{1F6D2}',
 }
 
 function stripAccents(s: string): string {
@@ -83,7 +83,7 @@ export async function searchProdotti(query: string, categoria?: string): Promise
   const upperQuery = query.toUpperCase()
   const noAccent = upperQuery.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 
-  const searchPattern = `nome_prodotto.ilike.%${noAccent}%,nome_prodotto.ilike.%${upperQuery}%,alias.ilike.%${noAccent}%,alias.ilike.%${upperQuery}%`
+  const searchPattern = `alias.ilike.%${noAccent}%,alias.ilike.%${upperQuery}%`
 
   let queryBuilder = supabase
     .from('rilevazioni_v4')

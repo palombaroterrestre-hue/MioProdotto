@@ -133,7 +133,7 @@ export default function Home() {
             {results.map((p) => (
                 <div key={p.id} className="bg-white p-4 rounded-lg shadow flex justify-between items-center">
                 <div>
-                  <p className="font-bold text-lg">{p.emoji} {p.nome_prodotto}</p>
+                  <p className="font-bold text-lg">{p.emoji} {p.alias || p.nome_prodotto}</p>
                   <p className="text-xs text-gray-400">{p.categoria}</p>
                   <p className="text-2xl font-bold text-emerald-600">€{p.prezzo.toFixed(2)}</p>
                   <p className="text-sm text-gray-600">
