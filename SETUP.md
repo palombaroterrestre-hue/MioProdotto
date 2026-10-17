@@ -49,7 +49,7 @@ Già configurate con le credenziali Supabase del progetto:
 
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://fsxctxzzifohmbgqwcxk.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZzeGN0eHp6aWZvaG1iZ3F3Y3hrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3MzcyNTAsImV4cCI6MjA5MTMxMzI1MH0.eO-27fG5G4x5RC1dWkDTKmFcp8my3o1Hp4gZTJAxVpc
+NEXT_PUBLIC_SUPABASE_ANON_KEY=<incolla-qui-la-tua-anon-key-non-committare>
 ```
 
 ## Deploy
