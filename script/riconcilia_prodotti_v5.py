@@ -6,8 +6,13 @@ ATTENZIONE: questo script e' in SOLA LETTURA sul database. Produce due CSV:
   - proposte_unioni_v5.csv   -> gruppi di prodotti da unire (da rivedere)
   - coda_revisione_v5.csv    -> coppie dubbie da far decidere a una persona
 L'applicazione delle unioni al DB/sito e' un passo separato, da fare solo dopo
-la revisione umana (vedi issue #3). Il giudice viene chiamato in parallelo
-(8 richieste alla volta, parametro WORKERS_GIUDICE).
+la revisione umana (vedi issue #3).
+
+Il giudice lavora A PACCHI da 10 coppie per chiamata (una risposta numerata per
+coppia): il piano gratuito di Ollama cloud accetta 1 sola richiesta alla volta
+con coda di 5 (verificato dagli header x-ratelimit-*), quindi le chiamate vanno
+in sequenza. Sul DB intero (~10.400 coppie in zona grigia -> ~1.040 chiamate)
+il giro completo richiede circa 1-1,5 ore.
 
 Come funziona (issue #1, #3, #4):
   1. Ogni prodotto viene normalizzato: nome pulito + quantita' in forma canonica
@@ -23,9 +28,11 @@ Come funziona (issue #1, #3, #4):
   6. NON-SICURO, e ogni coppia con quantita' mancante su entrambi i lati,
      finisce nella coda di revisione umana.
 
-Misurato sul dataset di test (798 coppie da correzioni umane, 19/10/2026):
-  precisione ~55-60%, recall ~84% (sistema attuale: recall ~1%, 1383 falsi merge
-  tra taglie diverse). I dubbi vanno in coda invece di diventare errori.
+Misurato sul dataset di correzioni umane (19/10/2026, giudice a pacchi da 10):
+  test (798 coppie): precisione ~54%, recall ~82%, 133 in coda;
+  val (786 coppie): precisione ~55%, recall ~76%, 114 in coda.
+  (Sistema attuale: recall ~1%, 1383 falsi merge tra taglie diverse.)
+  I dubbi vanno in coda invece di diventare errori.
 
 Setup (una tantum):
   pip install sentence-transformers supabase python-dotenv requests
@@ -68,7 +75,7 @@ MODELLO_EMB = "paraphrase-multilingual-MiniLM-L12-v2"  # locale, gratuito
 T_LOW = 0.85    # sotto: coppie scartate senza giudice
 T_HIGH = 0.99   # sopra + stessa quantita' -> unione automatica
 GIUDICE_MODEL = "gemma4:31b-cloud"
-WORKERS_GIUDICE = 8  # richieste parallele al giudice (aumentabile se non si supera il rate limit)
+BATCH_GIUDICE = 10  # coppie per chiamata: Ollama cloud gratuito accetta 1 richiesta alla volta
 EMB_CACHE = "emb_cache_minilm.npz"  # cache su disco: i rilanci non ricalcolano
 
 # api.ollama.com (Cloudflare) rifiuta client senza User-Agent da browser: errore 403 codice 1010
@@ -138,39 +145,46 @@ A: "CAFFE QUALITA ORO LAVAZZA" (250G) | B: "CAFFE DEK LAVAZZA" (250G) -> DIVERSI
 A: "IMPANATE DI SUINO" (1000G) | B: "IMPANATE DI POLLO" (1000G) -> DIVERSI
 A: "MISTO PER RISOTTO E SPAGHETTI APPETTAIS" (300G) | B: "MISTO PER RISOTTO E SPAGHETTI APPEITAIS" (300G) -> NON-SICURO
 
-Rispondi SOLO con UGUALI, DIVERSI o NON-SICURO.
-A: "{a}" (quantita: {qa})
-B: "{b}" (quantita: {qb})'''
+Ora valuta le {n} coppie numerate qui sotto. Rispondi con UNA riga per coppia, esattamente in questo formato:
+1: UGUALI
+2: DIVERSI
+3: NON-SICURO
+Nessuna spiegazione, solo le righe numerate.'''
 
 
-def giudice(a: str, qa: str, b: str, qb: str) -> str:
-    """UGUALI / DIVERSI / NONSICURO dal giudice LLM su Ollama cloud."""
-    for tentativo in range(3):
+def giudice_batch(coppie: list[tuple]) -> list[str]:
+    """Un pacco di coppie al giudice LLM: una risposta numerata per coppia.
+    Verdetti mancanti o non chiari -> NONSICURO (meglio la coda umana che un errore)."""
+    n = len(coppie)
+    lista = "\n".join(f'{i+1}. A: "{a}" (quantita: {qa}) | B: "{b}" (quantita: {qb})'
+                       for i, (a, qa, b, qb) in enumerate(coppie))
+    prompt = PROMPT_GIUDICE.format(n=n) + "\n\n" + lista
+    attesa = 5
+    for _ in range(6):
         try:
             r = HTTP.post(
                 "https://api.ollama.com/api/chat",
                 json={"model": GIUDICE_MODEL, "stream": False,
-                      "messages": [{"role": "user", "content": PROMPT_GIUDICE.format(a=a, qa=qa, b=b, qb=qb)}]},
+                      "messages": [{"role": "user", "content": prompt}]},
                 headers={"Authorization": f"Bearer {GEMMA_API_KEY}"},
-                timeout=60,
+                timeout=90,
             )
-            if r.status_code == 429 and tentativo < 2:
-                time.sleep(15 * (tentativo + 1))
+            if r.status_code == 429:  # oltre il limite di 1 richiesta alla volta: rispetta retry-after
+                time.sleep(int(r.headers.get("retry-after", attesa)) + 1)
+                attesa *= 2
                 continue
             r.raise_for_status()
-            ans = r.json()["message"]["content"].upper()
-            if "NON" in ans and "SICURO" in ans:
-                return "NONSICURO"
-            if "UGUALI" in ans and "DIVERSI" not in ans:
-                return "UGUALI"
-            if "DIVERSI" in ans:
-                return "DIVERSI"
-            return "NONSICURO"  # risposta non chiara: meglio la coda umana che un errore
+            testo = r.json()["message"]["content"].upper()
+            verdetti = {}
+            for m in re.finditer(r"(\d+)\s*[:.\)]\s*(NON[- ]?SICURO|UGUALI|DIVERSI)", testo):
+                i = int(m.group(1))
+                if 1 <= i <= n:
+                    verdetti[i - 1] = m.group(2).replace("-", "").replace(" ", "")
+            return [verdetti.get(i, "NONSICURO") for i in range(n)]
         except requests.RequestException:
-            if tentativo < 2:
-                time.sleep(5)
-                continue
-            return "NONSICURO"  # giudice irraggiungibile: coda umana, non errore automatico
+            time.sleep(attesa)
+            attesa *= 2
+    return ["NONSICURO"] * n  # giudice irraggiungibile: coda umana, non errore automatico
 
 
 def fetch_righe() -> list[dict]:
@@ -277,15 +291,18 @@ def main():
                     da_giudicare.append((i, j, ni, qi, nj, qj, c, sim))
     print(f"unioni automatiche: {len(auto)}, coppie da giudicare: {len(da_giudicare)}")
 
-    # fase 2: giudice in parallelo (le chiamate sono di rete, la CPU resta libera)
-    from concurrent.futures import ThreadPoolExecutor
-    with ThreadPoolExecutor(max_workers=WORKERS_GIUDICE) as pool:
-        verdetti = list(pool.map(lambda t: giudice(t[2], t[3], t[4], t[5]), da_giudicare))
-    for (i, j, ni, qi, nj, qj, c, sim), verdetto in zip(da_giudicare, verdetti):
-        if verdetto == "UGUALI":
-            union(i, j)
-        elif verdetto == "NONSICURO":
-            coda.append((ni, qi, nj, qj, c, sim, "giudice in dubbio"))
+    # fase 2: giudice a pacchi, in sequenza (il piano gratuito accetta 1 richiesta alla volta)
+    for k in range(0, len(da_giudicare), BATCH_GIUDICE):
+        pacco = da_giudicare[k:k + BATCH_GIUDICE]
+        verdetti = giudice_batch([(ni, qi, nj, qj) for i, j, ni, qi, nj, qj, c, sim in pacco])
+        for (i, j, ni, qi, nj, qj, c, sim), verdetto in zip(pacco, verdetti):
+            if verdetto == "UGUALI":
+                union(i, j)
+            elif verdetto == "NONSICURO":
+                coda.append((ni, qi, nj, qj, c, sim, "giudice in dubbio"))
+        fatte = min(k + BATCH_GIUDICE, len(da_giudicare))
+        if fatte % 200 < BATCH_GIUDICE or fatte == len(da_giudicare):
+            print(f"  giudice: {fatte}/{len(da_giudicare)} coppie, in coda finora: {len(coda)}", flush=True)
     print(f"coppie finite in coda di revisione: {len(coda)}")
 
     # gruppi finali con piu' di un membro
