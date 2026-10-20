@@ -1,0 +1,37 @@
+name: Scraper volantini Ekom
+on:
+  schedule:
+    - cron: "17 6 * * 2"   # ogni martedi' mattina (UTC)
+    - cron: "17 6 * * 3"   # ripetizione mercoledi'
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "dry-run (non scrive) oppure scrivi"
+        default: "dry-run"
+        type: choice
+        options: [dry-run, scrivi]
+jobs:
+  scraper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - run: pip install requests pdf2image ollama supabase
+      - name: Esegui
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+          OLLAMA_API_KEY: ${{ secrets.OLLAMA_API_KEY }}
+        run: |
+          MODO="${{ github.event.inputs.modo || 'scrivi' }}"
+          python script/scraper_ekom_cloud.py --$MODO
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pagine
+          path: out_pagine
+          retention-days: 7
