@@ -10,6 +10,9 @@ on:
         default: "dry-run"
         type: choice
         options: [dry-run, scrivi]
+concurrency:
+  group: scraper-ekom-cloud
+  cancel-in-progress: false
 jobs:
   scraper:
     runs-on: ubuntu-latest
