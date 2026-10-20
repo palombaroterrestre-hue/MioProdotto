@@ -119,18 +119,23 @@ def estrai_json(testo):
 
 
 def chiedi_ai(client, img_bytes):
-    for i in range(3):
+    for i in range(5):
         try:
-            res = client.chat(model=MODELLO, messages=[
+            res = client.chat(model=MODELLO, format="json", messages=[
                 {"role": "user", "content": PROMPT, "images": [img_bytes]}])
-            prodotti = estrai_json(res.get("message", {}).get("content", ""))
-            if not isinstance(prodotti, (list, dict)) or not prodotti:
-                raise ValueError("Risposta AI non valida o senza offerte")
+            testo = res.get("message", {}).get("content", "")
+            prodotti = estrai_json(testo)
+            if prodotti is None:
+                raise ValueError("Risposta AI non JSON: " + testo[:300])
+            if isinstance(prodotti, dict):
+                prodotti = [prodotti]
+            if not isinstance(prodotti, list):
+                raise ValueError("Risposta AI non valida: " + testo[:300])
             return prodotti
         except Exception as e:
-            print(f"      [!] AI errore ({i + 1}/3): {e}")
-            time.sleep(5)
-    raise RuntimeError("Lettura AI fallita dopo 3 tentativi")
+            print(f"      [!] AI errore ({i + 1}/5): {e}")
+            time.sleep(10)
+    raise RuntimeError("Lettura AI fallita dopo 5 tentativi")
 
 
 def riduci(img, max_w=1400):
@@ -185,8 +190,6 @@ def scrivi_v6(v, file_pagine):
         buf = io.BytesIO()
         riduci(img).save(buf, format="JPEG", quality=80)
         prodotti = chiedi_ai(ai, buf.getvalue())
-        if isinstance(prodotti, dict):
-            prodotti = [prodotti]
         righe = []
         for p in prodotti:
             if not isinstance(p, dict) or not p.get("nome"):
@@ -200,7 +203,8 @@ def scrivi_v6(v, file_pagine):
                 "confidenza": None, "verificato_ocr": False, "prodotto_id": None,
             })
         if not righe:
-            raise RuntimeError(f"Pagina {n}: nessuna offerta valida dall'AI")
+            print(f"  pagina {n}: 0 offerte (AI non ha letto prodotti, vado avanti)")
+            continue
         inserite = sb.table("v6_offerte").insert(righe).execute().data
         if not inserite:
             raise RuntimeError(f"Pagina {n}: nessuna offerta salvata")
