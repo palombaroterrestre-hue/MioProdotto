@@ -1,39 +1,32 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { searchProdotti, addToWatchlist, getWatchlist, getCurrentOffers, getCategorie, Prodotto, OffertaCorrente, WatchlistItem } from '../lib/supabase'
+import { searchProdotti, getOffertePerProdotti, addToWatchlist, getWatchlist, getCurrentOffers, Prodotto, OffertaProdotto, OffertaCorrente, WatchlistItem } from '../lib/supabase'
 
 export default function Home() {
   const [search, setSearch] = useState('')
   const [results, setResults] = useState<Prodotto[]>([])
+  const [offerte, setOfferte] = useState<Record<number, OffertaProdotto[]>>({})
   const [watchlist, setWatchlist] = useState<WatchlistItem[]>([])
   const [loading, setLoading] = useState(false)
   const [offers, setOffers] = useState<OffertaCorrente[]>([])
-  const [categorie, setCategorie] = useState<{ categoria: string; emoji: string }[]>([])
-  const [selectedCategoria, setSelectedCategoria] = useState<string | null>(null)
   const [utenteId] = useState('user-' + Math.random().toString(36).substr(2, 9))
 
   useEffect(() => {
     getCurrentOffers().then(setOffers)
-    getCategorie().then(setCategorie)
   }, [])
 
-  const handleSearch = async (cat?: string | null) => {
-    if (!search.trim() && !cat) return
+  const handleSearch = async () => {
+    if (!search.trim()) return
     setLoading(true)
     try {
-      const categoria = cat !== undefined ? cat : selectedCategoria
-      const prodotti = await searchProdotti(search, categoria || undefined)
+      const prodotti = await searchProdotti(search)
       setResults(prodotti)
+      const mappa = await getOffertePerProdotti(prodotti.map((p) => p.id))
+      setOfferte(mappa)
     } catch (e) {
       console.error(e)
     }
     setLoading(false)
-  }
-
-  const handleCategoryClick = (cat: string) => {
-    const next = selectedCategoria === cat ? null : cat
-    setSelectedCategoria(next)
-    handleSearch(next)
   }
 
   const handleAddToWatchlist = async (nome: string) => {
@@ -46,8 +39,12 @@ export default function Home() {
   }
 
   const loadWatchlist = async () => {
-    const items = await getWatchlist(utenteId)
-    setWatchlist(items)
+    try {
+      const items = await getWatchlist(utenteId)
+      setWatchlist(items)
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   return (
@@ -91,11 +88,11 @@ export default function Home() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && handleSearch(undefined)}
-            placeholder="Cerca un prodotto... (es: UOVA, LATTE, PANE)"
+            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+            placeholder="Cerca un prodotto... (es: caffè, tonno, lavazza)"
             className="flex-1 p-3 border rounded-lg"
           />
-          <button 
+          <button
             onClick={() => handleSearch()}
             disabled={loading}
             className="bg-emerald-600 text-white px-6 py-3 rounded-lg disabled:opacity-50"
@@ -105,25 +102,6 @@ export default function Home() {
         </div>
       </div>
 
-      {categorie.length > 0 && (
-        <div className="px-4 py-2 overflow-x-auto whitespace-nowrap">
-          {categorie.map((c) => (
-            <button
-              key={c.categoria}
-              onClick={() => handleCategoryClick(c.categoria)}
-              className={`inline-flex items-center gap-1 px-3 py-1.5 mr-2 rounded-full text-sm font-medium transition-colors ${
-                selectedCategoria === c.categoria
-                  ? 'bg-emerald-600 text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
-            >
-              <span>{c.emoji}</span>
-              <span>{c.categoria}</span>
-            </button>
-          ))}
-        </div>
-      )}
-
       <div className="p-4">
         <h2 className="text-lg font-semibold mb-3">Risultati{results.length > 0 && ` (${results.length})`}</h2>
         {results.length === 0 ? (
@@ -131,24 +109,37 @@ export default function Home() {
         ) : (
           <div className="space-y-3">
             {results.map((p) => (
-                <div key={p.id} className="bg-white p-4 rounded-lg shadow flex justify-between items-center">
-                <div>
-                  <p className="font-bold text-lg">{p.emoji} {p.alias || p.nome_prodotto}</p>
-                  <p className="text-xs text-gray-400">{p.categoria}</p>
-                  <p className="text-2xl font-bold text-emerald-600">€{p.prezzo.toFixed(2)}</p>
-                  <p className="text-sm text-gray-600">
-                    {p.quantita} • {p.sconto > 0 ? `-${p.sconto}%` : 'OFFERTA'}
-                  </p>
-                  <p className="text-xs text-gray-400 mt-1">
-                    {p.inizio_promozione} → {p.fine_promozione}
-                  </p>
+              <div key={p.id} className="bg-white p-4 rounded-lg shadow">
+                <div className="flex justify-between items-start gap-2">
+                  <div>
+                    <p className="font-bold text-lg">{p.nome}</p>
+                    <p className="text-sm text-gray-600">
+                      {[p.quantita, `${p.n_offerte} offerte`].filter(Boolean).join(' • ')}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => handleAddToWatchlist(p.nome)}
+                    className="bg-gray-100 px-4 py-2 rounded hover:bg-gray-200 shrink-0"
+                  >
+                    + Watchlist
+                  </button>
                 </div>
-                <button 
-                  onClick={() => handleAddToWatchlist(p.nome_prodotto)}
-                  className="bg-gray-100 px-4 py-2 rounded hover:bg-gray-200"
-                >
-                  + Watchlist
-                </button>
+                {(offerte[p.id] || []).length > 0 && (
+                  <div className="mt-2 space-y-1">
+                    {offerte[p.id].map((o) => (
+                      <div key={o.id} className="flex justify-between items-baseline text-sm border-t pt-1">
+                        <span className="text-emerald-700 font-bold">
+                          €{o.prezzo.toFixed(2)}{o.promo && o.promo !== 'N/D' ? ` (${o.promo})` : ''}
+                        </span>
+                        {o.valido_dal && (
+                          <span className="text-gray-400 text-xs">
+                            {o.valido_dal} → {o.valido_al}
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
