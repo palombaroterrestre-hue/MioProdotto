@@ -123,11 +123,14 @@ def chiedi_ai(client, img_bytes):
         try:
             res = client.chat(model=MODELLO, messages=[
                 {"role": "user", "content": PROMPT, "images": [img_bytes]}])
-            return estrai_json(res.get("message", {}).get("content", ""))
+            prodotti = estrai_json(res.get("message", {}).get("content", ""))
+            if not isinstance(prodotti, (list, dict)) or not prodotti:
+                raise ValueError("Risposta AI non valida o senza offerte")
+            return prodotti
         except Exception as e:
             print(f"      [!] AI errore ({i + 1}/3): {e}")
             time.sleep(5)
-    return None
+    raise RuntimeError("Lettura AI fallita dopo 3 tentativi")
 
 
 def riduci(img, max_w=1400):
@@ -147,26 +150,41 @@ def scrivi_v6(v, file_pagine):
     anno, mese = int(v["dal"][:4]), int(v["dal"][5:7])
     ex = (sb.table("v6_volantini").select("id,pagine").eq("anno", anno)
           .eq("numero_promo", v["numero_promo"]).execute().data)
-    if ex:
-        print(f"[skip] Promo {v['numero_promo']}/{anno} gia' in v6_volantini (id {ex[0]['id']}).")
-        return
     prefix = v["pdf"].replace(".pdf", "") + "_" + v["dal"]
-    vol = sb.table("v6_volantini").insert({
-        "numero_promo": v["numero_promo"], "anno": anno, "mese": mese,
-        "valido_dal": v["dal"], "valido_al": v["al"], "pagine": len(file_pagine),
-        "sorgente": "ebsn api leaflet/search", "immagine_prefix": prefix,
-        "anno_metodo": "date dall'elenco Ekom (campo validateDate)",
-    }).execute().data[0]
+    if ex:
+        vol = ex[0]
+        print(f"[ripresa] Promo {v['numero_promo']}/{anno} (id {vol['id']}).")
+        sb.table("v6_volantini").update({"pagine": 0}).eq("id", vol["id"]).execute()
+    else:
+        # pagine=0 indica un volantino incompleto, anche se il processo si interrompe.
+        vol = sb.table("v6_volantini").insert({
+            "numero_promo": v["numero_promo"], "anno": anno, "mese": mese,
+            "valido_dal": v["dal"], "valido_al": v["al"], "pagine": 0,
+            "sorgente": "ebsn api leaflet/search", "immagine_prefix": prefix,
+            "anno_metodo": "date dall'elenco Ekom (campo validateDate)",
+        }).execute().data[0]
 
+    esistenti = (sb.table("v6_pagine").select("id,pagina_num")
+                 .eq("volantino_id", vol["id"]).execute().data)
+    per_numero = {p["pagina_num"]: p for p in esistenti}
     for n, path, img in file_pagine:
+        pag = per_numero.get(n)
+        if pag:
+            offerte = (sb.table("v6_offerte").select("id")
+                       .eq("pagina_id", pag["id"]).limit(1).execute().data)
+            if offerte:
+                print(f"  pagina {n}: gia' completata, salto")
+                continue
         nome = os.path.basename(path)
+        # Un tentativo precedente puo' aver caricato l'immagine prima di fermarsi.
         with open(path, "rb") as f:
-            sb.storage.from_(BUCKET).upload(nome, f, {"content-type": "image/jpeg", "upsert": "false"})
-        pag = sb.table("v6_pagine").insert(
-            {"volantino_id": vol["id"], "pagina_num": n, "immagine_path": nome}).execute().data[0]
+            sb.storage.from_(BUCKET).upload(nome, f, {"content-type": "image/jpeg", "upsert": "true"})
+        if not pag:
+            pag = sb.table("v6_pagine").insert(
+                {"volantino_id": vol["id"], "pagina_num": n, "immagine_path": nome}).execute().data[0]
         buf = io.BytesIO()
         riduci(img).save(buf, format="JPEG", quality=80)
-        prodotti = chiedi_ai(ai, buf.getvalue()) or []
+        prodotti = chiedi_ai(ai, buf.getvalue())
         if isinstance(prodotti, dict):
             prodotti = [prodotti]
         righe = []
@@ -181,9 +199,15 @@ def scrivi_v6(v, file_pagine):
                 "prezzo": p.get("prezzo"), "promo": p.get("promo"),
                 "confidenza": None, "verificato_ocr": False, "prodotto_id": None,
             })
-        if righe:
-            sb.table("v6_offerte").insert(righe).execute()
+        if not righe:
+            raise RuntimeError(f"Pagina {n}: nessuna offerta valida dall'AI")
+        inserite = sb.table("v6_offerte").insert(righe).execute().data
+        if not inserite:
+            raise RuntimeError(f"Pagina {n}: nessuna offerta salvata")
         print(f"  pagina {n}: {len(righe)} offerte")
+    # Solo tutte le pagine con offerte salvate rendono completo il volantino.
+    sb.table("v6_volantini").update({"pagine": len(file_pagine)}).eq("id", vol["id"]).execute()
+    print(f"[completo] Promo {v['numero_promo']}/{anno}: {len(file_pagine)} pagine")
 
 
 def main():
