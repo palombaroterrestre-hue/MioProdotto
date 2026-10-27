@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useMemo, useState } from 'react'
-import { products, Product, Saved, same, readSaved, STORAGE_KEY } from '../lib/catalog'
+import { products, Product, Saved, same, migrateSaved, STORAGE_KEY, BACKUP_KEY, PENDING_KEY } from '../lib/catalog'
 type Screen={view:'catalog'|'list'}|{view:'detail';productId:string;returnTo:'catalog'|'list'}
 function normalized(s:string){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('it')}
 function Photo({src,alt,className=''}:{src:string;alt:string;className?:string}){
@@ -10,8 +10,22 @@ function Photo({src,alt,className=''}:{src:string;alt:string;className?:string})
 }
 export default function Home(){
  const [screen,setScreen]=useState<Screen>({view:'catalog'}),[query,setQuery]=useState(''),[saved,setSaved]=useState<Saved[]>([]),[ready,setReady]=useState(false),[warning,setWarning]=useState(''),[selected,setSelected]=useState(''),[notice,setNotice]=useState(''),[limit,setLimit]=useState(40)
- useEffect(()=>{try{setSaved(readSaved(localStorage.getItem(STORAGE_KEY)))}catch{setWarning('Non riesco a leggere la lista salvata. Puoi usarla in questa sessione, ma il salvataggio precedente non è disponibile.')}setReady(true)},[])
- function changeSaved(next:Saved[]){setSaved(next);try{localStorage.setItem(STORAGE_KEY,JSON.stringify(next));setWarning('')}catch{setWarning('Il browser non permette il salvataggio. La lista resterà disponibile solo finché questa pagina è aperta.')}}
+ useEffect(()=>{
+ try{
+  const raw=localStorage.getItem(STORAGE_KEY),migration=migrateSaved(raw)
+  setSaved(migration.saved)
+  const pending=localStorage.getItem(PENDING_KEY)
+  if(migration.unresolved.length||pending)setWarning('Alcune voci precedenti non sono associabili con certezza: sono conservate nel browser, non eliminate. La lista mostra solo le scelte verificate.')
+  if(migration.changed&&raw){
+   // Save the original first. If any write fails, do not overwrite it.
+   if(!localStorage.getItem(BACKUP_KEY))localStorage.setItem(BACKUP_KEY,raw)
+   if(migration.unresolved.length)localStorage.setItem(PENDING_KEY,JSON.stringify(migration.unresolved))
+   localStorage.setItem(STORAGE_KEY,JSON.stringify(migration.saved))
+  }
+ }catch{setWarning('Non riesco a leggere o aggiornare la lista salvata. Le scelte originali non sono state eliminate; puoi usare la lista in questa sessione.')}
+ setReady(true)
+ },[])
+ function changeSaved(next:Saved[]){setSaved(next);try{localStorage.setItem(STORAGE_KEY,JSON.stringify(next));if(!localStorage.getItem(PENDING_KEY))setWarning('')}catch{setWarning('Il browser non permette il salvataggio. La lista resterà disponibile solo finché questa pagina è aperta.')}}
  function go(next:Screen){setScreen(next);setNotice('');window.scrollTo({top:0})}
  function open(p:Product,returnTo:'catalog'|'list',formatId?:string){setSelected(formatId||(p.formats.length===1?p.formats[0].id:''));go({view:'detail',productId:p.id,returnTo})}
  const product=screen.view==='detail'?products.find(p=>p.id===screen.productId):undefined
