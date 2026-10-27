@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'MioProdotto - Offerte Ekom',
-  description: 'Trova le migliori offerte nei volantini Ekom',
+  title: 'MioProdotto - Versione di prova',
+  description: 'Riconosci i prodotti dalla foto e seguili nella tua lista. Offerte storiche, non prezzi attuali.',
 }
 
 export default function RootLayout({
