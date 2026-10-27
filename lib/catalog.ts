@@ -1,4 +1,4 @@
-import data from './catalog-data.json'
+import data from './3-catalog-data.json'
 export type Format = { id: string; label: string; offerIds: string[] }
 export type Offer = { id: string; price: number; starting: boolean; priceUnit: string; promo: string; flyer: number; page: number; source: string; caption: string; image: string }
 export type Product = { id: string; name: string; brand: string; summary: string; facts: string[]; formats: Format[]; offers: Offer[]; image: string; imageNote: string; assortment: boolean }
