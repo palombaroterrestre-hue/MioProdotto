@@ -14,7 +14,7 @@ export default function DemoFlow({saved,ready,onChoose,onProduct}:{saved:Saved[]
   setRun(null);setError('');setBusy(true)
   try{
    const response=await fetch('/api/extract-latest',{method:'POST',cache:'no-store',signal:AbortSignal.timeout(65000)})
-   const result=await response.json();if(!response.ok)throw Error(result.error||'Estrazione fallita.')
+   if(!response.headers.get('content-type')?.includes('application/json'))throw Error('Servizio di estrazione non disponibile. Riprova più tardi.');const result=await response.json();if(!response.ok)throw Error(result.error||'Estrazione fallita.')
    const extraction=result as Extraction;if(!extraction.source||!Array.isArray(extraction.offers))throw Error('Risultato dell’estrazione non valido.')
    const offers=extraction.offers.filter(o=>o.status==='matched'&&saved.some(s=>s.productId===o.productId&&(s.formatId==='linea'||o.formatIds.includes(s.formatId))))
    setRun({email:address,watchlist:saved.map(x=>({...x})),extraction,offers});try{localStorage.setItem(EMAIL_KEY,address)}catch{}

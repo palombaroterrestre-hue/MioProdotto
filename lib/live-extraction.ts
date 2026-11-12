@@ -1,4 +1,3 @@
-import {getDocument} from 'pdfjs-dist/legacy/build/pdf.mjs'
 import rules from './catalog-match-rules.json'
 import {products,Saved} from './catalog'
 import {createHash} from 'node:crypto'
@@ -19,6 +18,7 @@ export async function latestExtraction():Promise<Extraction>{
  return {title:v.title||v.name||'Volantino Ekom',region:'Liguria e Piemonte',validFrom:String(v.validateDateFrom).slice(0,10),validTo:String(v.validateDateTo).slice(0,10),source:url.href,checkedAt:new Date().toISOString(),sha256:createHash('sha256').update(bytes).digest('hex'),...read}
 }
 export async function extractPDF(bytes:Uint8Array){
+ const {getDocument}=await import('pdfjs-dist/legacy/build/pdf.mjs')
  const doc=await getDocument({data:bytes.slice(),useSystemFonts:true,isEvalSupported:false,disableFontFace:true}).promise
  if(doc.numPages>40)throw Error('Il PDF supera le 40 pagine supportate nella prova.')
  let textItems=0;const offers:ExtractedOffer[]=[];const warnings:string[]=[]
