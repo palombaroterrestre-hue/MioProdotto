@@ -45,7 +45,7 @@ export async function extractPDF(bytes:Uint8Array){
 }
 
 export function matchOffers(offers:ExtractedOffer[]){
- for(const o of offers){const raw=normalize(o.rawText);const ts=new Set(raw.split(' '));const candidates=rules.filter(r=>r.tokens.every(t=>ts.has(t))&&(' '+raw+' ').includes(' '+normalize(r.quantity)+' '));if(candidates.length===1&&o.rawText.length<450){const r=candidates[0],p=products.find(p=>p.id===r.productId);if(p&&r.formatIds.every(id=>p.formats.some(f=>f.id===id))){o.productId=r.productId;o.formatIds=r.formatIds;o.status='matched'}}}
+ for(const o of offers){const raw=normalize(o.rawText);const ts=new Set(raw.split(' '));const candidates=rules.filter(r=>r.tokens.every(t=>ts.has(t))&&(' '+raw+' ').includes(' '+normalize(r.quantity)+' '));if(candidates.length===1&&o.rawText.length<450){const r=candidates[0],p=products.find(p=>p.id===r.productId);if(p&&normalize(p.brand||'').split(' ').filter(Boolean).every(t=>ts.has(t))&&r.formatIds.every(id=>p.formats.some(f=>f.id===id))){o.productId=r.productId;o.formatIds=r.formatIds;o.status='matched'}}}
  return offers
 }
 

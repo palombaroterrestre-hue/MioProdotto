@@ -325,7 +325,9 @@
   "tokens": [
    "latte",
    "uht",
-   "candia"
+   "candia",
+   "parzialmente",
+   "scremato"
   ],
   "quantity": "ml 250",
   "productId": "candia1065",
@@ -381,7 +383,8 @@
  {
   "tokens": [
    "maionese",
-   "calve"
+   "calve",
+   "classica"
   ],
   "quantity": "g 214",
   "productId": "calve-maionese-classica",
