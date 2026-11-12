@@ -1,0 +1,1907 @@
+{
+  "title": "Ekom Black Week",
+  "region": "Liguria e Piemonte",
+  "validFrom": "2026-11-03",
+  "validTo": "2026-11-16",
+  "checkedAt": "2026-11-12",
+  "source": "https://app.ekomdiscount.it/photo/leaflets/2026/10/26/81/EKOMPromo23-LGPM.pdf",
+  "indexSource": "https://www.ekomdiscount.it/ebsn/api/leaflet/search?parent_leaflet_type_id=1",
+  "offers": [
+    {
+      "id": "ekom-2026-23-0",
+      "name": "Formaggio italiano Granarolo 10 mesi",
+      "format": "800 g",
+      "price": 7.99,
+      "discount": "",
+      "page": 1,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-1",
+      "name": "Olio Dante Terre Antiche",
+      "format": "500 ml",
+      "price": 2.79,
+      "discount": "",
+      "page": 1,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-2",
+      "name": "Pasta di semola Barilla diversi tipi",
+      "format": "500 g",
+      "price": 0.59,
+      "discount": "",
+      "page": 1,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-3",
+      "name": "Detersivo liquido Dixan Color, Classico",
+      "format": "2x19 lavaggi 1,71 l",
+      "price": 5.99,
+      "discount": "",
+      "page": 1,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-4",
+      "name": "Caffè Crema e Gusto Lavazza Classico",
+      "format": "250 gx2",
+      "price": 7.99,
+      "discount": "",
+      "page": 2,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-5",
+      "name": "Caffè Decaf Lavazza",
+      "format": "250 g",
+      "price": 3.99,
+      "discount": "",
+      "page": 2,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-6",
+      "name": "Preparati Ristora tè limone, caffè e ginseng, orzo bio",
+      "format": "16 filtri 192/208/48 g",
+      "price": 2.99,
+      "discount": "",
+      "page": 2,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-7",
+      "name": "Capsule Lavazza A Modo Mio Passionale, Qualità Rossa, Crema e Gusto",
+      "format": "36 capsule 270 g",
+      "price": 9.89,
+      "discount": "",
+      "page": 2,
+      "condition": "",
+      "productId": "lavazza919",
+      "formatIds": [
+        "format-0f9b0e767a48cc",
+        "format-2884f0ed81eda8",
+        "format-97d7ebfda6162f"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-8",
+      "name": "Cereali integrali Fitness Original",
+      "format": "375 g",
+      "price": 2.99,
+      "discount": "",
+      "page": 2,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-9",
+      "name": "Barrette Fitness Chocolate",
+      "format": "282 g",
+      "price": 3.49,
+      "discount": "",
+      "page": 2,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-10",
+      "name": "Capsule Nescafè Dolce Gusto Espresso Napoli",
+      "format": "30 capsule 240 g",
+      "price": 6.99,
+      "discount": "",
+      "page": 2,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-11",
+      "name": "Orzoro Nestlé classico solubile",
+      "format": "200 g",
+      "price": 2.49,
+      "discount": "",
+      "page": 2,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-12",
+      "name": "Biscotti Colussi Zuppalatte, Oswego",
+      "format": "250 g",
+      "price": 0.89,
+      "discount": "",
+      "page": 2,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-13",
+      "name": "Biscotti Cabrioni Gusti assortiti",
+      "format": "650 g",
+      "price": 1.75,
+      "discount": "",
+      "page": 2,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-14",
+      "name": "Biscotto salute Monviso classico, integrale",
+      "format": "200 g",
+      "price": 1.15,
+      "discount": "",
+      "page": 2,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-15",
+      "name": "Wafer Maxi Loacker Napolitaner, vaniglia, chocolate",
+      "format": "167,5 g",
+      "price": 1.75,
+      "discount": "",
+      "page": 2,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-16",
+      "name": "Treccia crema pasticcera e gocce di cioccolato",
+      "format": "350 g",
+      "price": 1.99,
+      "discount": "",
+      "page": 2,
+      "condition": "",
+      "productId": "treccia350",
+      "formatIds": [
+        "documented"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-17",
+      "name": "Pane e cioccolato Mulino Bianco",
+      "format": "300 g",
+      "price": 2.49,
+      "discount": "",
+      "page": 2,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-18",
+      "name": "Pan Bauletto Mulino Bianco bianco",
+      "format": "400 g",
+      "price": 0.89,
+      "discount": "",
+      "page": 2,
+      "condition": "",
+      "productId": "mulino-bianco-pan-bauletto",
+      "formatIds": [
+        "bianco-400-g"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-19",
+      "name": "Fagolosi Grissin Bon classici",
+      "format": "250 g",
+      "price": 1.49,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "fagolosi480",
+      "formatIds": [
+        "classici-250-g"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-20",
+      "name": "Grissini iposodici Panmonviso",
+      "format": "120 g",
+      "price": 0.99,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "panmonvisolowsalt120",
+      "formatIds": [
+        "documented"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-21",
+      "name": "Prodotto per friggere Salvadori",
+      "format": "1 l",
+      "price": 1.69,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-22",
+      "name": "Salsa dip El Sabor",
+      "format": "315 g",
+      "price": 1.59,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-23",
+      "name": "Zafferano 3 Cuochi",
+      "format": "2 bustine",
+      "price": 1.99,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-24",
+      "name": "Pesto alla genovese senza aglio",
+      "format": "190 g",
+      "price": 0.89,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-25",
+      "name": "Ragù anatra, chianina, cinghiale",
+      "format": "190 g",
+      "price": 2.99,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "ragutoscana1022",
+      "formatIds": [
+        "variant-ff53fb2964a361",
+        "variant-3bd8a8f8376315",
+        "variant-042eecb0706f7c"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-26",
+      "name": "Pesto di ceci Polli",
+      "format": "90 gx2",
+      "price": 1.99,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-27",
+      "name": "Passata di pomodoro Pomì",
+      "format": "200 gx3",
+      "price": 0.99,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-28",
+      "name": "Simmenthal",
+      "format": "90 gx4",
+      "price": 5.99,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-29",
+      "name": "Filetti di tonno pescato a canna Angelo Parodi in olio di oliva extravergine",
+      "format": "260 g",
+      "price": 4.79,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-30",
+      "name": "Filetti di alici in pezzi in olio di girasole",
+      "format": "80 g",
+      "price": 0.99,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-31",
+      "name": "Funghi porcini secchi",
+      "format": "20 g",
+      "price": 1.29,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-32",
+      "name": "Olive Riviera denocciolate in olio extravergine",
+      "format": "180 g",
+      "price": 2.39,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "alisariviera180",
+      "formatIds": [
+        "documented"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-33",
+      "name": "Vanillina Paneangeli",
+      "format": "4 buste",
+      "price": 0.39,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-34",
+      "name": "Il mio dado Star classico, vegetale",
+      "format": "20 dadi 200 g",
+      "price": 1.69,
+      "discount": "",
+      "page": 3,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-35",
+      "name": "Risotto Knorr asparagi, bianco cremoso, zafferano, porcini",
+      "format": "175 g",
+      "price": 1.49,
+      "discount": "",
+      "page": 4,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-36",
+      "name": "Omogeneizzati di carne Plasmon manzo, vitello, prosciutto",
+      "format": "80 gx2",
+      "price": 1.99,
+      "discount": "",
+      "page": 4,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-37",
+      "name": "Nachos El Sabor",
+      "format": "200 g",
+      "price": 1.19,
+      "discount": "",
+      "page": 4,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-38",
+      "name": "Miele millefiori Squeeze",
+      "format": "250 g",
+      "price": 1.89,
+      "discount": "",
+      "page": 4,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-39",
+      "name": "Fior di Frutta Bio Rigoni di Asiago",
+      "format": "diversi tipi e grammature",
+      "price": 2.99,
+      "discount": "",
+      "page": 4,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-40",
+      "name": "Coca Cola, Fanta, Sprite",
+      "format": "500 ml",
+      "price": 0.89,
+      "discount": "",
+      "page": 4,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-41",
+      "name": "Energy Drink Red Bull",
+      "format": "355 ml",
+      "price": 1.99,
+      "discount": "",
+      "page": 4,
+      "condition": "",
+      "productId": "red-bull-energy-drink",
+      "formatIds": [
+        "355-ml"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-42",
+      "name": "Birra 10% Faxe",
+      "format": "500 ml",
+      "price": 1.29,
+      "discount": "",
+      "page": 4,
+      "condition": "",
+      "productId": "faxe542tenpercent500",
+      "formatIds": [
+        "documented"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-43",
+      "name": "Birra Barley lager extra strong",
+      "format": "500 ml",
+      "price": 0.89,
+      "discount": "",
+      "page": 4,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-44",
+      "name": "Birra Red Faxe",
+      "format": "500 ml",
+      "price": 1.09,
+      "discount": "",
+      "page": 4,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-45",
+      "name": "Scotch Whisky William Lawson's",
+      "format": "700 ml",
+      "price": 9.9,
+      "discount": "",
+      "page": 4,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-46",
+      "name": "Barbera del Monferrato DOC",
+      "format": "1,5 l",
+      "price": 4.19,
+      "discount": "",
+      "page": 4,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-47",
+      "name": "Vino Gutturnio DOC frizzante",
+      "format": "750 ml",
+      "price": 2.99,
+      "discount": "",
+      "page": 4,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-48",
+      "name": "Montepulciano d'Abruzzo DOC",
+      "format": "750 ml",
+      "price": 1.99,
+      "discount": "",
+      "page": 4,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-49",
+      "name": "Rosso Piceno DOC",
+      "format": "750 ml",
+      "price": 2.39,
+      "discount": "",
+      "page": 4,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-50",
+      "name": "Cuori di nasello",
+      "format": "300 g",
+      "price": 3.49,
+      "discount": "",
+      "page": 5,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-51",
+      "name": "Verdesca a tranci",
+      "format": "400 g",
+      "price": 1.99,
+      "discount": "",
+      "page": 5,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-52",
+      "name": "Code di gambero argentino sgusciate",
+      "format": "250 g",
+      "price": 4.49,
+      "discount": "",
+      "page": 5,
+      "condition": "",
+      "productId": "shrimp173tray250",
+      "formatIds": [
+        "offer-4261"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-53",
+      "name": "Piatti pronti M'ama Easy caserecce panna e speck, penne arrabbiata",
+      "format": "300 g",
+      "price": 1.49,
+      "discount": "",
+      "page": 5,
+      "condition": "",
+      "productId": "mamaeasy-meals300",
+      "formatIds": [
+        "variant-3e0970568a373d",
+        "variant-81b00be6a5be14"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-54",
+      "name": "Bieta erbetta a cubetti",
+      "format": "1 kg",
+      "price": 1.49,
+      "discount": "",
+      "page": 5,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-55",
+      "name": "Aromi Orogel diversi tipi",
+      "format": "diverse grammature",
+      "price": 0.99,
+      "discount": "",
+      "page": 5,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-56",
+      "name": "Aromi Orogel cipolla a cubetti, basilico",
+      "format": "150/50 g",
+      "price": 0.79,
+      "discount": "",
+      "page": 5,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-57",
+      "name": "Farinata genovese Appetais",
+      "format": "280 g",
+      "price": 2.39,
+      "discount": "",
+      "page": 5,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-58",
+      "name": "Patatine Golden Long McCain",
+      "format": "750 g",
+      "price": 1.99,
+      "discount": "",
+      "page": 5,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-59",
+      "name": "Panzerottini pomodoro e mozzarella",
+      "format": "250 g",
+      "price": 1.49,
+      "discount": "",
+      "page": 5,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-60",
+      "name": "Sugo scoglio Appetais con pomodoro",
+      "format": "300 g",
+      "price": 2.49,
+      "discount": "",
+      "page": 5,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-61",
+      "name": "Cono gelato panna, panna e cacao, amarena",
+      "format": "420 g",
+      "price": 2.29,
+      "discount": "",
+      "page": 5,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-62",
+      "name": "Vaschetta gelato variegato Komete gusti assortiti",
+      "format": "400 g",
+      "price": 1.99,
+      "discount": "",
+      "page": 5,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-63",
+      "name": "Dessert meringata, profiteroles cacao, tiramisù",
+      "format": "55/70 g",
+      "price": 0.99,
+      "discount": "",
+      "page": 5,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-64",
+      "name": "Latte UHT senza lattosio Accadì Granarolo parzialmente scremato, scremato",
+      "format": "500 ml",
+      "price": 0.99,
+      "discount": "",
+      "page": 6,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-65",
+      "name": "Panna UHT da cucina Granarolo",
+      "format": "200 ml",
+      "price": 0.89,
+      "discount": "",
+      "page": 6,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-66",
+      "name": "Burro Parmareggio senza lattosio",
+      "format": "100 g",
+      "price": 0.99,
+      "discount": "",
+      "page": 6,
+      "condition": "",
+      "productId": "parmareggio576lactosefree100",
+      "formatIds": [
+        "format-de79d866dcafd8",
+        "format-9830bf352334a2"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-67",
+      "name": "Crema cioccolato, vaniglia",
+      "format": "125 gx4",
+      "price": 0.99,
+      "discount": "",
+      "page": 6,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-68",
+      "name": "Mozzarella Santa Lucia Galbani",
+      "format": "100 g",
+      "price": 0.89,
+      "discount": "",
+      "page": 6,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-69",
+      "name": "Stracchino Nonno Nanni",
+      "format": "200 g",
+      "price": 2.49,
+      "discount": "",
+      "page": 6,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-70",
+      "name": "Ricottina light Santa Lucia Galbani",
+      "format": "180 g",
+      "price": 1.19,
+      "discount": "",
+      "page": 6,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-71",
+      "name": "Brie",
+      "format": "500 g",
+      "price": 3.99,
+      "discount": "",
+      "page": 6,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-72",
+      "name": "Activia Danone gusti assortiti",
+      "format": "125 gx4",
+      "price": 1.99,
+      "discount": "",
+      "page": 6,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-73",
+      "name": "Gorgonzola DOP senza lattosio",
+      "format": "150 g",
+      "price": 1.49,
+      "discount": "",
+      "page": 6,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-74",
+      "name": "Formaggini Tigre",
+      "format": "140 g",
+      "price": 1.49,
+      "discount": "",
+      "page": 6,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-75",
+      "name": "Grana Padano Riserva DOP grattugiato fresco Ferrari",
+      "format": "60 g",
+      "price": 1.39,
+      "discount": "",
+      "page": 6,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-76",
+      "name": "Gran Pecorino grattugiato Pinna",
+      "format": "100 g",
+      "price": 1.59,
+      "discount": "",
+      "page": 6,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-77",
+      "name": "Skyr bianco Alpen",
+      "format": "150 g",
+      "price": 0.69,
+      "discount": "",
+      "page": 7,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-78",
+      "name": "Yogurt magro 0,1% grassi Vipiteno fragola, mirtillo nero, caffè",
+      "format": "125 gx2",
+      "price": 0.69,
+      "discount": "",
+      "page": 7,
+      "condition": "",
+      "productId": "vipitenoMagro125x2extra",
+      "formatIds": [
+        "variant-1f6d7ba41564c8",
+        "variant-6b315fffec7da3",
+        "variant-2821e52a4c423c"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-79",
+      "name": "Parmigiano Reggiano DOP Ferrari 16 mesi",
+      "format": "150 g",
+      "price": 3.79,
+      "discount": "",
+      "page": 7,
+      "condition": "",
+      "productId": "ferrariparmigiano43215016mesi",
+      "formatIds": [
+        "format-b9b2a035584c1e"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-80",
+      "name": "Pasta fillo rettangolare Stuffer",
+      "format": "250 g",
+      "price": 1.29,
+      "discount": "",
+      "page": 7,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-81",
+      "name": "Pasta fresca mezzi paccheri, troccoli",
+      "format": "450/500 g",
+      "price": 1.19,
+      "discount": "",
+      "page": 7,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-82",
+      "name": "Pasta all'uovo Maffei tagliolini, tagliatelle",
+      "format": "250 g",
+      "price": 0.79,
+      "discount": "",
+      "page": 7,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-83",
+      "name": "Salsa di noci Il Pesto di Prà Bruzzone e Ferrari",
+      "format": "150 g",
+      "price": 2.19,
+      "discount": "",
+      "page": 7,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-84",
+      "name": "Piadina romagnola IGP",
+      "format": "360 g",
+      "price": 1.19,
+      "discount": "",
+      "page": 7,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-85",
+      "name": "Stincotto Bellucci",
+      "format": "650 g",
+      "price": 3.49,
+      "discount": "",
+      "page": 7,
+      "condition": "",
+      "productId": "bellucci103stincocotto650",
+      "formatIds": [
+        "documented"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-86",
+      "name": "Wurstel misto",
+      "format": "100 g",
+      "price": 0.39,
+      "discount": "",
+      "page": 7,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-87",
+      "name": "Le Prosciuttine classiche, formaggio",
+      "format": "75 gx2",
+      "price": 1.19,
+      "discount": "",
+      "page": 7,
+      "condition": "",
+      "productId": "prosciuttine830",
+      "formatIds": [
+        "variant-421913967bb5dc",
+        "variant-23fbbbb49f1c49"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-88",
+      "name": "Gnocchi agli spinaci La Buona Sfoglia",
+      "format": "400 g",
+      "price": 1.49,
+      "discount": "",
+      "page": 7,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-89",
+      "name": "Clementine",
+      "format": "1 kg",
+      "price": 1.99,
+      "discount": "",
+      "page": 8,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-90",
+      "name": "Arance Navel",
+      "format": "al kg",
+      "price": 1.48,
+      "discount": "",
+      "page": 8,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-91",
+      "name": "Mele Golden",
+      "format": "2 kg",
+      "price": 1.98,
+      "discount": "",
+      "page": 8,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-92",
+      "name": "Broccoletti",
+      "format": "500 g",
+      "price": 1.28,
+      "discount": "",
+      "page": 8,
+      "condition": "",
+      "productId": "broccoletti-g-500-cb1dc2",
+      "formatIds": [
+        "format-913295b9d238",
+        "format-58dab1f5a12f"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-93",
+      "name": "Spinaci pronto cuoci Kome Te",
+      "format": "400 g",
+      "price": 1.89,
+      "discount": "",
+      "page": 8,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-94",
+      "name": "Zuppe Kome Te farro e cereali, lenticchie e verdure, minestrone leggero",
+      "format": "350 g",
+      "price": 1.59,
+      "discount": "",
+      "page": 8,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-95",
+      "name": "Prosciutto crudo nazionale",
+      "format": "all'etto",
+      "price": 2.19,
+      "discount": "",
+      "page": 8,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-96",
+      "name": "Prosciutto cotto Granbiscotto Rovagnati",
+      "format": "all'etto",
+      "price": 2.29,
+      "discount": "",
+      "page": 8,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-97",
+      "name": "Gorgonzola DOP dolce Gim Invernizzi",
+      "format": "all'etto",
+      "price": 1.49,
+      "discount": "",
+      "page": 8,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-98",
+      "name": "Tomino Fior di Bosco",
+      "format": "all'etto",
+      "price": 1.29,
+      "discount": "",
+      "page": 8,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-99",
+      "name": "Salame gentile Della Rosa",
+      "format": "all'etto",
+      "price": 1.99,
+      "discount": "",
+      "page": 9,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-100",
+      "name": "Tacchino arrosto Rostè Rigamonti",
+      "format": "all'etto",
+      "price": 1.79,
+      "discount": "",
+      "page": 9,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-101",
+      "name": "Certosa Galbani",
+      "format": "all'etto",
+      "price": 1.29,
+      "discount": "",
+      "page": 9,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-102",
+      "name": "Fontal nazionale",
+      "format": "all'etto",
+      "price": 1.39,
+      "discount": "",
+      "page": 9,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-103",
+      "name": "Arrosto di bovino adulto",
+      "format": "al kg",
+      "price": 19.9,
+      "discount": "",
+      "page": 9,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-104",
+      "name": "Fettine sceltissime di bovino adulto",
+      "format": "al kg",
+      "price": 20.9,
+      "discount": "",
+      "page": 9,
+      "condition": "",
+      "productId": "beef-best1161",
+      "formatIds": [
+        "format-b9b2a035584c1e"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-105",
+      "name": "Braciole di maiale",
+      "format": "800/1000 g, prezzo al kg",
+      "price": 6.9,
+      "discount": "",
+      "page": 9,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-106",
+      "name": "Spezzatino di suino",
+      "format": "600/800 g, prezzo al kg",
+      "price": 5.9,
+      "discount": "",
+      "page": 9,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-107",
+      "name": "Salamelle di suino",
+      "format": "al kg",
+      "price": 7.5,
+      "discount": "",
+      "page": 9,
+      "condition": "",
+      "productId": "salamelle-di-suino",
+      "formatIds": [
+        "al-banco"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-108",
+      "name": "Fuselli di pollo",
+      "format": "al kg",
+      "price": 4.5,
+      "discount": "",
+      "page": 9,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-109",
+      "name": "Profuma bucato Felce Azzurra profumazioni assortite",
+      "format": "220 ml",
+      "price": 3.99,
+      "discount": "",
+      "page": 10,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-110",
+      "name": "Detersivo concentrato piatti limone, aceto e agrumi",
+      "format": "900 ml",
+      "price": 0.99,
+      "discount": "",
+      "page": 10,
+      "condition": "",
+      "productId": "kop-dish900",
+      "formatIds": [
+        "variant-133bfb1f7c3928",
+        "variant-54bf04d2ec780d"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-111",
+      "name": "Detersivo pavimenti e superfici Luxury blu, rosa",
+      "format": "1,25 l",
+      "price": 1.25,
+      "discount": "",
+      "page": 10,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-112",
+      "name": "Gel WC Net disincrostante, candeggina, profumoso",
+      "format": "700 ml",
+      "price": 1.99,
+      "discount": "",
+      "page": 10,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-113",
+      "name": "Detergente Vetril vetri e multiuso spray",
+      "format": "650 ml",
+      "price": 1.99,
+      "discount": "",
+      "page": 10,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-114",
+      "name": "Sgrassatore universale Chanteclair Marsiglia",
+      "format": "600 mlx3",
+      "price": 5.79,
+      "discount": "",
+      "page": 10,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-115",
+      "name": "Detergente intimo Felce Azzurra classico, fresco",
+      "format": "250 ml",
+      "price": 1.39,
+      "discount": "",
+      "page": 10,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-116",
+      "name": "Bagnodoccia Jacklon diversi tipi",
+      "format": "1 l",
+      "price": 1.59,
+      "discount": "",
+      "page": 10,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-117",
+      "name": "Ammorbidente Luxury diversi tipi",
+      "format": "86 lavaggi 1,8 l",
+      "price": 2.99,
+      "discount": "",
+      "page": 10,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-118",
+      "name": "Dentifricio White Now Mentadent",
+      "format": "75 ml",
+      "price": 1.99,
+      "discount": "",
+      "page": 10,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-119",
+      "name": "Schiuma da barba Intesa Pour Homme idratante",
+      "format": "300 ml",
+      "price": 1.59,
+      "discount": "",
+      "page": 10,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-120",
+      "name": "Deodorante Genera Blue Water, Sensitive roll-on",
+      "format": "50 ml",
+      "price": 0.99,
+      "discount": "",
+      "page": 10,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-121",
+      "name": "Cerotto Thermo spalle e schiena, corpo",
+      "format": "3/4 pezzi",
+      "price": 3.99,
+      "discount": "",
+      "page": 10,
+      "condition": "",
+      "productId": "thermo669",
+      "formatIds": [
+        "variant-5746135beb745e",
+        "variant-5db8d206c569a4"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-122",
+      "name": "Asciugatutto Bravo 2 veli",
+      "format": "2 maxi rotoli",
+      "price": 4.99,
+      "discount": "",
+      "page": 11,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-123",
+      "name": "Tovaglioli monovelo",
+      "format": "200 pezzi",
+      "price": 1.49,
+      "discount": "",
+      "page": 11,
+      "condition": "",
+      "productId": "bravo200monovelo18p5",
+      "formatIds": [
+        "documented"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-124",
+      "name": "Carta igienica Family Scottex",
+      "format": "4 maxi rotoli",
+      "price": 1.49,
+      "discount": "",
+      "page": 11,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-125",
+      "name": "Cattura polvere Duster Swiffer ricarica",
+      "format": "9 panni",
+      "price": 6.9,
+      "discount": "",
+      "page": 11,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-126",
+      "name": "Sacchetti Famiglia con manici",
+      "format": "15 pezzi 50x60 cm",
+      "price": 0.59,
+      "discount": "",
+      "page": 11,
+      "condition": "",
+      "productId": "pulitex-famiglia15",
+      "formatIds": [
+        "documented"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-127",
+      "name": "Supermocio Sistema Revolution Vileda",
+      "format": "sistema completo",
+      "price": 16.9,
+      "discount": "",
+      "page": 11,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-128",
+      "name": "Supermocio Sistema Revolution Vileda",
+      "format": "ricarica",
+      "price": 4.69,
+      "discount": "",
+      "page": 11,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-129",
+      "name": "Tappetini assorbenti Pistop",
+      "format": "10 pezzi 60x90 cm",
+      "price": 2.99,
+      "discount": "",
+      "page": 11,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-130",
+      "name": "Dental Stick Ciuffi",
+      "format": "180 g",
+      "price": 0.99,
+      "discount": "",
+      "page": 11,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-131",
+      "name": "Cat Litter Almo Nature",
+      "format": "2,5 kg",
+      "price": 3.99,
+      "discount": "",
+      "page": 11,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-132",
+      "name": "Croccantini per gatti Whiskas tonno",
+      "format": "800 g",
+      "price": 2.99,
+      "discount": "",
+      "page": 11,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-133",
+      "name": "Gamberi argentini interi Pescanova",
+      "format": "400 g",
+      "price": 4.99,
+      "discount": "",
+      "page": 14,
+      "condition": "EKOM UP",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-134",
+      "name": "Pizza Margherita Gegè croccante e sottile",
+      "format": "240 gx3",
+      "price": 2.79,
+      "discount": "",
+      "page": 14,
+      "condition": "EKOM UP",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-135",
+      "name": "Latte UHT Candia",
+      "format": "250 ml",
+      "price": 0.39,
+      "discount": "",
+      "page": 14,
+      "condition": "EKOM UP",
+      "productId": "candia1065",
+      "formatIds": [
+        "documented"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-136",
+      "name": "Nduja piccante",
+      "format": "200 g",
+      "price": 2.19,
+      "discount": "",
+      "page": 14,
+      "condition": "EKOM UP",
+      "productId": "nduja4552009p9",
+      "formatIds": [
+        "format-b9b2a035584c1e"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-137",
+      "name": "Il Granturchese Colussi integrale con gocce di cioccolato",
+      "format": "340 g",
+      "price": 1.79,
+      "discount": "",
+      "page": 14,
+      "condition": "EKOM UP",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-138",
+      "name": "English Breakfast Tea Everton",
+      "format": "50 bustine 100 g",
+      "price": 0.99,
+      "discount": "",
+      "page": 14,
+      "condition": "EKOM UP",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-139",
+      "name": "Pasta di semola tagliolini, fettuccine, tagliatelle",
+      "format": "500 g",
+      "price": 0.69,
+      "discount": "",
+      "page": 14,
+      "condition": "EKOM UP",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-140",
+      "name": "Confetture di frutta Santa Rosa gusti assortiti",
+      "format": "600 g",
+      "price": 1.99,
+      "discount": "",
+      "page": 14,
+      "condition": "EKOM UP",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-141",
+      "name": "Olio extra vergine di oliva 100% italiano Carapelli Blu Limited Edition",
+      "format": "750 ml",
+      "price": 6.99,
+      "discount": "",
+      "page": 14,
+      "condition": "EKOM UP",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-142",
+      "name": "Birra Bud",
+      "format": "500 ml",
+      "price": 0.99,
+      "discount": "",
+      "page": 14,
+      "condition": "EKOM UP",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-143",
+      "name": "Polvere lavatrice Dixan Classico",
+      "format": "48 misurini 2,64 kg",
+      "price": 8.99,
+      "discount": "",
+      "page": 14,
+      "condition": "EKOM UP",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-144",
+      "name": "Carta casa Tuttofare Scottex",
+      "format": "4 maxi rotoli",
+      "price": 4.59,
+      "discount": "",
+      "page": 14,
+      "condition": "EKOM UP",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-145",
+      "name": "Frollini Maxi Ciok Balocco",
+      "format": "320 g",
+      "price": 1.99,
+      "discount": "",
+      "page": 15,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-146",
+      "name": "Kinder Bueno White, Classico",
+      "format": "117/129 g",
+      "price": 1.99,
+      "discount": "",
+      "page": 15,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-147",
+      "name": "Cioccolato La Suissa latte, fondente extra70%, gianduia, fondente",
+      "format": "500/480 g",
+      "price": 6.99,
+      "discount": "",
+      "page": 15,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-148",
+      "name": "Nocciolato Novi gusti assortiti",
+      "format": "130 g",
+      "price": 2.89,
+      "discount": "",
+      "page": 15,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-149",
+      "name": "Peanut ricoperti al cioccolato assortiti",
+      "format": "200 g",
+      "price": 1.99,
+      "discount": "",
+      "page": 15,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-150",
+      "name": "Praline Rovelli diversi tipi",
+      "format": "205 g",
+      "price": 2.39,
+      "discount": "",
+      "page": 15,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-151",
+      "name": "Praline di cioccolato Vergani gusti assortiti",
+      "format": "100 g",
+      "price": 0.99,
+      "discount": "",
+      "page": 15,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-152",
+      "name": "Cioccolato Ernst Knam Dolci Preziosi caramello, fondente70%, latte, bianco",
+      "format": "70 g",
+      "price": 1.49,
+      "discount": "",
+      "page": 15,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-153",
+      "name": "Crema Bounty, crema Mars",
+      "format": "200 g",
+      "price": 2.99,
+      "discount": "",
+      "page": 15,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-154",
+      "name": "Scrivi e Decora Paneangeli gusto cioccolato",
+      "format": "115 g",
+      "price": 1.99,
+      "discount": "",
+      "page": 15,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-155",
+      "name": "Cioccolata per pasticceria Paneangeli",
+      "format": "150 g",
+      "price": 2.39,
+      "discount": "",
+      "page": 15,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-156",
+      "name": "Salame di cioccolato",
+      "format": "250 g",
+      "price": 2.49,
+      "discount": "",
+      "page": 15,
+      "condition": "",
+      "productId": "salame-al-cioccolato-g-250-15c966",
+      "formatIds": [
+        "documented"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-157",
+      "name": "Muffins choco, stracciatella",
+      "format": "75 gx4",
+      "price": 1.79,
+      "discount": "",
+      "page": 15,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-158",
+      "name": "Croccole Findus",
+      "format": "540 g",
+      "price": 4.99,
+      "discount": "",
+      "page": 16,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-159",
+      "name": "Salmone selvaggio Veliero",
+      "format": "80 g",
+      "price": 4.89,
+      "discount": "",
+      "page": 16,
+      "condition": "",
+      "productId": "veliero24p12",
+      "formatIds": [
+        "documented"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-160",
+      "name": "Macine Mulino Bianco",
+      "format": "1 kg",
+      "price": 2.99,
+      "discount": "",
+      "page": 16,
+      "condition": "",
+      "productId": "mulino-biscuits-macine-range",
+      "formatIds": [
+        "macine-1-kg"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-161",
+      "name": "Maionese Calvé classica",
+      "format": "214 g",
+      "price": 1.39,
+      "discount": "",
+      "page": 16,
+      "condition": "",
+      "productId": "calve-maionese-classica",
+      "formatIds": [
+        "214-g"
+      ]
+    },
+    {
+      "id": "ekom-2026-23-162",
+      "name": "Tonno Maruzzella all'olio di oliva",
+      "format": "60 gx7",
+      "price": 4.99,
+      "discount": "",
+      "page": 16,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-163",
+      "name": "Svelto capsule",
+      "format": "188 capsule 1,88 kg",
+      "price": 8.45,
+      "discount": "",
+      "page": 16,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-164",
+      "name": "Linea capelli Fructis Garnier diversi tipi",
+      "format": "diverse grammature",
+      "price": null,
+      "discount": "sconto 25%",
+      "page": 11,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    },
+    {
+      "id": "ekom-2026-23-165",
+      "name": "Dolci Harry Potter Witor's diversi tipi",
+      "format": "diverse grammature",
+      "price": null,
+      "discount": "sconto 20%",
+      "page": 15,
+      "condition": "",
+      "productId": "",
+      "formatIds": []
+    }
+  ]
+}

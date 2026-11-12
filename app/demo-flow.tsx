@@ -1,55 +1,43 @@
 'use client'
 import {useEffect,useState} from 'react'
-import {demoFlyer as flyer,matchingOffers} from '../lib/notifications'
-export {demoFlyer} from '../lib/notifications'
 import {Saved,products} from '../lib/catalog'
+import type {Extraction,ExtractedOffer} from '../lib/live-extraction'
 const EMAIL_KEY='mioprodotto.demo.email.v1'
-const RUN_KEY='mioprodotto.demo.run.v1'
 const money=(n:number)=>n.toLocaleString('it-IT',{style:'currency',currency:'EUR'})
-type Run={email:string;watchlist:Saved[];offerIds:string[]}
+type Run={email:string;watchlist:Saved[];extraction:Extraction;offers:ExtractedOffer[]}
 export default function DemoFlow({saved,ready,onChoose,onProduct}:{saved:Saved[];ready:boolean;onChoose:()=>void;onProduct:(id:string)=>void}){
- const[email,setEmail]=useState(''),[run,setRun]=useState<Run|null>(null),[error,setError]=useState(''),[showFlyer,setShowFlyer]=useState(false)
- useEffect(()=>{try{setEmail(localStorage.getItem(EMAIL_KEY)||'');const raw=localStorage.getItem(RUN_KEY);if(raw){const r=JSON.parse(raw);if(typeof r.email==='string'&&Array.isArray(r.watchlist)&&Array.isArray(r.offerIds))setRun(r)}}catch{setError('Il browser non consente di recuperare la prova precedente. Puoi ripartire qui.')}},[])
+ const[email,setEmail]=useState(''),[run,setRun]=useState<Run|null>(null),[error,setError]=useState(''),[busy,setBusy]=useState(false),[showData,setShowData]=useState(false)
+ useEffect(()=>{try{setEmail(localStorage.getItem(EMAIL_KEY)||'')}catch{setError('Il browser non permette di recuperare l’email di prova.')}},[])
  const changed=!!run&&(run.email!==email.trim()||JSON.stringify(run.watchlist)!==JSON.stringify(saved))
- const offers=run?flyer.offers.filter(o=>run.offerIds.includes(o.id)):[]
- const potential=matchingOffers(saved)
- function simulate(e:React.FormEvent<HTMLFormElement>){
-  e.preventDefault();setError('')
-  if(!saved.length){setError('Scegli almeno un prodotto per fare la prova.');return}
-  const address=email.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address)){setError('Inserisci un indirizzo email valido, anche di prova.');return}
-  const next={email:address,watchlist:saved.map(x=>({...x})),offerIds:potential.map(o=>o.id)};setRun(next)
-  try{localStorage.setItem(EMAIL_KEY,address);localStorage.setItem(RUN_KEY,JSON.stringify(next))}catch{setError('Prova eseguita, ma il browser non permette di salvarla dopo la chiusura.')}
+ async function simulate(e:React.FormEvent<HTMLFormElement>){
+  e.preventDefault();if(!saved.length||busy)return;const address=email.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address))return
+  setRun(null);setError('');setBusy(true)
+  try{
+   const response=await fetch('/api/extract-latest',{method:'POST',cache:'no-store',signal:AbortSignal.timeout(65000)})
+   const result=await response.json();if(!response.ok)throw Error(result.error||'Estrazione fallita.')
+   const extraction=result as Extraction;if(!extraction.source||!Array.isArray(extraction.offers))throw Error('Risultato dell’estrazione non valido.')
+   const offers=extraction.offers.filter(o=>o.status==='matched'&&saved.some(s=>s.productId===o.productId&&(s.formatId==='linea'||o.formatIds.includes(s.formatId))))
+   setRun({email:address,watchlist:saved.map(x=>({...x})),extraction,offers});try{localStorage.setItem(EMAIL_KEY,address)}catch{}
+  }catch(e){setError((e instanceof Error?e.message:'Estrazione fallita.')+' Nessun avviso generato e nessun dato preparato usato al suo posto.')}finally{setBusy(false)}
  }
- function reset(){setRun(null);setEmail('');setError('');try{localStorage.removeItem(EMAIL_KEY);localStorage.removeItem(RUN_KEY)}catch{setError('Non riesco a cancellare il salvataggio del browser.')}}
+ function reset(){setRun(null);setEmail('');setError('');try{localStorage.removeItem(EMAIL_KEY);localStorage.removeItem('mioprodotto.demo.run.v1')}catch{}}
+ const meta=run?.extraction
  return <div className="demo-flow">
-  <section className="demo-panel" aria-labelledby="demo-title">
-   <span className="step-label">2 / LA TUA EMAIL</span><h2 id="demo-title">Proviamo il giorno dopo.</h2>
-   <p>Hai scelto i prodotti. Inserisci un'email e controlliamo il volantino Ekom reale, senza aspettare domani.</p>
-   <form onSubmit={simulate}>
-    <label htmlFor="demo-email">Email per la prova</label><input id="demo-email" type="email" autoComplete="off" placeholder="prova@example.com" value={email} onChange={e=>setEmail(e.target.value)} required/>
-    <p className="muted privacy">L'indirizzo resta in questo browser. Nessuna registrazione e nessun invio: vedrai l'email soltanto qui.</p>
-    <button className="primary" type="submit" disabled={!ready||!saved.length}>Simula il giorno dopo</button>
-   </form>
+  <section className="demo-panel" aria-labelledby="demo-title"><span className="step-label">2 / ESTRAZIONE REALE</span><h2 id="demo-title">Leggiamo il volantino adesso.</h2>
+   <p>Il pulsante cerca l'ultimo PDF Ekom Liguria/Piemonte, lo scarica e ne estrae testo e prezzi dal testo digitale. Poi confronta i risultati con la tua watchlist.</p>
+   <form onSubmit={simulate}><label htmlFor="demo-email">Email per la prova</label><input id="demo-email" type="email" autoComplete="off" placeholder="prova@example.com" value={email} onChange={e=>setEmail(e.target.value)} required disabled={busy}/><p className="muted privacy">Email e watchlist restano in questo browser. Il server riceve solo il comando di leggere il volantino, non il tuo indirizzo.</p><button className="primary" type="submit" disabled={!ready||!saved.length||busy}>{busy?'Recupero PDF ed estrazione in corso…':'Estrai ultimo volantino e simula l’avviso'}</button></form>
    {!saved.length&&<button className="text-button" onClick={onChoose}>Prima scegli un prodotto dal catalogo</button>}
+   {busy&&<p className="status" role="status">1. Controllo elenco Ekom · 2. Download PDF · 3. Estrazione e confronto. Può richiedere alcuni secondi. Non vengono usati risultati precedenti.</p>}
    {error&&<p role="alert" className="warning">{error}</p>}
-   <p className="muted demo-source"><strong>Dati reali:</strong> {flyer.title}, {flyer.region}, 3-16 novembre 2026. Verificato il 12 novembre. Simuliamo il controllo e la ricezione dell'avviso, non i prezzi.</p>
-   <button className="text-button" onClick={()=>setShowFlyer(!showFlyer)} aria-expanded={showFlyer}>{showFlyer?'Chiudi i dati del volantino':'Guarda il volantino usato per il test'}</button>
+   <p className="muted demo-source">Solo il giorno dopo e la ricezione dell'email sono simulati. Nessun invio reale, account o controllo programmato. Se il PDF non è leggibile o il formato non è supportato, la prova si ferma.</p>
   </section>
-  {run&&<section className="mailbox" aria-labelledby="mail-title">
-   <span className="step-label">3 / GIORNO DOPO · SIMULAZIONE</span><h2 id="mail-title">La tua casella di prova</h2>
-   {changed&&<p role="status" className="warning">Hai cambiato email o watchlist. Questo è il risultato precedente: premi di nuovo "Simula il giorno dopo" per aggiornarlo.</p>}
-   {offers.length?<article className="demo-mail"><div className="mail-meta"><span>EMAIL SIMULATA · NON INVIATA</span><p><strong>A:</strong> {run.email}</p><p><strong>Oggetto:</strong> {offers.length===1?'Un prodotto della tua watchlist è nel volantino Ekom':`${offers.length} offerte per la tua watchlist nel volantino Ekom`}</p></div>
-    <div className="mail-body"><p>Ciao! Nel volantino Ekom Black Week del 3-16 novembre abbiamo trovato queste offerte per i prodotti che segui.</p>
-     {offers.map(o=><div className="notification-offer" key={o.id}><h3>{o.name}</h3><p>{o.format}</p><p className="notification-price">{o.price!==null?money(o.price):o.discount}</p>{o.condition&&<p className="condition">Solo possessori EKOM UP</p>}{(o.page===9||(o.page===8&&['prosciutto','gorgonzola','tomino'].some(t=>o.name.toLowerCase().includes(t))))&&<p className="condition">Solo reparti con vendita assistita.</p>}<a href={flyer.source+`#page=${o.page}`} target="_blank" rel="noopener noreferrer">Controlla il volantino · pagina {o.page} ↗</a></div>)}
-     <p className="muted">Quantità e varianti sono quelle del volantino. Prezzi e disponibilità possono variare nel punto vendita.</p>
-    </div></article>:<div className="no-mail"><h3>Nessuna email generata</h3><p>Non abbiamo trovato corrispondenze verificate per questa watchlist nel test. Non equivale a dire che i prodotti non siano in offerta: gli abbinamenti non certi restano esclusi.</p></div>}
-   <p className="muted safety-note">Questa schermata non è una conferma di invio. Non c'è un servizio email collegato e non è stato programmato alcun controllo automatico.</p>
-   <button className="text-button" onClick={reset}>Azzera email e risultato della prova</button>
-  </section>}
-  {showFlyer&&<section className="flyer-panel"><h2>Il volantino del test</h2><p>{flyer.title} · Liguria e Piemonte · 3-16 novembre 2026.</p><p className="muted">{flyer.offers.length} offerte e promozioni trascritte dal PDF. {flyer.offers.filter(o=>o.productId).length} collegate a prodotti e formati del catalogo con riscontro; gli altri collegamenti non sono confermati. Un nome simile o un formato diverso non bastano per mandare un avviso.</p><a href={flyer.source} target="_blank" rel="noopener noreferrer">Apri il PDF originale ↗</a>
-   <h3>Prodotti pronti per la prova</h3><p className="muted">Puoi sceglierne uno qui, poi seguire il formato indicato oppure tutta la linea.</p>
-   <div className="demo-picks">{flyer.offers.filter(o=>o.productId).map(o=><button key={o.id} onClick={()=>onProduct(o.productId)}>{products.find(p=>p.id===o.productId)?.name}<span>{o.format} · {o.price!==null?money(o.price):o.discount}</span></button>)}</div>
-   <details><summary>Tutte le offerte trascritte ({flyer.offers.length})</summary>{flyer.offers.map(o=><div className="flyer-row" key={o.id}><strong>{o.name}</strong><p>{o.format} · {o.price!==null?money(o.price):o.discount}{o.condition?' · Solo EKOM UP':''}</p><p className="muted">Pagina {o.page} · {o.productId?'Collegamento verificato':'Collegamento al catalogo non confermato'}</p></div>)}</details>
-  </section>}
+  {run&&meta&&<>
+   <section className="extraction-receipt"><span className="step-label">ESTRAZIONE ESEGUITA</span><h2>{meta.title}</h2><p>{meta.region} · {meta.validFrom} / {meta.validTo}</p><p className="muted">Controllo completato: {new Date(meta.checkedAt).toLocaleString('it-IT',{timeZone:'Europe/Rome'})} (ora italiana).</p><p>{meta.pages} pagine lette · {meta.textItems} elementi di testo · {meta.offers.length} offerte candidate · {meta.offers.filter(o=>o.status==='matched').length} collegamenti verificati al catalogo.</p><a href={meta.source} target="_blank" rel="noopener noreferrer">PDF effettivamente scaricato ↗</a><details><summary>Impronta del PDF e limiti</summary><p className="hash">SHA-256: {meta.sha256}</p><p>Estrazione automatica dal testo digitale e dalla posizione dei prezzi. Non è OCR di immagini. Le righe candidate possono contenere testo di contorno e non sono tutte validate: solo i collegamenti verificati possono generare un avviso. Le promozioni solo percentuali non sono incluse.</p>{meta.warnings.map((w,i)=><p className="muted" key={i}>{w}</p>)}</details><button className="text-button" onClick={()=>setShowData(!showData)}>{showData?'Nascondi righe estratte':'Mostra le righe estratte dal PDF'}</button></section>
+   <section className="mailbox" aria-labelledby="mail-title"><span className="step-label">3 / GIORNO DOPO · SIMULAZIONE</span><h2 id="mail-title">La tua casella di prova</h2>
+   {changed&&<p role="status" className="warning">Watchlist o email cambiate. Ripeti l'estrazione per un nuovo risultato.</p>}
+   {run.offers.length?<article className="demo-mail"><div className="mail-meta"><span>EMAIL SIMULATA · NON INVIATA</span><p><strong>A:</strong> {run.email}</p><p><strong>Oggetto:</strong> {run.offers.length} {run.offers.length===1?'offerta per un prodotto che segui':'offerte per i prodotti che segui'}</p></div><div className="mail-body"><p>Ciao! Abbiamo letto il volantino {meta.title}, valido dal {meta.validFrom} al {meta.validTo}. Queste offerte corrispondono alle tue scelte.</p>{run.offers.map(o=><div className="notification-offer" key={o.id}><h3>{products.find(p=>p.id===o.productId)?.name}</h3><p className="notification-price">{money(o.price)}</p>{o.condition&&<p className="condition">{o.condition}</p>}<p className="source-excerpt">Testo estratto: {o.rawText}</p><a href={meta.source+`#page=${o.page}`} target="_blank" rel="noopener noreferrer">Controlla la pagina {o.page} del PDF ↗</a></div>)}<p className="muted">Le unità di vendita e le condizioni sono nel testo fonte. Verifica disponibilità e condizioni del punto vendita.</p></div></article>:<div className="no-mail"><h3>Nessuna email generata</h3><p>Nessuna corrispondenza verificata in questa estrazione. Non significa che i prodotti non siano in offerta: i collegamenti al catalogo sono ancora parziali.</p></div>}
+   <p className="muted safety-note">Nessun messaggio è stato spedito. Se premi di nuovo, il sistema ripete ricerca del PDF, download ed estrazione; non ripresenta un dataset statico.</p><button className="text-button" onClick={reset}>Azzera email e risultato della prova</button></section>
+   {showData&&<section className="flyer-panel"><h2>Righe lette durante questa prova</h2>{meta.offers.map(o=><div key={o.id} className="flyer-row"><strong>{o.name}</strong><p>{money(o.price)} · pagina {o.page} · {o.status==='matched'?'Collegamento verificato':'Candidata, non usata per gli avvisi'}</p><p className="source-excerpt">{o.rawText}</p>{o.productId&&<button className="text-button" onClick={()=>onProduct(o.productId)}>Apri il prodotto collegato</button>}</div>)}</section>}
+  </>}
  </div>
 }
