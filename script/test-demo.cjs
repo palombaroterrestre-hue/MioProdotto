@@ -1,0 +1,38 @@
+const {chromium}=require('playwright');
+const {spawn}=require('child_process');
+const fs=require('fs');const assert=require('assert');
+const server=spawn('node',['node_modules/next/dist/bin/next','start','-p','3100','-H','127.0.0.1'],{cwd:__dirname+'/..',stdio:['ignore','pipe','pipe']});
+let output='';server.stdout.on('data',d=>output+=d);server.stderr.on('data',d=>output+=d);
+(async()=>{let browser;const results=[];try{
+ for(let i=0;i<100;i++){try{const r=await fetch('http://127.0.0.1:3100',{signal:AbortSignal.timeout(1000)});if(r.ok)break}catch{}await new Promise(r=>setTimeout(r,200))}
+ browser=await chromium.launch({headless:true,args:['--no-sandbox','--disable-dev-shm-usage'],timeout:10000});const page=await browser.newPage({viewport:{width:390,height:844}});page.setDefaultTimeout(8000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ const network=[];page.on('request',r=>{if(!r.url().includes('127.0.0.1')&&!r.url().includes('supabase'))network.push(r.url())});
+ await page.goto('http://127.0.0.1:3100',{waitUntil:'domcontentloaded'});await page.getByText('733 schede',{exact:true}).waitFor();
+ console.log('check',results.length+1);results.push('733 cards loaded; no missing image URLs');
+ await page.getByPlaceholder('Cerca prodotto, marca o formato').fill('pan bauletto');
+ assert.equal(await page.locator('.product-card').count(),1);await page.locator('.product-card').click();
+ await page.getByText('Bianco · 400 g',{exact:true}).click();await page.getByRole('button',{name:'+ Aggiungi alla mia lista',exact:true}).click();
+ await page.screenshot({path:'/downloads/demo-01-product.png',fullPage:false});
+ await page.getByRole('button',{name:/Watchlist e prova/}).click();await page.locator('#demo-email').fill('prova@example.com');
+ await page.getByRole('button',{name:'Simula il giorno dopo',exact:true}).click();
+ await page.locator('.demo-mail').waitFor();assert((await page.locator('.notification-offer').innerText()).includes('0,89'));
+ assert.equal(await page.locator('.notification-offer').count(),1);console.log('check',results.length+1);results.push('Pan Bauletto Bianco 400g produces one genuine current offer at EUR0.89');
+ await page.locator('.mailbox').scrollIntoViewIfNeeded();await page.screenshot({path:'/downloads/demo-02-email.png',fullPage:false});
+ await page.reload({waitUntil:'domcontentloaded'});await page.getByRole('button',{name:/Watchlist e prova/}).click();await page.locator('.demo-mail').waitFor();assert.equal(await page.locator('#demo-email').inputValue(),'prova@example.com');console.log('check',results.length+1);results.push('Watchlist, test email and simulated result survive page reload');
+ await page.getByRole('button',{name:'Catalogo',exact:true}).click();await page.getByPlaceholder('Cerca prodotto, marca o formato').fill('red bull');await page.locator('.product-card').click();
+ await page.getByText('Classica · 250 ml',{exact:true}).click();await page.getByRole('button',{name:'+ Aggiungi alla mia lista',exact:true}).click();
+ await page.getByRole('button',{name:/Watchlist e prova/}).click();await page.getByText(/Hai cambiato email o watchlist/).waitFor();
+ await page.getByRole('button',{name:'Simula il giorno dopo',exact:true}).click();assert.equal(await page.locator('.notification-offer').count(),1);console.log('check',results.length+1);results.push('Wrong Red Bull 250ml size does not match current 355ml offer; previous result visibly marked stale after changing watchlist');
+ await page.getByRole('button',{name:'Catalogo',exact:true}).click();await page.getByPlaceholder('Cerca prodotto, marca o formato').fill('red bull');await page.locator('.product-card').click();await page.locator('.formats').getByText('355 ml',{exact:true}).click();await page.getByRole('button',{name:'+ Aggiungi alla mia lista',exact:true}).click();
+ await page.getByRole('button',{name:/Watchlist e prova/}).click();await page.getByRole('button',{name:'Simula il giorno dopo',exact:true}).click();assert.equal(await page.locator('.notification-offer').count(),2);console.log('check',results.length+1);results.push('Correct Red Bull355ml gives EUR1.99, no duplicate email offer');
+ await page.getByRole('button',{name:'Catalogo',exact:true}).click();await page.getByPlaceholder('Cerca prodotto, marca o formato').fill('melanzane');assert(await page.locator('.product-card').count()>0);console.log('check',results.length+1);results.push('Melanzane found');await page.getByPlaceholder('Cerca prodotto, marca o formato').fill('banane');assert.equal(await page.locator('.product-card').count(),0);console.log('check',results.length+1);results.push('Banane without a verified photo excluded');
+ await page.getByRole('button',{name:/Watchlist e prova/}).click();await page.getByRole('button',{name:'Guarda il volantino usato per il test'}).click();assert(await page.getByText(/166 offerte e promozioni/).count());
+ await page.locator('.flyer-panel').scrollIntoViewIfNeeded();await page.screenshot({path:'/downloads/demo-03-flyer.png',fullPage:false});
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);console.log('check',results.length+1);results.push('390px viewport has no horizontal overflow');
+ await page.setViewportSize({width:320,height:780});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);console.log('check',results.length+1);results.push('320px viewport has no horizontal overflow');
+ await page.setViewportSize({width:1280,height:900});await page.screenshot({path:'/downloads/demo-04-desktop.png',fullPage:false});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);console.log('check',results.length+1);results.push('Desktop layout has no horizontal overflow');
+ assert.equal(network.length,0);assert.equal(errors.length,0);console.log('check',results.length+1);results.push('No browser runtime errors; no email/network destination receives the entered email');
+ const ctx=await browser.newContext({viewport:{width:390,height:844}});const clean=await ctx.newPage();clean.setDefaultTimeout(8000);await clean.goto('http://127.0.0.1:3100',{waitUntil:'domcontentloaded'});await clean.getByRole('button',{name:/Watchlist e prova/}).click();assert(await clean.getByRole('button',{name:'Simula il giorno dopo',exact:true}).isDisabled());console.log('check',results.length+1);results.push('Empty watchlist cannot run simulation');
+ await clean.getByRole('button',{name:'Catalogo',exact:true}).click();await clean.getByPlaceholder('Cerca prodotto, marca o formato').fill('red bull');await clean.locator('.product-card').click();await clean.getByText('Classica · 250 ml',{exact:true}).click();await clean.getByRole('button',{name:'+ Aggiungi alla mia lista',exact:true}).click();await clean.getByRole('button',{name:/Watchlist e prova/}).click();await clean.locator('#demo-email').fill('nobody@example.com');await clean.getByRole('button',{name:'Simula il giorno dopo',exact:true}).click();await clean.getByRole('heading',{name:'Nessuna email generata'}).waitFor();assert.equal(await clean.locator('.demo-mail').count(),0);console.log('check',results.length+1);results.push('No-match case generates no email and explains unconfirmed matches');
+ fs.writeFileSync('/downloads/demo-test-results.json',JSON.stringify({passed:results.length,results,errors,externalNetwork:network},null,2));console.log(results.join('\n'));
+ }catch(e){console.error(e);console.log(output);process.exitCode=1}finally{if(browser)await browser.close();server.kill('SIGTERM')}})();

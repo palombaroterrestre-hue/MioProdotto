@@ -1,0 +1,395 @@
+[
+ {
+  "tokens": [
+   "capsule",
+   "lavazza",
+   "modo",
+   "mio",
+   "passionale",
+   "qualita",
+   "rossa",
+   "crema",
+   "gusto"
+  ],
+  "quantity": "36 capsule g 270",
+  "productId": "lavazza919",
+  "formatIds": [
+   "format-0f9b0e767a48cc",
+   "format-2884f0ed81eda8",
+   "format-97d7ebfda6162f"
+  ]
+ },
+ {
+  "tokens": [
+   "treccia",
+   "crema",
+   "pasticcera",
+   "gocce",
+   "cioccolato"
+  ],
+  "quantity": "g 350",
+  "productId": "treccia350",
+  "formatIds": [
+   "documented"
+  ]
+ },
+ {
+  "tokens": [
+   "pan",
+   "bauletto",
+   "mulino",
+   "bianco",
+   "bianco"
+  ],
+  "quantity": "g 400",
+  "productId": "mulino-bianco-pan-bauletto",
+  "formatIds": [
+   "bianco-400-g"
+  ]
+ },
+ {
+  "tokens": [
+   "fagolosi",
+   "grissin",
+   "bon",
+   "classici"
+  ],
+  "quantity": "g 250",
+  "productId": "fagolosi480",
+  "formatIds": [
+   "classici-250-g"
+  ]
+ },
+ {
+  "tokens": [
+   "grissini",
+   "iposodici",
+   "panmonviso"
+  ],
+  "quantity": "g 120",
+  "productId": "panmonvisolowsalt120",
+  "formatIds": [
+   "documented"
+  ]
+ },
+ {
+  "tokens": [
+   "ragu",
+   "anatra",
+   "chianina",
+   "cinghiale"
+  ],
+  "quantity": "g 190",
+  "productId": "ragutoscana1022",
+  "formatIds": [
+   "variant-ff53fb2964a361",
+   "variant-3bd8a8f8376315",
+   "variant-042eecb0706f7c"
+  ]
+ },
+ {
+  "tokens": [
+   "olive",
+   "riviera",
+   "denocciolate",
+   "olio",
+   "extra",
+   "vergine",
+   "oliva"
+  ],
+  "quantity": "g 180",
+  "productId": "alisariviera180",
+  "formatIds": [
+   "documented"
+  ]
+ },
+ {
+  "tokens": [
+   "energy",
+   "drink",
+   "red",
+   "bull"
+  ],
+  "quantity": "ml 355",
+  "productId": "red-bull-energy-drink",
+  "formatIds": [
+   "355-ml"
+  ]
+ },
+ {
+  "tokens": [
+   "birra",
+   "10",
+   "faxe"
+  ],
+  "quantity": "ml 500",
+  "productId": "faxe542tenpercent500",
+  "formatIds": [
+   "documented"
+  ]
+ },
+ {
+  "tokens": [
+   "code",
+   "gambero",
+   "argentino",
+   "sgusciate"
+  ],
+  "quantity": "g 250",
+  "productId": "shrimp173tray250",
+  "formatIds": [
+   "offer-4261"
+  ]
+ },
+ {
+  "tokens": [
+   "piatti",
+   "pronti",
+   "ama",
+   "easy",
+   "caserecce",
+   "panna",
+   "speck",
+   "penne",
+   "arrabbiata"
+  ],
+  "quantity": "g 300",
+  "productId": "mamaeasy-meals300",
+  "formatIds": [
+   "variant-3e0970568a373d",
+   "variant-81b00be6a5be14"
+  ]
+ },
+ {
+  "tokens": [
+   "burro",
+   "parmareggio",
+   "senza",
+   "lattosio"
+  ],
+  "quantity": "g 100",
+  "productId": "parmareggio576lactosefree100",
+  "formatIds": [
+   "format-de79d866dcafd8",
+   "format-9830bf352334a2"
+  ]
+ },
+ {
+  "tokens": [
+   "yogurt",
+   "magro",
+   "vipiteno",
+   "fragola",
+   "mirtillo",
+   "nero",
+   "caffe"
+  ],
+  "quantity": "g 125x2",
+  "productId": "vipitenoMagro125x2extra",
+  "formatIds": [
+   "variant-1f6d7ba41564c8",
+   "variant-6b315fffec7da3",
+   "variant-2821e52a4c423c"
+  ]
+ },
+ {
+  "tokens": [
+   "parmigiano",
+   "reggiano",
+   "dop",
+   "ferrari",
+   "16",
+   "mesi"
+  ],
+  "quantity": "g 150",
+  "productId": "ferrariparmigiano43215016mesi",
+  "formatIds": [
+   "format-b9b2a035584c1e"
+  ]
+ },
+ {
+  "tokens": [
+   "stinco",
+   "cotto",
+   "bellucci"
+  ],
+  "quantity": "g 650",
+  "productId": "bellucci103stincocotto650",
+  "formatIds": [
+   "documented"
+  ]
+ },
+ {
+  "tokens": [
+   "prosciuttine",
+   "classiche",
+   "formaggio"
+  ],
+  "quantity": "g 75x2",
+  "productId": "prosciuttine830",
+  "formatIds": [
+   "variant-421913967bb5dc",
+   "variant-23fbbbb49f1c49"
+  ]
+ },
+ {
+  "tokens": [
+   "broccoletti"
+  ],
+  "quantity": "g 500",
+  "productId": "broccoletti-g-500-cb1dc2",
+  "formatIds": [
+   "format-913295b9d238",
+   "format-58dab1f5a12f"
+  ]
+ },
+ {
+  "tokens": [
+   "fettine",
+   "sceltissime",
+   "bovino",
+   "adulto"
+  ],
+  "quantity": "al kg",
+  "productId": "beef-best1161",
+  "formatIds": [
+   "format-b9b2a035584c1e"
+  ]
+ },
+ {
+  "tokens": [
+   "salamelle",
+   "suino"
+  ],
+  "quantity": "al kg",
+  "productId": "salamelle-di-suino",
+  "formatIds": [
+   "al-banco"
+  ]
+ },
+ {
+  "tokens": [
+   "detersivo",
+   "concentrato",
+   "piatti",
+   "limone",
+   "aceto",
+   "agrumi"
+  ],
+  "quantity": "ml 900",
+  "productId": "kop-dish900",
+  "formatIds": [
+   "variant-133bfb1f7c3928",
+   "variant-54bf04d2ec780d"
+  ]
+ },
+ {
+  "tokens": [
+   "cerotto",
+   "thermo",
+   "spalle",
+   "schiena",
+   "corpo"
+  ],
+  "quantity": "3 pezzi",
+  "productId": "thermo669",
+  "formatIds": [
+   "variant-5746135beb745e",
+   "variant-5db8d206c569a4"
+  ]
+ },
+ {
+  "tokens": [
+   "tovaglioli",
+   "monovelo"
+  ],
+  "quantity": "200 pezzi",
+  "productId": "bravo200monovelo18p5",
+  "formatIds": [
+   "documented"
+  ]
+ },
+ {
+  "tokens": [
+   "sacchetti",
+   "famiglia",
+   "manici"
+  ],
+  "quantity": "15 pezzi",
+  "productId": "pulitex-famiglia15",
+  "formatIds": [
+   "documented"
+  ]
+ },
+ {
+  "tokens": [
+   "latte",
+   "uht",
+   "candia",
+   "parzialmente",
+   "scremato"
+  ],
+  "quantity": "ml 250",
+  "productId": "candia1065",
+  "formatIds": [
+   "documented"
+  ]
+ },
+ {
+  "tokens": [
+   "nduja",
+   "piccante"
+  ],
+  "quantity": "g 200",
+  "productId": "nduja4552009p9",
+  "formatIds": [
+   "format-b9b2a035584c1e"
+  ]
+ },
+ {
+  "tokens": [
+   "salame",
+   "cioccolato"
+  ],
+  "quantity": "g 250",
+  "productId": "salame-al-cioccolato-g-250-15c966",
+  "formatIds": [
+   "documented"
+  ]
+ },
+ {
+  "tokens": [
+   "salmone",
+   "selvaggio"
+  ],
+  "quantity": "g 80",
+  "productId": "veliero24p12",
+  "formatIds": [
+   "documented"
+  ]
+ },
+ {
+  "tokens": [
+   "macine",
+   "mulino",
+   "bianco"
+  ],
+  "quantity": "kg 1",
+  "productId": "mulino-biscuits-macine-range",
+  "formatIds": [
+   "macine-1-kg"
+  ]
+ },
+ {
+  "tokens": [
+   "maionese",
+   "calve",
+   "classica"
+  ],
+  "quantity": "g 214",
+  "productId": "calve-maionese-classica",
+  "formatIds": [
+   "214-g"
+  ]
+ }
+]
