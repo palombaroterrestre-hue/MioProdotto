@@ -1122,7 +1122,7 @@
  },
  {
   "id": "mulino-biscuits-macine-range",
-  "name": "Biscotti mulino bianco macine, galletti, tarallucci g 350",
+  "name": "Biscotti Mulino Bianco Macine, Galletti, Tarallucci",
   "brand": "Mulino Bianco",
   "summary": "",
   "facts": [],
@@ -1138,7 +1138,7 @@
    },
    {
     "id": "format-5225ccfad88d75",
-    "label": "Macine",
+    "label": "Macine · 350 g",
     "offerIds": [
      "2293",
      "3375",
@@ -1147,7 +1147,7 @@
    },
    {
     "id": "format-0f88e599b3e8f4",
-    "label": "Galletti",
+    "label": "Galletti · 350 g",
     "offerIds": [
      "2293",
      "3375",
@@ -1156,12 +1156,17 @@
    },
    {
     "id": "format-a0b33402cb11fd",
-    "label": "Tarallucci",
+    "label": "Tarallucci · 350 g",
     "offerIds": [
      "2293",
      "3375",
      "900"
     ]
+   },
+   {
+    "id": "macine-1-kg",
+    "label": "Macine · 1 kg · volantino 3-16 novembre",
+    "offerIds": []
    }
   ],
   "offers": [
@@ -17070,7 +17075,7 @@
  },
  {
   "id": "fagolosi480",
-  "name": "Fagolosi grissin bon classici g 480",
+  "name": "Fagolosi Grissin Bon classici",
   "brand": "Grissin Bon",
   "summary": "Peso totale: 480 g · Unità: 1",
   "facts": [
@@ -17079,12 +17084,25 @@
   ],
   "formats": [
    {
+    "id": "linea",
+    "label": "Tutta la linea (tutte le varianti e formati)",
+    "offerIds": [
+     "1585",
+     "4320"
+    ]
+   },
+   {
     "id": "format-b9b2a035584c1e",
     "label": "Peso totale: 480 g · Unità: 1",
     "offerIds": [
      "1585",
      "4320"
     ]
+   },
+   {
+    "id": "classici-250-g",
+    "label": "Classici · 250 g · volantino 3-16 novembre",
+    "offerIds": []
    }
   ],
   "offers": [
@@ -32671,6 +32689,11 @@
      "3853",
      "249"
     ]
+   },
+   {
+    "id": "214-g",
+    "label": "214 g · volantino 3-16 novembre",
+    "offerIds": []
    }
   ],
   "offers": [
@@ -37688,6 +37711,3077 @@
    "peroni211granriservabianca330",
    "peroni211granriservadoppio330",
    "peroni211granriservarossa330"
+  ]
+ },
+ {
+  "id": "asparagi-g-500-a3a076",
+  "name": "Asparagi g 500",
+  "brand": "",
+  "summary": "Peso totale: 500 g · Unità: 1",
+  "facts": [
+   "Peso totale: 500 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Peso totale: 500 g · Unità: 1",
+    "offerIds": [
+     "2657",
+     "2350"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "2657",
+    "price": 2.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 8,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo08-LGPM_p6.jpg",
+    "caption": "Asparagi g 500",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v8_p06_t03.jpg"
+   },
+   {
+    "id": "2350",
+    "price": 2.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 10,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo10-LGPM_p6.jpg",
+    "caption": "Asparagi g 500",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v10_p06_t05.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v10_p06_t05.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "asparagus421fresh500"
+  ]
+ },
+ {
+  "id": "bocconcini-di-mozzarella-fior-di-latte-g-100x5-001bf9",
+  "name": "Bocconcini di mozzarella fior di latte g 100x5",
+  "brand": "",
+  "summary": "Per unità: 100 g · Unità: 5 · Peso totale: 500 g",
+  "facts": [
+   "Per unità: 100 g",
+   "Unità: 5",
+   "Peso totale: 500 g"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Per unità: 100 g · Unità: 5 · Peso totale: 500 g",
+    "offerIds": [
+     "2703",
+     "1880"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "2703",
+    "price": 3.0,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 20% (da 3,79 €)",
+    "flyer": 8,
+    "page": 9,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo08-LGPM_p9.jpg",
+    "caption": "Bocconcini di mozzarella fior di latte g 100x5",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v8_p09_t11.jpg"
+   },
+   {
+    "id": "1880",
+    "price": 2.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 25% DA 3,99",
+    "flyer": 12,
+    "page": 1,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo12-LGPM_p1.jpg",
+    "caption": "Bocconcini di mozzarella fior di latte g 100x5",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v12_p01_t02.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v8_p09_t11.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "fiorlattebocconcini100x5",
+   "mozzarella12p1"
+  ]
+ },
+ {
+  "id": "braciole-di-coppa-con-osso-1e454e",
+  "name": "Braciole di coppa con osso",
+  "brand": "",
+  "summary": "Variante: con osso",
+  "facts": [
+   "Variante: con osso"
+  ],
+  "formats": [
+   {
+    "id": "linea",
+    "label": "Tutta la linea (tutte le varianti e formati)",
+    "offerIds": [
+     "1657",
+     "1040",
+     "4534"
+    ]
+   },
+   {
+    "id": "format-b617e091079c",
+    "label": "Variante: con osso",
+    "offerIds": [
+     "1040",
+     "1657"
+    ]
+   },
+   {
+    "id": "format-c44f6e08bc24",
+    "label": "Prodotto descritto nel volantino",
+    "offerIds": [
+     "4534"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "1657",
+    "price": 6.9,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "",
+    "flyer": 14,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo14-LGPM_p7.jpg",
+    "caption": "Braciole di coppa con osso",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v14_p07_t11.jpg"
+   },
+   {
+    "id": "1040",
+    "price": 7.99,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "",
+    "flyer": 18,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo18-LGPM_p7.jpg",
+    "caption": "Braciole di coppa con osso",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v18_p07_t11.jpg"
+   },
+   {
+    "id": "4534",
+    "price": 7.19,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "",
+    "flyer": 24,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo24-LGPM_p7.jpg",
+    "caption": "Braciole di coppa con osso",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v24_p07_t08.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v24_p07_t08.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "coppa-braciole-osso547",
+   "counter3102"
+  ]
+ },
+ {
+  "id": "broccoletti-g-500-cb1dc2",
+  "name": "Broccoletti g 500",
+  "brand": "",
+  "summary": "Confezione: 500 g · Peso totale: 500 g · Unità: 1",
+  "facts": [
+   "Confezione: 500 g",
+   "Peso totale: 500 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "linea",
+    "label": "Tutta la linea (tutte le varianti e formati)",
+    "offerIds": [
+     "3576",
+     "3427",
+     "2981",
+     "2506",
+     "99",
+     "4766",
+     "4289"
+    ]
+   },
+   {
+    "id": "format-913295b9d238",
+    "label": "Confezione: 500 g",
+    "offerIds": [
+     "3576",
+     "3427",
+     "2506",
+     "4766",
+     "4289"
+    ]
+   },
+   {
+    "id": "format-58dab1f5a12f",
+    "label": "Peso totale: 500 g · Unità: 1",
+    "offerIds": [
+     "99",
+     "2981"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3576",
+    "price": 1.18,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 2,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo02-LGPM_p6.jpg",
+    "caption": "Broccoletti",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v2_p06_t04.jpg"
+   },
+   {
+    "id": "3427",
+    "price": 1.19,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 3,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo03-LGPM_p6.jpg",
+    "caption": "Broccoletti",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v3_p06_t06.jpg"
+   },
+   {
+    "id": "2981",
+    "price": 1.18,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 6,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo06-LGPM_p6.jpg",
+    "caption": "Broccoletti g 500",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v6_p06_t03.jpg"
+   },
+   {
+    "id": "2506",
+    "price": 1.28,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 9,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo09-LGPM_p6.jpg",
+    "caption": "Broccoletti g 500",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v9_p06_t06.jpg"
+   },
+   {
+    "id": "99",
+    "price": 1.29,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 20% DA 1,69",
+    "flyer": 21,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo21-LGPM_p8.jpg",
+    "caption": "Broccoletti g 500",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v21_p08_t06.jpg"
+   },
+   {
+    "id": "4766",
+    "price": 1.18,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "sconto 25% (da 1,59€)",
+    "flyer": 23,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo23-LGPM_p8.jpg",
+    "caption": "Broccoletti g 500",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v23_p08_t04.jpg"
+   },
+   {
+    "id": "4289",
+    "price": 1.18,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "sconto 30% (da 1,69€)",
+    "flyer": 25,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo25-LGPM_p6.jpg",
+    "caption": "Broccoletti g 500",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v25_p06_t11.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v6_p06_t03.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "broccoletti16fresh500",
+   "broccoletti50021p8",
+   "broccoli6p6"
+  ]
+ },
+ {
+  "id": "burro-g-500-5eaf3c",
+  "name": "Burro g 500",
+  "brand": "",
+  "summary": "Peso totale: 500 g · Unità: 1",
+  "facts": [
+   "Peso totale: 500 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Peso totale: 500 g · Unità: 1",
+    "offerIds": [
+     "731"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "731",
+    "price": 4.49,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 20,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo20-LGPM_p8.jpg",
+    "caption": "Burro g 500",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v20_p08_t03.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v20_p08_t03.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "butter50020p8"
+  ]
+ },
+ {
+  "id": "caciotta-ff6880",
+  "name": "Caciotta",
+  "brand": "",
+  "summary": "",
+  "facts": [],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Prodotto descritto nel volantino",
+    "offerIds": [
+     "874",
+     "1489",
+     "2156",
+     "3911",
+     "2822"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "2822",
+    "price": 1.29,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "ALL'ETTO",
+    "flyer": 7,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo07-LGPM_p6.jpg",
+    "caption": "Caciotta",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v7_p06_t06.jpg"
+   },
+   {
+    "id": "2156",
+    "price": 1.29,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 11,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo11-LGPM_p7.jpg",
+    "caption": "Caciotta",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v11_p07_t08.jpg"
+   },
+   {
+    "id": "1489",
+    "price": 1.29,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 15,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo15-LGPM_p7.jpg",
+    "caption": "Caciotta",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v15_p07_t07.jpg"
+   },
+   {
+    "id": "874",
+    "price": 1.29,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 19,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo19-LGPM_p7.jpg",
+    "caption": "Caciotta",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v19_p07_t07.jpg"
+   },
+   {
+    "id": "3911",
+    "price": 1.29,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 27,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo27-LGPM_p7.jpg",
+    "caption": "Caciotta",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v27_p07_t06.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v19_p07_t07.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "caciotta-generic-counter"
+  ]
+ },
+ {
+  "id": "cetrioli-5d58bb",
+  "name": "Cetrioli",
+  "brand": "",
+  "summary": "",
+  "facts": [],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Prodotto descritto nel volantino",
+    "offerIds": [
+     "1946"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "1946",
+    "price": 1.19,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "SCONTO 25% DA 1,59",
+    "flyer": 12,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo12-LGPM_p6.jpg",
+    "caption": "Cetrioli",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v12_p06_t07.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v12_p06_t07.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "cucumber1771"
+  ]
+ },
+ {
+  "id": "confezioni-ekom-speck-e-brie-prosciutto-crudo-e--acb937",
+  "name": "Confezioni ekom speck e brie, prosciutto crudo e scamorza bianca g 100",
+  "brand": "",
+  "summary": "Peso totale: 100 g · Unità: 1",
+  "facts": [
+   "Peso totale: 100 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "linea",
+    "label": "Tutta la linea (tutte le varianti e formati)",
+    "offerIds": [
+     "1510"
+    ]
+   },
+   {
+    "id": "format-2387eb15112f",
+    "label": "speck e brie",
+    "offerIds": [
+     "1510"
+    ]
+   },
+   {
+    "id": "format-6d14e132281a",
+    "label": "prosciutto crudo e scamorza bianca",
+    "offerIds": [
+     "1510"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "1510",
+    "price": 2.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 15,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo15-LGPM_p8.jpg",
+    "caption": "Confezioni ekom speck e brie, prosciutto crudo e scamorza bianca g 100",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v15_p08_t14.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v15_p08_t14.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "ekomantipastorange10015p8"
+  ]
+ },
+ {
+  "id": "contorno-ghiotto-con-verdure-grigliate-orogel-9c91dc",
+  "name": "Contorno ghiotto con verdure grigliate orogel",
+  "brand": "",
+  "summary": "Formato: 450 g",
+  "facts": [
+   "Formato: 450 g"
+  ],
+  "formats": [
+   {
+    "id": "linea",
+    "label": "Tutta la linea (tutte le varianti e formati)",
+    "offerIds": [
+     "3478",
+     "139"
+    ]
+   },
+   {
+    "id": "format-8afbe36233e0",
+    "label": "Green Farm · Volantino 3",
+    "offerIds": [
+     "3478"
+    ]
+   },
+   {
+    "id": "format-569d02bcbc8a",
+    "label": "Le Specialità Italiane · Volantino 21",
+    "offerIds": [
+     "139"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3478",
+    "price": 1.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "sconto 20%",
+    "flyer": 3,
+    "page": 10,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo03-LGPM_p10.jpg",
+    "caption": "Contorno ghiotto con verdure grigliate orogel",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v3_p10_t07.jpg"
+   },
+   {
+    "id": "139",
+    "price": 1.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 20% DA 2,49",
+    "flyer": 21,
+    "page": 11,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo21-LGPM_p11.jpg",
+    "caption": "Contorno ghiotto con verdure grigliate g 450",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v21_p11_t08.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v21_p11_t08.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "contornoghiotto303mixed"
+  ]
+ },
+ {
+  "id": "datteri-tunisia-g-200-0e9682",
+  "name": "Datteri Tunisia g 200",
+  "brand": "",
+  "summary": "Unità: 1 · Variante: Tunisia · Peso totale: 200 g",
+  "facts": [
+   "Unità: 1",
+   "Variante: Tunisia",
+   "Peso totale: 200 g"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Unità: 1 · Variante: Tunisia · Peso totale: 200 g",
+    "offerIds": [
+     "3867"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3867",
+    "price": 0.69,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 27,
+    "page": 4,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo27-LGPM_p4.jpg",
+    "caption": "Datteri Tunisia g 200",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v27_p04_t01.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v27_p04_t01.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "extra27_3867"
+  ]
+ },
+ {
+  "id": "feta-dop-b12c84",
+  "name": "Feta dop",
+  "brand": "",
+  "summary": "Variante: DOP",
+  "facts": [
+   "Variante: DOP"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Variante: DOP",
+    "offerIds": [
+     "2154"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "2154",
+    "price": 1.66,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 11,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo11-LGPM_p7.jpg",
+    "caption": "Feta dop",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v11_p07_t06.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v11_p07_t06.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "feta1631"
+  ]
+ },
+ {
+  "id": "filetti-di-acciughe-in-olio-di-girasole-g-720-270fef",
+  "name": "Filetti di acciughe in olio di girasole g 720",
+  "brand": "",
+  "summary": "Variante: olio girasole · Peso totale: 720 g · Unità: 1",
+  "facts": [
+   "Variante: olio girasole",
+   "Peso totale: 720 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Variante: olio girasole · Peso totale: 720 g · Unità: 1",
+    "offerIds": [
+     "663"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "663",
+    "price": 8.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 20,
+    "page": 3,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo20-LGPM_p3.jpg",
+    "caption": "Filetti di acciughe in olio di girasole g 720",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v20_p03_t02.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v20_p03_t02.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "acciughe20p3"
+  ]
+ },
+ {
+  "id": "formaggino-g-125-6cde51",
+  "name": "Formaggino g 125",
+  "brand": "",
+  "summary": "Peso totale: 125 g · Unità: 1",
+  "facts": [
+   "Peso totale: 125 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Peso totale: 125 g · Unità: 1",
+    "offerIds": [
+     "342",
+     "150",
+     "3013"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3013",
+    "price": 0.89,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 6,
+    "page": 9,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo06-LGPM_p9.jpg",
+    "caption": "Formaggino g 125",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v6_p09_t02.jpg"
+   },
+   {
+    "id": "150",
+    "price": 0.89,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 21,
+    "page": 12,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo21-LGPM_p12.jpg",
+    "caption": "Formaggino g 125",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v21_p12_t04.jpg"
+   },
+   {
+    "id": "342",
+    "price": 0.79,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 20% DA 0,99",
+    "flyer": 22,
+    "page": 10,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo22-LGPM_p10.jpg",
+    "caption": "Formaggino g 125",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v22_p10_t03.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v21_p12_t04.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "formaggino12522p10",
+   "formaggino125",
+   "formaggino6p9"
+  ]
+ },
+ {
+  "id": "gallina-0da175",
+  "name": "Gallina",
+  "brand": "",
+  "summary": "",
+  "facts": [],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Prodotto descritto nel volantino",
+    "offerIds": [
+     "3917",
+     "3747"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3747",
+    "price": 3.5,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "",
+    "flyer": 1,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo01-LGPM_p7.jpg",
+    "caption": "Gallina",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v1_p07_t08.jpg"
+   },
+   {
+    "id": "3917",
+    "price": 3.99,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "",
+    "flyer": 27,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo27-LGPM_p7.jpg",
+    "caption": "Gallina",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v27_p07_t12.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v1_p07_t08.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "gallina244"
+  ]
+ },
+ {
+  "id": "gorgonzola-dolce-dop-39fddb",
+  "name": "Gorgonzola dolce dop",
+  "brand": "",
+  "summary": "Variante: dolce · Peso totale: 400 g · Unità: 1",
+  "facts": [
+   "Variante: dolce",
+   "Peso totale: 400 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "linea",
+    "label": "Tutta la linea (tutte le varianti e formati)",
+    "offerIds": [
+     "3742",
+     "3290",
+     "2819",
+     "2153",
+     "1651",
+     "1185",
+     "721",
+     "740",
+     "4303"
+    ]
+   },
+   {
+    "id": "format-446af94248de",
+    "label": "Variante: dolce",
+    "offerIds": [
+     "721",
+     "1185",
+     "1651",
+     "2153",
+     "2819",
+     "3290",
+     "3742",
+     "4303"
+    ]
+   },
+   {
+    "id": "format-f730ec6898a9",
+    "label": "Peso totale: 400 g · Unità: 1",
+    "offerIds": [
+     "740"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3742",
+    "price": 0.99,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "sconto 25%",
+    "flyer": 1,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo01-LGPM_p7.jpg",
+    "caption": "Gorgonzola dolce dop",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v1_p07_t03.jpg"
+   },
+   {
+    "id": "3290",
+    "price": 0.99,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "sconto 25%",
+    "flyer": 4,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo04-LGPM_p7.jpg",
+    "caption": "Gorgonzola dop dolce",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v4_p07_t06.jpg"
+   },
+   {
+    "id": "2819",
+    "price": 1.19,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "ALL'ETTO",
+    "flyer": 7,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo07-LGPM_p6.jpg",
+    "caption": "Gorgonzola dolce dop",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v7_p06_t03.jpg"
+   },
+   {
+    "id": "2153",
+    "price": 1.09,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 11,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo11-LGPM_p7.jpg",
+    "caption": "Gorgonzola dop dolce",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v11_p07_t05.jpg"
+   },
+   {
+    "id": "1651",
+    "price": 1.09,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 14,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo14-LGPM_p7.jpg",
+    "caption": "Gorgonzola dolce dop",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v14_p07_t05.jpg"
+   },
+   {
+    "id": "1185",
+    "price": 1.09,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "SCONTO 20% DA 1,39 ALL'ETTO",
+    "flyer": 17,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo17-LGPM_p7.jpg",
+    "caption": "Gorgonzola dolce dop",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v17_p07_t06.jpg"
+   },
+   {
+    "id": "721",
+    "price": 1.29,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 20,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo20-LGPM_p7.jpg",
+    "caption": "Gorgonzola dop dolce",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v20_p07_t07.jpg"
+   },
+   {
+    "id": "740",
+    "price": 3.49,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 20,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo20-LGPM_p8.jpg",
+    "caption": "Gorgonzola dop dolce g 400",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v20_p08_t12.jpg"
+   },
+   {
+    "id": "4303",
+    "price": 1.19,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 25,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo25-LGPM_p7.jpg",
+    "caption": "Gorgonzola dolce DOP",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v25_p07_t07.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v25_p07_t07.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "gorgonzola-generic-counter",
+   "gorgonzoladolce40020p8"
+  ]
+ },
+ {
+  "id": "gorgonzola-dop-e-mascarpone-cb6e66",
+  "name": "Gorgonzola dop e mascarpone",
+  "brand": "",
+  "summary": "",
+  "facts": [],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Prodotto descritto nel volantino",
+    "offerIds": [
+     "2990",
+     "331"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "2990",
+    "price": 1.39,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "SCONTO 20% (da 1,79 € all'etto)",
+    "flyer": 6,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo06-LGPM_p7.jpg",
+    "caption": "Gorgonzola dop e mascarpone",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v6_p07_t04.jpg"
+   },
+   {
+    "id": "331",
+    "price": 1.29,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "ALL'ETTO",
+    "flyer": 22,
+    "page": 9,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo22-LGPM_p9.jpg",
+    "caption": "Gorgonzola dop e mascarpone all'etto",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v22_p09_t02.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v22_p09_t02.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "gorgonzola-mascarpone369"
+  ]
+ },
+ {
+  "id": "insalata-di-mare-g-150-34b09f",
+  "name": "Insalata di mare g 150",
+  "brand": "",
+  "summary": "Peso totale: 150 g · Unità: 1",
+  "facts": [
+   "Peso totale: 150 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Peso totale: 150 g · Unità: 1",
+    "offerIds": [
+     "3011",
+     "1842"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3011",
+    "price": 2.49,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 6,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo06-LGPM_p8.jpg",
+    "caption": "Insalata di mare g 150",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v6_p08_t13.jpg"
+   },
+   {
+    "id": "1842",
+    "price": 2.5,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 13,
+    "page": 9,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo13-LGPM_p9.jpg",
+    "caption": "Insalata di mare g 150",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v13_p09_t09.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v6_p08_t13.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "seafood372salad150"
+  ]
+ },
+ {
+  "id": "lonza-di-suino-a-fette-8a6490",
+  "name": "Lonza di suino a fette",
+  "brand": "",
+  "summary": "",
+  "facts": [],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Prodotto descritto nel volantino",
+    "offerIds": [
+     "2680",
+     "3294"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3294",
+    "price": 10.9,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "",
+    "flyer": 4,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo04-LGPM_p7.jpg",
+    "caption": "Lonza di suino a fette",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v4_p07_t10.jpg"
+   },
+   {
+    "id": "2680",
+    "price": 10.9,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "",
+    "flyer": 8,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo08-LGPM_p7.jpg",
+    "caption": "Lonza di suino a fette",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v8_p07_t14.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v8_p07_t14.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "lonza-suino-fette326"
+  ]
+ },
+ {
+  "id": "luna-di-primosale-g-200-5ace63",
+  "name": "Luna di primosale g 200",
+  "brand": "",
+  "summary": "Peso totale: 200 g · Unità: 1",
+  "facts": [
+   "Peso totale: 200 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Peso totale: 200 g · Unità: 1",
+    "offerIds": [
+     "2387",
+     "739"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "2387",
+    "price": 1.49,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 25% DA 1,99",
+    "flyer": 10,
+    "page": 9,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo10-LGPM_p9.jpg",
+    "caption": "Luna di primosale g 200",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v10_p09_t04.jpg"
+   },
+   {
+    "id": "739",
+    "price": 1.79,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 20,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo20-LGPM_p8.jpg",
+    "caption": "Luna di primosale g 200",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v20_p08_t11.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v10_p09_t04.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "lunaprimosale480200"
+  ]
+ },
+ {
+  "id": "melanzane-nere-c49187",
+  "name": "Melanzane nere",
+  "brand": "",
+  "summary": "Variante: nera · Variante: nere",
+  "facts": [
+   "Variante: nera",
+   "Variante: nere"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Variante: nera",
+    "offerIds": [
+     "1024",
+     "1643",
+     "1941",
+     "2351"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "2351",
+    "price": 1.88,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "",
+    "flyer": 10,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo10-LGPM_p6.jpg",
+    "caption": "Melanzane nere",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v10_p06_t06.jpg"
+   },
+   {
+    "id": "1941",
+    "price": 1.59,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "SCONTO 20% DA 1,99",
+    "flyer": 12,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo12-LGPM_p6.jpg",
+    "caption": "Melanzane nere",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v12_p06_t02.jpg"
+   },
+   {
+    "id": "1643",
+    "price": 1.59,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "SCONTO 20% DA 1,99",
+    "flyer": 14,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo14-LGPM_p6.jpg",
+    "caption": "Melanzana nera",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v14_p06_t05.jpg"
+   },
+   {
+    "id": "1024",
+    "price": 1.59,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "SCONTO 20% DA 1,99",
+    "flyer": 18,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo18-LGPM_p6.jpg",
+    "caption": "Melanzane nere",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v18_p06_t05.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v12_p06_t02.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "aubergine2011",
+   "aubergine518",
+   "aubergine1532"
+  ]
+ },
+ {
+  "id": "mele-fuji-cfefb4",
+  "name": "Mele fuji",
+  "brand": "",
+  "summary": "Variante: Fuji",
+  "facts": [
+   "Variante: Fuji"
+  ],
+  "formats": [
+   {
+    "id": "linea",
+    "label": "Tutta la linea (tutte le varianti e formati)",
+    "offerIds": [
+     "3574",
+     "2979",
+     "4084",
+     "3888"
+    ]
+   },
+   {
+    "id": "format-c44f6e08bc24",
+    "label": "Prodotto descritto nel volantino",
+    "offerIds": [
+     "3574",
+     "3888"
+    ]
+   },
+   {
+    "id": "format-868041001468",
+    "label": "Variante: Fuji",
+    "offerIds": [
+     "2979",
+     "4084"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3574",
+    "price": 1.49,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "",
+    "flyer": 2,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo02-LGPM_p6.jpg",
+    "caption": "Mele fuji",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v2_p06_t02.jpg"
+   },
+   {
+    "id": "2979",
+    "price": 1.49,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "",
+    "flyer": 6,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo06-LGPM_p6.jpg",
+    "caption": "Mele fuji",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v6_p06_t01.jpg"
+   },
+   {
+    "id": "4084",
+    "price": 1.49,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "",
+    "flyer": 26,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo26-LGPM_p6.jpg",
+    "caption": "Mele Fuji",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v26_p06_t04.jpg"
+   },
+   {
+    "id": "3888",
+    "price": 1.49,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "sconto 25% (da 1,99€)",
+    "flyer": 27,
+    "page": 5,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo27-LGPM_p5.jpg",
+    "caption": "Mele Fuji",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v27_p05_t06.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v6_p06_t01.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "fuji-loose-target266",
+   "fuji364"
+  ]
+ },
+ {
+  "id": "mortadella-bologna-igp-con-pistacchi-all-etto-327800",
+  "name": "Mortadella bologna igp con pistacchi all'etto",
+  "brand": "",
+  "summary": "Variante: con pistacchi · Unità: 1",
+  "facts": [
+   "Variante: con pistacchi",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "linea",
+    "label": "Tutta la linea (tutte le varianti e formati)",
+    "offerIds": [
+     "329",
+     "3898",
+     "544"
+    ]
+   },
+   {
+    "id": "format-c7ca188cab83",
+    "label": "Variante: con pistacchi",
+    "offerIds": [
+     "329",
+     "3898"
+    ]
+   },
+   {
+    "id": "format-c5b6e75aa63a",
+    "label": "Unità: 1 · Variante: con pistacchi",
+    "offerIds": [
+     "544"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "329",
+    "price": 0.99,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "ALL'ETTO",
+    "flyer": 22,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo22-LGPM_p8.jpg",
+    "caption": "Mortadella bologna igp con pistacchi all'etto",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v22_p08_t12.jpg"
+   },
+   {
+    "id": "3898",
+    "price": 0.99,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 27,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo27-LGPM_p6.jpg",
+    "caption": "Mortadella Bologna IGP con pistacchi",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v27_p06_t02.jpg"
+   },
+   {
+    "id": "544",
+    "price": 0.99,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "ALL'ETTO",
+    "flyer": 28,
+    "page": 9,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo22-LGPM_2026-10-20_p09.jpg",
+    "caption": "Mortadella bologna igp con pistacchi all etto",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v28_p09_t02.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v28_p09_t02.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "mortadella613",
+   "extra28_544"
+  ]
+ },
+ {
+  "id": "mortadella-cuor-di-paese-con-pistacchi-8cd660",
+  "name": "Mortadella Cuor di Paese con pistacchi",
+  "brand": "",
+  "summary": "Variante: con pistacchi",
+  "facts": [
+   "Variante: con pistacchi"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Variante: con pistacchi",
+    "offerIds": [
+     "4526"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "4526",
+    "price": 0.89,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 24,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo24-LGPM_p6.jpg",
+    "caption": "Mortadella Cuor di Paese con pistacchi",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v24_p06_t13.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v24_p06_t13.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "cuorpaese3098"
+  ]
+ },
+ {
+  "id": "mortadella-intera-gusto-piu-g-800-f2c8bc",
+  "name": "Mortadella intera gusto più g 800",
+  "brand": "",
+  "summary": "Formato: 800 g",
+  "facts": [
+   "Formato: 800 g"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Formato: 800 g",
+    "offerIds": [
+     "17",
+     "238",
+     "1252",
+     "1845",
+     "3620"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3620",
+    "price": 3.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 2,
+    "page": 9,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo02-LGPM_p9.jpg",
+    "caption": "Mortadella intera gustopiù",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v2_p09_t10.jpg"
+   },
+   {
+    "id": "1845",
+    "price": 4.0,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 13,
+    "page": 9,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo13-LGPM_p9.jpg",
+    "caption": "Mortadella intera gusto più g 800",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v13_p09_t12.jpg"
+   },
+   {
+    "id": "1252",
+    "price": 3.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 17,
+    "page": 12,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo17-LGPM_p12.jpg",
+    "caption": "Mortadella intera gusto più g 800",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v17_p12_t06.jpg"
+   },
+   {
+    "id": "17",
+    "price": 3.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 21,
+    "page": 4,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo21-LGPM_p4.jpg",
+    "caption": "Mortadella intera balocco g 800",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v21_p04_t01.jpg"
+   },
+   {
+    "id": "238",
+    "price": 3.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 22,
+    "page": 4,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo22-LGPM_p4.jpg",
+    "caption": "Mortadella intera g 800",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v22_p04_t02.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v2_p09_t10.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "mortadella-intera800-gustopiu"
+  ]
+ },
+ {
+  "id": "mozzarella-bocconcino-light-g-125-3ca4ac",
+  "name": "Mozzarella bocconcino light g 125",
+  "brand": "",
+  "summary": "Variante: light · Confezione: 125 g · Peso totale: 125 g · Unità: 1",
+  "facts": [
+   "Variante: light",
+   "Confezione: 125 g",
+   "Peso totale: 125 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "linea",
+    "label": "Tutta la linea (tutte le varianti e formati)",
+    "offerIds": [
+     "3158",
+     "2533",
+     "344"
+    ]
+   },
+   {
+    "id": "format-1443fd8d69b3",
+    "label": "Variante: light · Confezione: 125 g",
+    "offerIds": [
+     "3158",
+     "2533"
+    ]
+   },
+   {
+    "id": "format-54cce32d772f",
+    "label": "Peso totale: 125 g · Unità: 1",
+    "offerIds": [
+     "344"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3158",
+    "price": 0.79,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "sconto 20%",
+    "flyer": 5,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo05-LGPM_p8.jpg",
+    "caption": "Mozzarella bocconcino light",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v5_p08_t11.jpg"
+   },
+   {
+    "id": "2533",
+    "price": 0.89,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 9,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo09-LGPM_p8.jpg",
+    "caption": "Mozzarella bocconcino light g 125",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v9_p08_t10.jpg"
+   },
+   {
+    "id": "344",
+    "price": 0.79,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 20% DA 0,99",
+    "flyer": 22,
+    "page": 10,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo22-LGPM_p10.jpg",
+    "caption": "Mozzarella bocconcino light g 125",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v22_p10_t05.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v9_p08_t10.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "mozzarella-light351",
+   "mozzarellalight12522p10"
+  ]
+ },
+ {
+  "id": "orata-eviscerata-g-300-b2aecc",
+  "name": "Orata eviscerata g 300",
+  "brand": "",
+  "summary": "Peso totale: 300 g · Unità: 1",
+  "facts": [
+   "Peso totale: 300 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Peso totale: 300 g · Unità: 1",
+    "offerIds": [
+     "4821",
+     "3973",
+     "4066",
+     "1989"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "1989",
+    "price": 3.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 33% DA 5,99",
+    "flyer": 12,
+    "page": 10,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo12-LGPM_p10.jpg",
+    "caption": "Orata eviscerata g 300",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v12_p10_t01.jpg"
+   },
+   {
+    "id": "4821",
+    "price": 3.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "sconto 33% (da 5,99€)",
+    "flyer": 23,
+    "page": 12,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo23-LGPM_p12.jpg",
+    "caption": "Orata eviscerata g 300",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v23_p12_t01.jpg"
+   },
+   {
+    "id": "4066",
+    "price": 3.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 26,
+    "page": 5,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo26-LGPM_p5.jpg",
+    "caption": "Orata eviscerata g 300",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v26_p05_t01.jpg"
+   },
+   {
+    "id": "3973",
+    "price": 3.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "sconto 33% (da 5,99€)",
+    "flyer": 27,
+    "page": 11,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo27-LGPM_p11.jpg",
+    "caption": "Orata eviscerata g 300",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v27_p11_t01.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v12_p10_t01.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "orata523gutted300extra",
+   "orataeviscerata300",
+   "orata30026p5extra",
+   "oratagutted300frozen12p10"
+  ]
+ },
+ {
+  "id": "pancetta-a-cubetti-dolce-affumicata-g-100-67eb18",
+  "name": "Pancetta a cubetti dolce, affumicata g 100",
+  "brand": "",
+  "summary": "Peso totale: 100 g · Unità: 1",
+  "facts": [
+   "Peso totale: 100 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "linea",
+    "label": "Tutta la linea (tutte le varianti e formati)",
+    "offerIds": [
+     "1049"
+    ]
+   },
+   {
+    "id": "format-128c85534e12",
+    "label": "dolce",
+    "offerIds": [
+     "1049"
+    ]
+   },
+   {
+    "id": "format-28a7a24a0bf6",
+    "label": "affumicata",
+    "offerIds": [
+     "1049"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "1049",
+    "price": 1.0,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 20% DA 1,29",
+    "flyer": 18,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo18-LGPM_p8.jpg",
+    "caption": "Pancetta a cubetti dolce, affumicata g 100",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v18_p08_t06.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v18_p08_t06.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "pancettacubes10018p8"
+  ]
+ },
+ {
+  "id": "passata-di-mela-con-frutta-50a7f2",
+  "name": "Passata di mela con frutta",
+  "brand": "",
+  "summary": "Confezione: 100 g",
+  "facts": [
+   "Confezione: 100 g"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Confezione: 100 g",
+    "offerIds": [
+     "3525"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3525",
+    "price": 0.29,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "sconto 40%",
+    "flyer": 2,
+    "page": 2,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo02-LGPM_p2.jpg",
+    "caption": "Passata di mela con frutta",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v2_p02_t12.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v2_p02_t12.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "fruit732"
+  ]
+ },
+ {
+  "id": "pecorino-montanaro-semi-stagionato-85ae14",
+  "name": "Pecorino montanaro semi stagionato",
+  "brand": "",
+  "summary": "Variante: semi stagionato",
+  "facts": [
+   "Variante: semi stagionato"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Variante: semi stagionato",
+    "offerIds": [
+     "2361",
+     "1184"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "2361",
+    "price": 2.19,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "ALL'ETTO",
+    "flyer": 10,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo10-LGPM_p7.jpg",
+    "caption": "Pecorino montanaro semi stagionato",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v10_p07_t05.jpg"
+   },
+   {
+    "id": "1184",
+    "price": 2.29,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 17,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo17-LGPM_p7.jpg",
+    "caption": "Pecorino montanaro semi stagionato",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v17_p07_t05.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v17_p07_t05.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "pecorino1537",
+   "pecorino-montanaro2327"
+  ]
+ },
+ {
+  "id": "pesche-gialle-g-500-b5570f",
+  "name": "Pesche gialle g 500",
+  "brand": "",
+  "summary": "Variante: gialle · Confezione: 500 g",
+  "facts": [
+   "Variante: gialle",
+   "Confezione: 500 g"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Variante: gialle · Confezione: 500 g",
+    "offerIds": [
+     "2139",
+     "1639",
+     "1325",
+     "1023",
+     "862"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "2139",
+    "price": 1.59,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 20% DA 1,99",
+    "flyer": 11,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo11-LGPM_p6.jpg",
+    "caption": "Pesche gialle g 500",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v11_p06_t02.jpg"
+   },
+   {
+    "id": "1639",
+    "price": 1.59,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 20% DA 1,99",
+    "flyer": 14,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo14-LGPM_p6.jpg",
+    "caption": "Pesche gialle g 500",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v14_p06_t01.jpg"
+   },
+   {
+    "id": "1325",
+    "price": 1.88,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 20% DA 2,49",
+    "flyer": 16,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo16-LGPM_p6.jpg",
+    "caption": "Pesche gialle g 500",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v16_p06_t07.jpg"
+   },
+   {
+    "id": "1023",
+    "price": 1.59,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 20% DA 1,99",
+    "flyer": 18,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo18-LGPM_p6.jpg",
+    "caption": "Pesche gialle g 500",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v18_p06_t04.jpg"
+   },
+   {
+    "id": "862",
+    "price": 1.49,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 25% DA 1,99",
+    "flyer": 19,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo19-LGPM_p6.jpg",
+    "caption": "Pesche gialle g 500",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v19_p06_t02.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v18_p06_t04.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "pesche31gialle500"
+  ]
+ },
+ {
+  "id": "prosciutto-crudo-san-daniele-dop-0533ef",
+  "name": "Prosciutto crudo san daniele dop",
+  "brand": "",
+  "summary": "Variante: DOP",
+  "facts": [
+   "Variante: DOP"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Variante: DOP",
+    "offerIds": [
+     "1108",
+     "326",
+     "4297"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "1108",
+    "price": 2.49,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "SCONTO 20% DA 3,19 ALL'ETTO",
+    "flyer": 17,
+    "page": 1,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo17-LGPM_p1.jpg",
+    "caption": "Prosciutto crudo san daniele dop",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v17_p01_t05.jpg"
+   },
+   {
+    "id": "326",
+    "price": 2.79,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "ALL'ETTO",
+    "flyer": 22,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo22-LGPM_p8.jpg",
+    "caption": "Prosciutto crudo san daniele dop all'etto",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v22_p08_t09.jpg"
+   },
+   {
+    "id": "4297",
+    "price": 2.99,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 25,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo25-LGPM_p7.jpg",
+    "caption": "Prosciutto crudo San Daniele DOP",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v25_p07_t01.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v25_p07_t01.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "sandaniele219"
+  ]
+ },
+ {
+  "id": "prugne-santa-clara-97f1fd",
+  "name": "Prugne santa clara",
+  "brand": "",
+  "summary": "",
+  "facts": [],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Prodotto descritto nel volantino",
+    "offerIds": [
+     "863",
+     "1171"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "1171",
+    "price": 1.85,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "SCONTO 25% DA 2,49",
+    "flyer": 17,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo17-LGPM_p6.jpg",
+    "caption": "Prugne santa clara",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v17_p06_t01.jpg"
+   },
+   {
+    "id": "863",
+    "price": 1.89,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "SCONTO 25% DA 2,59",
+    "flyer": 19,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo19-LGPM_p6.jpg",
+    "caption": "Prugne santa clara",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v19_p06_t03.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v17_p06_t01.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "plums-santaclara-pricebasis"
+  ]
+ },
+ {
+  "id": "ricotta-fresca-31582e",
+  "name": "Ricotta fresca",
+  "brand": "",
+  "summary": "Confezione: 250 g · Confezione: 450 g",
+  "facts": [
+   "Confezione: 250 g",
+   "Confezione: 450 g"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Confezione: 250 g",
+    "offerIds": [
+     "347",
+     "3371",
+     "3604"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3604",
+    "price": 1.19,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 2,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo02-LGPM_p8.jpg",
+    "caption": "Ricotta fresca",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v2_p08_t10.jpg"
+   },
+   {
+    "id": "3371",
+    "price": 1.78,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "3x2 (1 pezzo 0,89)",
+    "flyer": 3,
+    "page": 2,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo03-LGPM_p2.jpg",
+    "caption": "Ricotta fresca",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v3_p02_t08.jpg"
+   },
+   {
+    "id": "347",
+    "price": 0.69,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 22,
+    "page": 10,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo22-LGPM_p10.jpg",
+    "caption": "Ricotta fresca g 250",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v22_p10_t08.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v2_p08_t10.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "ricotta284",
+   "ricotta781"
+  ]
+ },
+ {
+  "id": "salame-al-cioccolato-g-250-15c966",
+  "name": "Salame al cioccolato g 250",
+  "brand": "",
+  "summary": "Peso totale: 250 g · Unità: 1",
+  "facts": [
+   "Peso totale: 250 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Peso totale: 250 g · Unità: 1",
+    "offerIds": [
+     "2694",
+     "4548"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "2694",
+    "price": 2.5,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 8,
+    "page": 9,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo08-LGPM_p9.jpg",
+    "caption": "Salame al cioccolato g 250",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v8_p09_t02.jpg"
+   },
+   {
+    "id": "4548",
+    "price": 2.49,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 24,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo24-LGPM_p8.jpg",
+    "caption": "Salame al cioccolato g 250",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v24_p08_t12.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v24_p08_t12.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "salamechocolate2508p9",
+   "salamecioccolato250"
+  ]
+ },
+ {
+  "id": "salame-piacentino-dop-c78a1c",
+  "name": "Salame piacentino dop",
+  "brand": "",
+  "summary": "Variante: DOP",
+  "facts": [
+   "Variante: DOP"
+  ],
+  "formats": [
+   {
+    "id": "linea",
+    "label": "Tutta la linea (tutte le varianti e formati)",
+    "offerIds": [
+     "3140",
+     "2151",
+     "870"
+    ]
+   },
+   {
+    "id": "format-c44f6e08bc24",
+    "label": "Prodotto descritto nel volantino",
+    "offerIds": [
+     "2151",
+     "3140"
+    ]
+   },
+   {
+    "id": "format-853c3caf6265",
+    "label": "Variante: DOP",
+    "offerIds": [
+     "870"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3140",
+    "price": 2.19,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 5,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo05-LGPM_p7.jpg",
+    "caption": "Salame piacentino dop",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v5_p07_t05.jpg"
+   },
+   {
+    "id": "2151",
+    "price": 1.99,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "SCONTO 20% DA 2,49 ALL'ETTO",
+    "flyer": 11,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo11-LGPM_p7.jpg",
+    "caption": "Salame piacentino dop",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v11_p07_t03.jpg"
+   },
+   {
+    "id": "870",
+    "price": 2.19,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 19,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo19-LGPM_p7.jpg",
+    "caption": "Salame piacentino dop",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v19_p07_t03.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v11_p07_t03.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "salame-piacentino-counter",
+   "piacentino500"
+  ]
+ },
+ {
+  "id": "salamino-cacciatore-dop-g-160-67535f",
+  "name": "Salamino cacciatore dop g 160",
+  "brand": "",
+  "summary": "Confezione: 160 g · Peso totale: 160 g · Unità: 1",
+  "facts": [
+   "Confezione: 160 g",
+   "Peso totale: 160 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "linea",
+    "label": "Tutta la linea (tutte le varianti e formati)",
+    "offerIds": [
+     "3318",
+     "2547",
+     "1840",
+     "170",
+     "356"
+    ]
+   },
+   {
+    "id": "format-c5b03d604dfe",
+    "label": "Confezione: 160 g",
+    "offerIds": [
+     "3318",
+     "2547",
+     "1840",
+     "170"
+    ]
+   },
+   {
+    "id": "format-241ed70f8eef",
+    "label": "Peso totale: 160 g · Unità: 1",
+    "offerIds": [
+     "356"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3318",
+    "price": 1.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 4,
+    "page": 9,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo04-LGPM_p9.jpg",
+    "caption": "Salamino cacciatore dop",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v4_p09_t06.jpg"
+   },
+   {
+    "id": "2547",
+    "price": 1.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 9,
+    "page": 9,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo09-LGPM_p9.jpg",
+    "caption": "Salamino cacciatore dop g 160",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v9_p09_t11.jpg"
+   },
+   {
+    "id": "1840",
+    "price": 2.0,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 13,
+    "page": 9,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo13-LGPM_p9.jpg",
+    "caption": "Salamino cacciatore dop g 160",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v13_p09_t07.jpg"
+   },
+   {
+    "id": "170",
+    "price": 1.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 21,
+    "page": 13,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo21-LGPM_p13.jpg",
+    "caption": "Salamino cacciatore dop g 160",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v21_p13_t11.jpg"
+   },
+   {
+    "id": "356",
+    "price": 1.79,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 22,
+    "page": 11,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo22-LGPM_p11.jpg",
+    "caption": "Salamino cacciatore dop g 160",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v22_p11_t04.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v9_p09_t11.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "cacciatore64",
+   "salamino22p11"
+  ]
+ },
+ {
+  "id": "salsiccia-di-pollo-al-kg-d2024a",
+  "name": "Salsiccia di pollo al kg",
+  "brand": "",
+  "summary": "",
+  "facts": [],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Prodotto descritto nel volantino",
+    "offerIds": [
+     "1339",
+     "115",
+     "338"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "1339",
+    "price": 8.9,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "",
+    "flyer": 16,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo16-LGPM_p7.jpg",
+    "caption": "Salsiccia di pollo",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v16_p07_t13.jpg"
+   },
+   {
+    "id": "115",
+    "price": 8.9,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "",
+    "flyer": 21,
+    "page": 9,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo21-LGPM_p9.jpg",
+    "caption": "Salsiccia di pollo al kg",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v21_p09_t13.jpg"
+   },
+   {
+    "id": "338",
+    "price": 7.5,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "",
+    "flyer": 22,
+    "page": 9,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo22-LGPM_p9.jpg",
+    "caption": "Salsiccia di pollo al kg",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v22_p09_t09.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v22_p09_t09.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "chicken-sausage217"
+  ]
+ },
+ {
+  "id": "toma-di-gressoney-e57a2c",
+  "name": "Toma di gressoney",
+  "brand": "",
+  "summary": "",
+  "facts": [],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Prodotto descritto nel volantino",
+    "offerIds": [
+     "2515"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "2515",
+    "price": 1.99,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "ALL'ETTO",
+    "flyer": 9,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo09-LGPM_p7.jpg",
+    "caption": "Toma di gressoney",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v9_p07_t06.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v9_p07_t06.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "toma1446"
+  ]
+ },
+ {
+  "id": "toma-piemontese-dop-34e060",
+  "name": "Toma piemontese dop",
+  "brand": "",
+  "summary": "",
+  "facts": [],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Prodotto descritto nel volantino",
+    "offerIds": [
+     "1036",
+     "1488",
+     "3136",
+     "4530"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3136",
+    "price": 1.39,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 5,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo05-LGPM_p7.jpg",
+    "caption": "Toma piemontese dop",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v5_p07_t01.jpg"
+   },
+   {
+    "id": "1488",
+    "price": 1.49,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 15,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo15-LGPM_p7.jpg",
+    "caption": "Toma piemontese dop",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v15_p07_t06.jpg"
+   },
+   {
+    "id": "1036",
+    "price": 1.49,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 18,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo18-LGPM_p7.jpg",
+    "caption": "Toma piemontese dop",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v18_p07_t07.jpg"
+   },
+   {
+    "id": "4530",
+    "price": 1.49,
+    "priceUnit": "all’etto",
+    "starting": false,
+    "promo": "",
+    "flyer": 24,
+    "page": 7,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo24-LGPM_p7.jpg",
+    "caption": "Toma piemontese DOP",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v24_p07_t04.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v18_p07_t07.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "toma-piemontese562",
+   "toma348extension"
+  ]
+ },
+ {
+  "id": "tomini-aromatici-g-180-fe50c0",
+  "name": "Tomini aromatici g 180",
+  "brand": "",
+  "summary": "Peso totale: 180 g · Unità: 1 · Pezzi: 6 · Variante: aromatici",
+  "facts": [
+   "Peso totale: 180 g",
+   "Unità: 1",
+   "Pezzi: 6",
+   "Variante: aromatici"
+  ],
+  "formats": [
+   {
+    "id": "linea",
+    "label": "Tutta la linea (tutte le varianti e formati)",
+    "offerIds": [
+     "1977",
+     "3958",
+     "564"
+    ]
+   },
+   {
+    "id": "format-269db7fc3b00",
+    "label": "Peso totale: 180 g · Unità: 1",
+    "offerIds": [
+     "1977"
+    ]
+   },
+   {
+    "id": "format-ba02f1c1fb07",
+    "label": "Peso totale: 180 g · Pezzi: 6",
+    "offerIds": [
+     "3958"
+    ]
+   },
+   {
+    "id": "format-5681f7c3d650",
+    "label": "Unità: 1 · Variante: aromatici · Peso totale: 180 g",
+    "offerIds": [
+     "564"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "1977",
+    "price": 1.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 33% DA 2,99",
+    "flyer": 12,
+    "page": 9,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo12-LGPM_p9.jpg",
+    "caption": "Tomini aromatici g 180",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v12_p09_t02.jpg"
+   },
+   {
+    "id": "3958",
+    "price": 2.49,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 27,
+    "page": 10,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo27-LGPM_p10.jpg",
+    "caption": "Tomini aromatici g 180",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v27_p10_t06.jpg"
+   },
+   {
+    "id": "564",
+    "price": 1.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 33% DA 2,99",
+    "flyer": 28,
+    "page": 10,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo22-LGPM_2026-10-20_p10.jpg",
+    "caption": "Tomini aromatici g 180",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v28_p10_t12.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v12_p09_t02.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "tominiAromatici180",
+   "aromaticTomini180extra27p10",
+   "extra28_564"
+  ]
+ },
+ {
+  "id": "tomini-aromatici-g-30x6-d95fab",
+  "name": "Tomini aromatici g 30x6",
+  "brand": "",
+  "summary": "Per unità: 30 g · Unità: 6 · Peso totale: 180 g",
+  "facts": [
+   "Per unità: 30 g",
+   "Unità: 6",
+   "Peso totale: 180 g"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Per unità: 30 g · Unità: 6 · Peso totale: 180 g",
+    "offerIds": [
+     "4806",
+     "1345"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "1345",
+    "price": 2.49,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 16,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo16-LGPM_p8.jpg",
+    "caption": "Tomini aromatici g 30x6",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v16_p08_t05.jpg"
+   },
+   {
+    "id": "4806",
+    "price": 2.49,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 23,
+    "page": 10,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo23-LGPM_p10.jpg",
+    "caption": "Tomini aromatici g 30x6",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v23_p10_t19.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v16_p08_t05.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "tominiaromatici30x6",
+   "tominiAromatic30x6"
+  ]
+ },
+ {
+  "id": "tomini-classici-a5f772",
+  "name": "Tomini classici",
+  "brand": "",
+  "summary": "Variante: classici · Confezioni: 2 · Peso totale: 160 g",
+  "facts": [
+   "Variante: classici",
+   "Confezioni: 2",
+   "Peso totale: 160 g"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Variante: classici · Confezioni: 2 · Peso totale: 160 g",
+    "offerIds": [
+     "3310"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "3310",
+    "price": 2.19,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 4,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo04-LGPM_p8.jpg",
+    "caption": "Tomini classici",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v4_p08_t14.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v4_p08_t14.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "tomini970"
+  ]
+ },
+ {
+  "id": "tomini-classici-g-80x2-86182f",
+  "name": "Tomini classici g 80x2",
+  "brand": "",
+  "summary": "Per unità: 80 g · Unità: 2 · Peso totale: 160 g",
+  "facts": [
+   "Per unità: 80 g",
+   "Unità: 2",
+   "Peso totale: 160 g"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Per unità: 80 g · Unità: 2 · Peso totale: 160 g",
+    "offerIds": [
+     "2708"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "2708",
+    "price": 1.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 20% (da 2,49 €)",
+    "flyer": 8,
+    "page": 10,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo08-LGPM_p10.jpg",
+    "caption": "Tomini classici g 80x2",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v8_p10_t03.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v8_p10_t03.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "tominiclassici80x2"
+  ]
+ },
+ {
+  "id": "uva-nera-g-750-7fd0e1",
+  "name": "Uva nera g 750",
+  "brand": "",
+  "summary": "Unità: 1 · Variante: nera · Peso totale: 750 g",
+  "facts": [
+   "Unità: 1",
+   "Variante: nera",
+   "Peso totale: 750 g"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Unità: 1 · Variante: nera · Peso totale: 750 g",
+    "offerIds": [
+     "535"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "535",
+    "price": 1.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "",
+    "flyer": 28,
+    "page": 8,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo22-LGPM_2026-10-20_p08.jpg",
+    "caption": "Uva nera g 750",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v28_p08_t03.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v28_p08_t03.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "extra28_535"
+  ]
+ },
+ {
+  "id": "uva-red-globe-98fbce",
+  "name": "Uva red globe",
+  "brand": "",
+  "summary": "Variante: Red Globe",
+  "facts": [
+   "Variante: Red Globe"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Variante: Red Globe",
+    "offerIds": [
+     "865"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "865",
+    "price": 2.58,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "SCONTO 25% DA 3,49",
+    "flyer": 19,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo19-LGPM_p6.jpg",
+    "caption": "Uva red globe",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v19_p06_t05.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v19_p06_t05.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "redglobe-loose2490"
+  ]
+ },
+ {
+  "id": "verdure-grigliate-in-olio-di-semi-di-girasole-g--18dce0",
+  "name": "Verdure grigliate in olio di semi di girasole g 300",
+  "brand": "",
+  "summary": "Peso totale: 300 g · Unità: 1",
+  "facts": [
+   "Peso totale: 300 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Peso totale: 300 g · Unità: 1",
+    "offerIds": [
+     "989"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "989",
+    "price": 2.0,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 33% DA 2,99",
+    "flyer": 18,
+    "page": 3,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo18-LGPM_p3.jpg",
+    "caption": "Verdure grigliate in olio di semi di girasole g 300",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v18_p03_t16.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v18_p03_t16.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "grilledVegOil300Jar"
+  ]
+ },
+ {
+  "id": "vongole-cotte-con-guscio-g-400-51d1dd",
+  "name": "Vongole cotte con guscio g 400",
+  "brand": "",
+  "summary": "Peso totale: 400 g · Unità: 1",
+  "facts": [
+   "Peso totale: 400 g",
+   "Unità: 1"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Peso totale: 400 g · Unità: 1",
+    "offerIds": [
+     "2191",
+     "3977",
+     "4259",
+     "2925"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "2925",
+    "price": 1.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "1+1 GRATIS",
+    "flyer": 6,
+    "page": 2,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo06-LGPM_p2.jpg",
+    "caption": "Vongole cotte con guscio g 400",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v6_p02_t04.jpg"
+   },
+   {
+    "id": "2191",
+    "price": 0.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "SCONTO 33% DA 1,49",
+    "flyer": 11,
+    "page": 10,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo11-LGPM_p10.jpg",
+    "caption": "Vongole cotte con guscio g 400",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v11_p10_t03.jpg"
+   },
+   {
+    "id": "4259",
+    "price": 0.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "sconto 40% (da 1,79€)",
+    "flyer": 25,
+    "page": 4,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo25-LGPM_p4.jpg",
+    "caption": "Vongole cotte con guscio g 400",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v25_p04_t18.jpg"
+   },
+   {
+    "id": "3977",
+    "price": 0.99,
+    "priceUnit": "",
+    "starting": false,
+    "promo": "sconto 33% (da 1,49€)",
+    "flyer": 27,
+    "page": 11,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo27-LGPM_p11.jpg",
+    "caption": "Vongole con guscio cotte g 400",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v27_p11_t05.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v11_p10_t03.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "clams506cooked400",
+   "vongole25p4",
+   "vongole6p2"
+  ]
+ },
+ {
+  "id": "zucchine-verdi-24396c",
+  "name": "Zucchine verdi",
+  "brand": "",
+  "summary": "Variante: verdi",
+  "facts": [
+   "Variante: verdi"
+  ],
+  "formats": [
+   {
+    "id": "documented",
+    "label": "Variante: verdi",
+    "offerIds": [
+     "2141",
+     "2505",
+     "1801"
+    ]
+   }
+  ],
+  "offers": [
+   {
+    "id": "2505",
+    "price": 1.88,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "",
+    "flyer": 9,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo09-LGPM_p6.jpg",
+    "caption": "Zucchine verdi",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v9_p06_t05.jpg"
+   },
+   {
+    "id": "2141",
+    "price": 1.59,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "SCONTO 20% DA 1,99",
+    "flyer": 11,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo11-LGPM_p6.jpg",
+    "caption": "Zucchine verdi",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v11_p06_t04.jpg"
+   },
+   {
+    "id": "1801",
+    "price": 1.49,
+    "priceUnit": "al kg",
+    "starting": false,
+    "promo": "SCONTO 25% DA 1,99",
+    "flyer": 13,
+    "page": 6,
+    "source": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/volantini/EKOMPromo13-LGPM_p6.jpg",
+    "caption": "Zucchine verdi",
+    "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v13_p06_t04.jpg"
+   }
+  ],
+  "image": "https://fsxctxzzifohmbgqwcxk.supabase.co/storage/v1/object/public/prodotti/r2/v13_p06_t04.jpg",
+  "imageNote": "Ritaglio dell’offerta originale.",
+  "assortment": false,
+  "sourceCaseIds": [
+   "zucchini447",
+   "zucchini1917"
   ]
  }
 ]
